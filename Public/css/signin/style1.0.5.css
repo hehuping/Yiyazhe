@@ -1,0 +1,825 @@
+﻿@charset "utf-8"; 
+
+body {
+	background: #f6f6f6
+}
+
+em, i {
+	font-style: normal
+}
+
+#header {
+	background:white;
+}
+
+#header .area {
+	padding: 30px 0 18px
+}
+
+#header .logo a {
+	width: 240px;
+	height: 65px;
+	float: left;
+	background: url(/Public/images/signin/logo.jpg)
+}
+
+#header span {
+	float: right;
+	margin: 35px 0 0
+}
+
+#header span a {
+	color: #428bca
+}
+
+.line {
+	background-color:red;
+	height:5px;
+	width:100%;
+}
+
+#footer {
+	line-height: 22px;
+	padding: 30px 0;
+	font-family: arial
+}
+
+#footer img {
+	border: 1px solid #ccc;
+	margin-top: 5px
+}
+
+#footer .noborder {
+	border: 0;
+	height: 28px;
+	margin-left: 5px
+}
+
+#register {
+	background: #fff;
+	padding: 40px 60px;
+	width: 860px;
+	margin-top:20px;
+	border:1px solid #F39191;
+}
+
+#btnSendCode{
+	border: 1px solid #e9e9e9;
+	border-radius: 5px;
+	text-decoration: none;
+	width: 150px;
+	height: 34px;
+	background: #f6f6f6;
+	display: inline-block;
+	vertical-align: middle;
+	color: #333;
+	line-height: 34px;
+	text-align: center;
+	margin-left: 10px
+}
+
+.area_top{
+	height:40px;
+}
+.area_top h1{
+	margin-top:5px;
+	font-size:1.5em;
+	color:RGB(231,19,69);
+	font-family:"微软雅黑";
+}
+
+.Panel {
+	width: 430px
+}
+
+.step {
+	height: 100px
+}
+
+.step p {
+	background: url(/Public/images/signin/bg_x2.png) center repeat-x;
+	width: 270px;
+	margin-left: 100px;
+	position: relative;
+	float: left;
+	height: 30px;
+	margin-top: 30px;
+	display: inline
+}
+
+.step p span {
+	color: #999;
+	position: absolute;
+	top: 6px;
+	line-height: 18px
+}
+
+.step p span i {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	background: url(/Public/images/signin/icon2.png) -186px -61px no-repeat
+}
+
+.step p .step1 {
+	left: -30px
+}
+
+.step p .step2 {
+	left: 100px
+}
+
+.step p .step3 {
+	right: -30px
+}
+
+.step p .cur i {
+	background-position: -168px -61px;
+	color: #fff
+}
+
+.step p .cur {
+	color: #fa7e17
+}
+
+#pA1 .left .PanelB .step p {
+	width: 200px
+}
+
+.reg_box {
+	text-align: left
+}
+
+.reg_box input {
+	vertical-align: middle
+}
+
+.reg_box .item {
+	padding: 15px 0 15px 74px;
+	position: relative;
+	width: 356px;
+	zoom: 1
+}
+
+.reg_box .item:after {
+	content: "";
+	display: block;
+	visibility: hidden;
+	height: 0;
+	clear: both
+}
+
+.reg_box .item label {
+	margin-left: -74px;
+	text-align: right;
+	float: left;
+	width: 74px;
+	height: 36px;
+	font: 14px/36px "宋体";
+	display: inline;
+	color: #333
+}
+
+.reg_box .item .itext2, .reg_box .item .itext1 {
+	color: #999;
+	width: 282px;
+	height: 30px;
+	text-indent: 5px;
+	border: 1px solid #d2d2d2;
+	padding: 2px 3px;
+	line-height: 30px;
+	border-radius: 5px
+}
+
+.reg_box .item .itext2 {
+	width: 112px
+}
+
+.reg_box .item .blur {
+	color: #333
+}
+
+.reg_box .msg_zt3 .itext1, .reg_box .msg_zt3 .itext2 {
+	border-color: #ea9292
+}
+
+.reg_box .row1 {
+	line-height: 26px
+}
+
+.reg_box .row2 {
+	line-height: 16px
+}
+
+.reg_box .item .pw-weak .pw-bar {
+	background: #ea9292;
+	width: 101px
+}
+
+.reg_box .item .pw-medium .pw-bar {
+	background: #f8ae70;
+	width: 202px
+}
+
+.reg_box .item .pw-forced .pw-bar {
+	background: #85c665;
+	width: 302px
+}
+
+.reg_box .i_code img {
+	border: 1px solid #ededed;
+	height: 34px;
+	margin: 0 5px;
+	width: 114px
+}
+
+.reg_box .i_code .i_codeP a {
+	border: 1px solid #e9e9e9;
+	border-radius: 5px;
+	text-decoration: none;
+	width: 150px;
+	height: 34px;
+	background: #f6f6f6;
+	display: inline-block;
+	vertical-align: middle;
+	color: #333;
+	line-height: 34px;
+	text-align: center;
+	margin-left: 10px
+}
+
+.reg_box .i_code #vcode_box a {
+	color: #ccc;
+	border: 1px solid #e9e9e9;
+	border-radius: 5px;
+	text-decoration: none;
+	width: 150px;
+	height: 34px;
+	background: #f6f6f6;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 34px;
+	text-align: center;
+	margin-left: 10px
+}
+
+.reg_box .i_code a, .reg_box .i_txt p a {
+	color: #666
+}
+
+.reg_box .i_txt {
+	padding-bottom: 0
+}
+
+.reg_box .i_txt p {
+	color: #666;
+	margin-bottom: 4px
+}
+
+.reg_box .i_txt .msg_box {
+	top: -4px
+}
+
+#phone .reg_box .i_txt .msg_box {
+	top: 18px
+}
+
+.reg_box .btn {
+	width: 115px
+}
+
+.reg_box .load {
+	background-position: -89px -147px;
+	margin-right: 10px;
+	color: #999;
+	cursor: default
+}
+
+.reg_box .item img {
+	vertical-align: middle;
+	border-radius: 5px
+}
+
+.step2info {
+	text-align: left
+}
+
+.step3info, .step2info p {
+	font: 18px/28px "微软雅黑";
+	margin-bottom: 20px
+}
+
+.step2info p span {
+	font-family: Arial;
+	color: #007e8c
+}
+
+.step2txt {
+	line-height: 24px;
+	color: #999;
+	text-align: left;
+	border-top: 1px dotted #d2d2d2;
+	margin: 30px 0
+}
+
+.step2txt h3 {
+	color: #333;
+	font: 14px/30px "宋体";
+	margin-top: 30px
+}
+
+.step3info em {
+	width: 26px;
+	height: 26px;
+	display: inline-block;
+	background: url(/Public/images/signin/icon3.png) 0 -26px no-repeat;
+	margin-right: 4px;
+	vertical-align: middle
+}
+
+.msg_box {
+	display: inline-block;
+	width: 300px;
+	position: absolute;
+	top: 50px;
+	left: 74px;
+	_left: 78px
+}
+
+.msg_box em {
+	width: 26px;
+	height: 26px;
+	float: left;
+	background: url(/Public/images/signin/ico1.png) 0 0 no-repeat;
+	margin-right: 4px
+}
+
+.msg_zt1 .msg_box {
+	color: #999
+}
+
+.msg_zt2 .msg_box {
+	
+}
+
+.msg_zt3 .msg_box {
+	color: #e02f2f
+}
+
+.msg_zt3 .msg_box a {
+	color: #428bca;
+	text-decoration: underline
+}
+
+.msg_zt1 em {
+	display: none
+}
+
+.msg_zt2 .msg_box {
+	left: 368px;
+	top: 20px
+}
+
+.msg_zt3 em {
+	display: none
+}
+
+.reg_right {
+	width: 430px;
+	float: right
+}
+
+.right_top {
+	height:20px;
+	text-align:right;
+}
+
+.right_top a{
+	color:#428bca;
+}
+
+.moreps {
+	position: relative;
+	margin: 40px 0 -7px 138px;
+	float: left;
+	display: inline;
+	background: #fff;
+	padding: 0 5px;
+	z-index: 11
+}
+
+.morelogin {
+	width: 395px;
+	height: 100px;
+	overflow: hidden;
+	float: left;
+	position: relative;
+	border-top: 1px solid #ebebeb;
+	padding: 20px 0 20px 35px;
+	text-align: left
+}
+
+.morelogin span {
+	width: 35px;
+	height: 17px;
+	float: left;
+	margin: 20px 0 0 16px;
+	display: inline-block;
+	background: url(/Public/images/signin/j.png) 35px -16px no-repeat;
+	cursor: pointer;
+	padding: 0 10px
+}
+
+.morelogin span.cur {
+	background-position: 35px 5px
+}
+
+.morelogin .moreu {
+	width: 395px;
+	float: left;
+	display: none
+}
+
+.morelogin .i_btn2 i {
+	background: #f6f6f6 url(/Public/images/signin/ico2.png) no-repeat 0 0
+}
+
+.morelogin .qq i {
+	background-position: 0 -2px
+}
+
+.morelogin .baidu i {
+	background-position: 0 -36px
+}
+
+.morelogin .sina i {
+	background-position: 0 -72px
+}
+
+.morelogin .taobao i {
+	background-position: 0 -107px
+}
+
+.morelogin .renren i {
+	background-position: 0 -142px
+}
+
+.morelogin .i_btn2 {
+	width: 108px;
+	float: left;
+	border-color: #d5d5d5;
+	text-align: left;
+	text-indent: 35px;
+	margin: 10px 0 0 46px
+}
+
+.morelogin .i_btn2 i {
+	color: #666;
+	border-color: #d5d5d5
+}
+
+.morelogin .i_btn2:hover {
+	border-top: 1px solid #d5d5d5;
+	border-bottom: 1px solid #d5d5d5
+}
+
+.yz {
+	padding: 30px 0 30px 240px;
+	text-align: left
+}
+
+.yz h2 {
+	text-align: left;
+	font: 20px/32px "微软雅黑";
+	color: #666;
+	padding: 0 0 20px
+}
+
+.yz h2 em {
+	color: #e02f2f
+}
+
+.yz .yzps {
+	width: 380px;
+	padding: 20px 0 0;
+	line-height: 24px;
+	border-top: 1px solid #ebebeb;
+	margin: 30px 0 0
+}
+
+.yz .yzps h3 {
+	font-size: 14px;
+	padding: 5px 0
+}
+
+.yz .yzps p a {
+	color: #428bca
+}
+
+.logintip {
+	padding: 120px 0;
+	text-align: left
+}
+
+.logintip .l {
+	width: 420px;
+	padding: 0 0 0 150px
+}
+
+.logintip .l h2 {
+	text-align: left;
+	font: 18px/32px "微软雅黑";
+	color: #666;
+	padding: 0 0 20px
+}
+
+.logintip .l h2 em {
+	color: #e02f2f
+}
+
+.logintip .l h2 i {
+	width: 26px;
+	height: 26px;
+	background: url(/Public/images/signin/ico1.png) no-repeat 0 0;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 5px 0 0
+}
+
+.logintip .l .i_btn1 {
+	width: 178px
+}
+
+.logintip .r {
+	width: 125px;
+	float: left
+}
+
+.logintip .r .code {
+	width: 123px;
+	height: 144px;
+	background: url(/Public/images/signin/new_code.png) no-repeat 0 0;
+	display: block
+}
+
+.logintip .r p {
+	text-align: right;
+	line-height: 22px
+}
+
+.logintip .r p a {
+	color: #428bca
+}
+
+.loginout {
+	padding: 120px 0;
+	text-align: center
+}
+
+.loginout h2 {
+	text-align: center;
+	font: 20px/32px "微软雅黑";
+	color: #666;
+	padding: 0 0 20px
+}
+
+.loginout h2 i {
+	width: 26px;
+	height: 26px;
+	background: url(/Public/images/signin/ico1.png) no-repeat 0 -26px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 5px 0 0
+}
+
+.loginout .i_btn1, .loginout .i_btn2 {
+	width: 120px;
+	height: 32px;
+	line-height: 32px;
+	background: #FF3B37;
+	border: 1px solid #e93a3a;
+	color: #fff;
+	font-size: 14px;
+	cursor: pointer;
+	border-radius: 2px
+}
+
+.loginout .i_btn2 {
+	background: #ebebeb;
+	border: 1px solid #d5d5d5;
+	color: #666
+}
+
+.loginout .i_btn1:hover {
+	-ms-filter: 'alpha(Opacity=70)';
+	filter: alpha(opacity = 70);
+	opacity: .7
+}
+
+.loginout .i_btn2:hover {
+	border-top: 1px solid #d5d5d5;
+	border-bottom: 1px solid #d5d5d5;
+	-ms-filter: 'alpha(Opacity=70)';
+	filter: alpha(opacity = 70);
+	opacity: .7
+}
+
+.loginout p {
+	text-align: left;
+	line-height: 24px;
+	padding: 0 0 0 135px
+}
+
+.loginout p a {
+	color: #428bca
+}
+
+.i_btn {
+	border-top: 1px solid #e93a3a;
+	border-bottom: 1px solid #e93a3a;
+	display: inline-block;
+	text-align: center;
+	margin-top: 1px;
+	cursor: pointer
+}
+
+.i_btn i {
+	font-size: 14px;
+	border-left: 1px solid #e93a3a;
+	border-right: 1px solid #e93a3a;
+	margin: 0 -1px;
+	display: block;
+	font-style: normal;
+	color: #fff;
+	background: #ff3b37;
+	text-decoration: none;
+	height: 30px;
+	line-height: 30px;
+	position: relative
+}
+
+.i_btn:hover {
+	color: #fff;
+	text-decoration: none;
+	border-top: 1px solid #f07575;
+	border-bottom: 1px solid #f07575
+}
+
+.i_btn:hover i {
+	-ms-filter: 'alpha(Opacity=70)';
+	filter: alpha(opacity = 70);
+	opacity: .7
+}
+
+.i_btn1 {
+	width: 178px
+}
+
+.i_btn2 {
+	width: 70px;
+	border-color: #d5d5d5;
+	text-align: center;
+	margin: 0 10px
+}
+
+.i_btn2 i {
+	color: #666;
+	border-color: #d5d5d5;
+	background: #ebebeb;
+	height: 30px;
+	line-height: 30px
+}
+
+.i_btn2:hover {
+	border-top: 1px solid #d5d5d5;
+	border-bottom: 1px solid #d5d5d5
+}
+
+.dialog_wrapper {
+	border: 1px solid #b1b1b1;
+	width: 410px;
+	position: absolute;
+	z-index: 100000;
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .35)
+}
+
+.dialog_wrapper h4 {
+	background: #F7F7F7;
+	border-bottom: 1px solid #E5E5E5;
+	border-radius: 10px 10px 0 0;
+	color: #333;
+	font: 14px/40px "宋体";
+	padding: 0 20px;
+	text-align: left
+}
+
+.dialog_wrapper a .close {
+	width: 9px;
+	height: 9px;
+	cursor: pointer;
+	background: url(/Public/images/signin/icon4.png) -1px -20px no-repeat;
+	display: block;
+	line-height: 100px;
+	overflow: hidden;
+	position: absolute;
+	top: 14px;
+	right: 10px
+}
+
+.dialog_wrapper a:hover .close {
+	background-position: -19px -20px
+}
+
+.dialog_wrapper .itext2 {
+	width: 112px;
+	height: 30px;
+	vertical-align: middle;
+	text-indent: 5px;
+	border: 1px solid #d2d2d2;
+	padding: 2px 3px;
+	line-height: 30px;
+	border-radius: 5px
+}
+
+.dialog_wrapper .warn img {
+	height: 34px;
+	vertical-align: middle;
+	border-radius: 5px;
+	border: 1px solid #EDEDED;
+	margin: 0 5px
+}
+
+.dialog_wrapper .info {
+	margin: 45px 0;
+	position: relative;
+	zoom: 1
+}
+
+.dialog_wrapper .info:after {
+	content: "";
+	display: block;
+	visibility: hidden;
+	height: 0;
+	clear: both
+}
+
+.dialog_wrapper .info .close {
+	display: none
+}
+
+.dialog_wrapper .info p {
+	position: absolute;
+	left: 66px;
+	top: 44px;
+	z-index: 11
+}
+
+.dialog_wrapper .submit {
+	text-align: right;
+	border-top: 1px solid #e5e5e5;
+	padding: 10px 0
+}
+
+.dialog_wrapper .submit .i_btn1 {
+	width: 70px
+}
+
+.dialog_wrapper .submit .i_btn2 {
+	width: 70px
+}
+
+.xg_password .dialogbtn {
+	background: url(/Public/images/signin/probg.png) 0 0 no-repeat;
+	cursor: pointer;
+	border: 0;
+	color: #fff;
+	font: 14px/24px "宋体";
+	vertical-align: middle;
+	height: 35px;
+	width: 115px
+}
+
+.xg_password h3.warn {
+	font: 14px/26px "宋体";
+	color: #333;
+	margin: 40px auto 20px
+}
+
+.xg_password .w3 {
+	width: 26px;
+	height: 26px;
+	background: url(/Public/images/signin/probg.png) 0 -35px no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 4px
+}
+
+.xg_password {
+	width: 450px
+}
+
+.xg_password .info p {
+	position: static
+}

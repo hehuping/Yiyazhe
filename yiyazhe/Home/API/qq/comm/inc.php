@@ -1,0 +1,2 @@
+<?php die('forbidden'); ?>
+{"appid":"101039277","appkey":"bafe9e2c381901b5812470dbb129e13e","callback":"http://www.yiyazhe.com/login/qq_sucsess","scope":"get_user_info,add_t,add_pic_t,del_t,get_repost_list,get_info,get_other_info,get_fanslist,get_idolist,add_idol,del_idol,get_tenpay_addr","errorReport":true,"storageType":"file","host":"localhost","user":"root","password":"root","database":"test"}
