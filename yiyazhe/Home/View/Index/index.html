@@ -46,13 +46,34 @@
 }
 
 .goods-pl{
+	background: #aabd46;
 	width:100%;
 	height:400px;
 	position:absolute;
 	top:0px;
 	left:0px;
-	z-index:9999;
-	display:none;
+	z-index:9995;
+	padding-top: 12px;
+  	background-color: rgba(0,0,0,0.7);/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+  	overflow-x: hidden; overflow-y: auto; 
+  	display:none;
+}
+
+.goods-pl p{
+	color: white;
+}
+
+@media \0screen\,screen\9 {/* 只支持IE6、7、8 */
+.goods-pl{
+    background-color:#000000;
+    filter:Alpha(opacity=70);
+    position:static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+    *zoom:1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
+  }
+.goods-pl p{
+	color:white;
+    position: relative;/* 设置子元素为相对定位，可让子元素不继承Alpha值 */
+  }  
 }
 
 </style>
@@ -279,8 +300,19 @@
         <ul>
         <?php foreach($goodlist as $k=>$v){ ?>
             <li class="new_goods_list">
-           
-                <ul>
+                <ul style="position:relative">
+               		<div class="goods-pl" id="scom{$v['gid']}">
+                		<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：看起来很好就是不知道到底怎么样呢？很期待看一下！</p>
+                		<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：看起来很好就是不知道到底怎么样呢？</p>
+                		<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：和卖家说的一样，质量也是不错的，看着不太想</p>
+                		<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：质量不错。手感也好。没味道。服务。物流 满意 就是卖家的二十字好评返还两元不满意。</p>
+                		<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：宝贝确实不错，比想象中好的多，手感好，没有色差，穿上显得特淑女</p>
+                		<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：收到宝贝了，物流挺快的，面料很舒服，不会刺身的，客服服务态度也好</p>
+                		<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：款式很喜欢 跟图片上的一样 质量和做工都不错 穿上也很舒服 卖家服务态度好 发货快</p>
+                		<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：看起来很好就是不知道到底怎么样呢？很期待看一下！</p>
+                		<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：看起来很好就是不知道到底怎么样呢？很期待看一下！</p>
+                		<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：看起来很好就是不知道到底怎么样呢？很期待看一下！</p>
+                	</div>
                     <li class="goods_pic">
                         <a href="#"><div class="big"><img src="{$v['gimage']}" alt=""/></div></a>
                         <img src="__PUBLIC__/images/index/xinpin.png" alt="" class="new"/>
@@ -455,10 +487,16 @@
 <![endif]-->
 
 <script>
+
+$(".goods-pl").mouseleave(function(){
+	 $(this).fadeToggle("slow");
+	// alert(3232);
+
+});
+
 /*
  * 点赞动画交互
  */
-
 function make(id){
 	var has = $("#da"+id).attr('onclick');
 	if(has != ""){
@@ -483,6 +521,16 @@ function dislike(id){
 		var num = parseInt($("#dn"+id).html());
 		$("#dn"+id).html(num+1);
 	}
+}
+
+/*
+ * 评论点击出来
+ */
+ 
+function comment(id){
+	//$("#scom"+id).css("display","block");
+	  $("#scom"+id).fadeToggle("slow");
+
 }
 </script>
 <!-- 浮动导航 -->
