@@ -48,7 +48,7 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
 					$('.smint').css({ 'position': 'fixed', 'top':0 }).addClass('fxd');
 
 					} else {
-						$('.smint').css({ 'position': 'absolute', 'top':stickyTop }).removeClass('fxd'); 
+						$('.smint').css({ 'position': 'absolute', 'top':'127px' }).removeClass('fxd'); 
 					}   
 			};
 					
