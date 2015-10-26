@@ -34,7 +34,8 @@ function check_verify($code, $id = '') {
  * 判断用户书否登录
  */
 function is_login(){
-	if(!empty(session('user.uid'))){
+	$has = session('user.uid');
+	if(!empty($has)){
 		return session('user.uid');
 	}else{
 		return false;
