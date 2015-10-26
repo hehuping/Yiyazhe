@@ -9,8 +9,8 @@ return array (
 		'DB_TYPE' => 'mysql',
 		'DB_HOST' => 'localhost',     // 服务器地址
 		'DB_NAME' => 'yiyazhe',       // 数据库名
-		'DB_USER' => 'vps',          // 用户名
-		'DB_PWD' => '',               // 密码
+		'DB_USER' => 'root',          // 用户名
+		'DB_PWD' => 'hehuping9898',               // 密码
 		'DB_PORT' => '3306',          // 端口
 		'DB_PREFIX' => '',            // 数据库表前缀
 		'db_charset' => 'utf8',
