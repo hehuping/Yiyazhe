@@ -376,7 +376,7 @@
                                     <li class="info_state">
                                         <ul style="position:rela">
                                             <li>
-                                               <a href="javascript:void(0);" onclick="<?php if(empty(cookie('like'.$v['gid']))){echo 'like('.$v['gid'].')'; } ?>" id="za{$v['gid']}"><img id="z{$v['gid']}" width="20px" src="__PUBLIC__/images/index/<?php if(empty(cookie('like'.$v['gid']))){echo 'info_icon_01.png';}else{echo 'like.png'; } ?>" alt="{$v['praise']}人喜欢"/></a>
+                                               <a href="javascript:void(0);" onclick="<?php $has=cookie('like'.$v['gid']); if(empty($has)){echo 'like('.$v['gid'].')'; } ?>" id="za{$v['gid']}"><img id="z{$v['gid']}" width="20px" src="__PUBLIC__/images/index/<?php if(empty($has)){echo 'info_icon_01.png';}else{echo 'like.png'; } ?>" alt="{$v['praise']}人喜欢"/></a>
                                                 <span id="zn{$v['gid']}">{$v['praise']}</span>
                                             </li>
                                             <li>
@@ -384,7 +384,7 @@
                                                 <span id="pn{$v['gid']}">{$v['comment']}</span>
                                             </li>
                                             <li>
-                                               <a href="javascript:void(0);" onclick="<?php if(empty(cookie('dislike'.$v['gid']))){echo 'dislike('.$v['gid'].')'; } ?>" id="da{$v['gid']}"><img id="nz{$v['gid']}"  width="20px" src="__PUBLIC__/images/index/<?php if(empty(cookie('dislike'.$v['gid']))){echo 'info_icon_03.png';}else{echo 'dislike.png'; } ?>" alt="{$v['dislike']}人不喜欢"/></a>
+                                               <a href="javascript:void(0);" onclick="<?php $has=cookie('dislike'.$v['gid']); if(empty($has)){echo 'dislike('.$v['gid'].')'; } ?>" id="da{$v['gid']}"><img id="nz{$v['gid']}"  width="20px" src="__PUBLIC__/images/index/<?php if(empty($has)){echo 'info_icon_03.png';}else{echo 'dislike.png'; } ?>" alt="{$v['dislike']}人不喜欢"/></a>
                                                 <span id="dn{$v['gid']}">{$v['dislike']}</span>
                                             </li>
                                         </ul>
