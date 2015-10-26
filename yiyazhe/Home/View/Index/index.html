@@ -364,7 +364,7 @@
                             <li class="goods_info_left">
                                 <ul>
                                     <li class="pirce">￥ <span><?php echo floatval($v['price']); ?></span></li>
-                                    <li><span class="original">￥<?php echo floatval($v['oldprice']); ?></span> <span class="discount">3.2折</span></li>
+                                    <li><span class="original">￥<?php echo floatval($v['oldprice']); ?></span> <span class="discount">-<?php echo (floatval($v['oldprice'])-floatval($v['price'])); ?></span></li>
                                     <li class="sell_out">
                                         <span>已售{$v['yishou']}</span>
                                         
