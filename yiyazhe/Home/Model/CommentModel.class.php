@@ -1,8 +1,8 @@
 <?php
 // +----------------------------------------------------------------------
-// | OneThink [ WE CAN DO IT JUST THINK IT ]
+// | YIYAZHE [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013 http://www.yiyazhe.com All rights reserved.
+// | Copyright (c) 2015 http://www.yiyazhe.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Author: hehuping
 // +----------------------------------------------------------------------

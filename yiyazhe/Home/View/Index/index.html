@@ -363,8 +363,8 @@
                         <ul>
                             <li class="goods_info_left">
                                 <ul>
-                                    <li class="pirce">￥ <span>{$v['price']}</span></li>
-                                    <li><span class="original">￥{$v['oldprice']}</span> <span class="discount">3.2折</span></li>
+                                    <li class="pirce">￥ <span><?php echo floatval($v['price']); ?></span></li>
+                                    <li><span class="original">￥<?php echo floatval($v['oldprice']); ?></span> <span class="discount">3.2折</span></li>
                                     <li class="sell_out">
                                         <span>已售{$v['yishou']}</span>
                                         
@@ -376,22 +376,22 @@
                                     <li class="info_state">
                                         <ul style="position:rela">
                                             <li>
-                                               <a href="javascript::void(0);" onclick="make({$v['gid']});" id="za{$v['gid']}"><img id="z{$v['gid']}" width="20px" src="__PUBLIC__/images/index/info_icon_01.png" alt=""/></a>
-                                                <span id="zn{$v['gid']}">9</span>
+                                               <a href="javascript:void(0);" onclick="<?php if(empty(cookie('like'.$v['gid']))){echo 'like('.$v['gid'].')'; } ?>" id="za{$v['gid']}"><img id="z{$v['gid']}" width="20px" src="__PUBLIC__/images/index/<?php if(empty(cookie('like'.$v['gid']))){echo 'info_icon_01.png';}else{echo 'like.png'; } ?>" alt="{$v['praise']}人喜欢"/></a>
+                                                <span id="zn{$v['gid']}">{$v['praise']}</span>
                                             </li>
                                             <li>
-                                             <a href="javascript::void(0);" onclick="comment({$v['gid']});" id="pl{$v['gid']}"><img src="__PUBLIC__/images/index/info_icon_02.png" alt=""/></a>
-                                                <span id="pn{$v['gid']}">19999</span>
+                                             <a href="javascript:void(0);" onclick="comment({$v['gid']});" id="pl{$v['gid']}"><img src="__PUBLIC__/images/index/info_icon_02.png" alt=""/></a>
+                                                <span id="pn{$v['gid']}">{$v['comment']}</span>
                                             </li>
                                             <li>
-                                               <a href="javascript::void(0);" onclick="dislike({$v['gid']});" id="da{$v['gid']}"><img id="nz{$v['gid']}"  width="20px" src="__PUBLIC__/images/index/info_icon_03.png" alt=""/></a>
-                                                <span id="dn{$v['gid']}">19</span>
+                                               <a href="javascript:void(0);" onclick="<?php if(empty(cookie('dislike'.$v['gid']))){echo 'dislike('.$v['gid'].')'; } ?>" id="da{$v['gid']}"><img id="nz{$v['gid']}"  width="20px" src="__PUBLIC__/images/index/<?php if(empty(cookie('dislike'.$v['gid']))){echo 'info_icon_03.png';}else{echo 'dislike.png'; } ?>" alt="{$v['dislike']}人不喜欢"/></a>
+                                                <span id="dn{$v['gid']}">{$v['dislike']}</span>
                                             </li>
                                         </ul>
                                     </li>
                                     <li class="tmall">
                                         <a href="#">
-                                            <img src="__PUBLIC__/images/index/tmall.png" alt=""/> 天猫
+                                            <img src="__PUBLIC__/images/index/tmall.png" alt=""/> {$v['shop']}
                                         </a>
                                     </li>
                                 </ul>
@@ -512,6 +512,7 @@
 <script src="__PUBLIC__/js/index/prefixfree.min.js"></script>
 <script src="__PUBLIC__/js/index/jquery.smint.js"></script>
 
+<script src="__PUBLIC__/js/index/praise.js"></script>
 <!-- 轮播图JS实现 -->
 <script>
     $(function(){
@@ -548,36 +549,6 @@ $(".goods-pl").mouseleave(function(){
 	// alert(3232);
 
 });
-
-/*
- * 点赞动画交互
- */
-function make(id){
-	var has = $("#da"+id).attr('onclick');
-	if(has != ""){
-		$("#z"+id).animate({width:'23px'});
-		$("#z"+id).animate({width:'20px'});
-		$("#z"+id).attr('src','__PUBLIC__/images/index/like.png');
-		$("#za"+id).attr('onclick','');
-		var num = parseInt($("#zn"+id).html());
-		$("#zn"+id).html(num+1);
-	}
-}
-/*
- * 不喜欢按钮
- */
-function dislike(id){
-	var has = $("#za"+id).attr('onclick');
-	if(has != ""){
-		$("#nz"+id).animate({width:'23px'});
-		$("#nz"+id).animate({width:'20px'});
-		$("#nz"+id).attr('src','__PUBLIC__/images/index/dislike.png');
-		$("#da"+id).attr('onclick','');
-		var num = parseInt($("#dn"+id).html());
-		$("#dn"+id).html(num+1);
-	}
-}
-
 
 </script>
 <!-- 浮动导航 -->
