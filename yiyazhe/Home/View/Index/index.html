@@ -525,7 +525,21 @@
 <![endif]-->
 
 <script>
+var login = <?php if($uid = is_login()){echo $uid;}else{echo 'false';}  ?>;
 
+/*
+ * 评论点击出来
+ */
+ 
+function comment(id){
+	//$("#scom"+id).css("display","block");
+	  $("#scom"+id).fadeToggle("slow");
+
+}
+
+/*
+ * 鼠标离开评论隐藏
+ */
 $(".goods-pl").mouseleave(function(){
 	 $(this).fadeOut("slow");
 	// alert(3232);
@@ -561,15 +575,7 @@ function dislike(id){
 	}
 }
 
-/*
- * 评论点击出来
- */
- 
-function comment(id){
-	//$("#scom"+id).css("display","block");
-	  $("#scom"+id).fadeToggle("slow");
 
-}
 </script>
 <!-- 浮动导航 -->
 <script type="text/javascript">

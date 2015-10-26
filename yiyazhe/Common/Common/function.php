@@ -30,6 +30,17 @@ function check_verify($code, $id = '') {
 	return $verify->check ( $code, $id );
 }
 
+/*
+ * 判断用户书否登录
+ */
+function is_login(){
+	if(!empty(session('user.uid'))){
+		return session('user.uid');
+	}else{
+		return false;
+	}
+}
+
 /**
  * 获取客户端IP地址
  * @param integer $type 返回类型 0 返回IP地址 1 返回IPV4地址数字
