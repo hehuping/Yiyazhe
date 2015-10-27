@@ -9,16 +9,15 @@ class IndexController extends Controller {
 	public function index() {
 		$p = I ( 'p' );
 		empty($p) ? $p=1 : $p;
-		$goods_model = M ( 'goods' );
-		$goodlist = $goods_model->where()->limit(0, 50)->order('addtime asc')->select();
+		$p -= 1;
+		$goods_model = D('Index');
+		list($goodsArr, $show) = $goods_model->getIndexGoods($p, 80);
 		
-		//$show = pro_page ( $count, 100, $p, '', $qianzhui );
-		
-		//$this->assign('show', $show);
-		$this->assign('goodlist', $goodlist);
+		$this->assign('show', $show);
+		$this->assign('goodlist', $goodsArr);
 		$this->display();
 	}
-	
+
 	public function send(){
 		$goods_model = M ( 'goods' );
 		$goodlist = $goods_model->where()->limit(0, 20)->order('addtime asc')->select();
@@ -60,6 +59,67 @@ class IndexController extends Controller {
 			}
 		}else{
 			$this->error('非法访问！');
+		}
+	}
+	
+	/*
+	 * 用户评论
+	 *
+	 * */
+	public function comment(){
+		$arr = array('s'=>0,'error'=>'');
+		$gid = I('gid');
+		$uid = is_login();
+		$content = I('content');
+		
+		if(!$this->valideContent($content)){
+			$arr['s'] = 1;
+			$arr['error'] = "评论字数不能小于3大于20";
+			$this->ajaxReturn($arr);
+			die();
+		}
+		$comment_model = M('comment');
+		$goods_model = M('goods');
+		$has = $comment_model->where('gid='.$gid.' && uid='.$uid)->find();
+		
+		if($has){
+			$arr['s'] = 2;
+			$arr['error'] = "亲爱的，一件商品只能评论一次哦";
+			$this->ajaxReturn($arr);
+			die();
+		}
+		
+		if(IS_AJAX){
+			
+			$data = array(
+					'uid' => $uid,
+					'gid' => $gid,
+					'content' => I('content'),
+					'username' => session('user.username'),
+			);
+			if($comment_model->add($data)){
+				$goods_model->where('gid='.$gid)->setInc('comment',1);
+				$this->ajaxReturn($arr);
+			}else{
+				$arr['s'] = 3;
+				$arr['error'] = 'Sorry 数据错误';
+				$this->ajaxReturn($arr);
+			}
+		}else{
+			$this->error('非法访问！');
+		}
+	}
+	
+	/*
+	 * 过滤评论空格，验证其字数
+	 * */
+	private function valideContent($content){
+		$content = trim($content);
+		$strlen = mb_strlen($content);
+		if($strlen>20 || $strlen<3){
+			return false;
+		}else{
+			return true;
 		}
 	}
 }

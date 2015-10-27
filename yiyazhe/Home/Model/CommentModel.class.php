@@ -16,6 +16,13 @@ use Think\Model;
 class CommentModel extends Model{
 	protected $tableName = 'comment';
 	
+	protected $_validate = array(
+			
+			/* 验证评论字数 */
+			array('content', '0,20', -4, self::EXISTS_VALIDATE, 'length'), //评论字数不合法
+
+    );
+	
 	/**
 	 * 获取单一用户评论,并且关联商品信息
 	 * @param  string $email 邮箱
@@ -47,6 +54,13 @@ class CommentModel extends Model{
 		
 		return array($comment,$show);	
 	}
+	
+	/**
+	 * 获取单一用户评论,并且关联商品信息
+	 * @param  string $email 邮箱
+	 * @return array
+	 */
+	
 	
 	
 }

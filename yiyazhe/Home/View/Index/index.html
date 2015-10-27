@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="__PUBLIC__/css/index/lunbo.css">
     <link rel="stylesheet" href="__PUBLIC__/css/index/neat.css" type="text/css"  />
     <link rel="stylesheet" href="__PUBLIC__/css/index/index.css" type="text/css"  />
+    <link rel="stylesheet" href="__PUBLIC__/css/index/sweet-alert.css" />
 </head>
 
 <style>
@@ -108,6 +109,9 @@
 	text-align: center;
 	border-radius: 4px 4px 4px 4px;
 }
+.plname{
+	color: rgba(127, 253, 11, 0.92);
+}
 
 
 
@@ -118,9 +122,14 @@
     <div class="header_up">
         <div class="center">
             <ul class="top_navbar">
+            <?php $login=session('user.uid'); if(!$login){ ?>
                 <li><a href="#">QQ登录</a></li>
                 <li class="line"></li>
                 <li><a href="/Login">登录</a>&nbsp;&nbsp;<a href="/Signup">免费注册</a></li>
+            <?php }else{ ?>
+            	<li class="active"><a href="/User" target="blanck"><?php echo session('user.username'); ?></a></li>
+            <?php } ?>
+            
                 <li class="line"></li>
                 <li class="active"><a href="#">我的评论</a></li>
                 <li class="line"></li>
@@ -337,21 +346,12 @@
             <li class="new_goods_list">
                 <ul style="position:relative">
                		<div class="goods-pl" id="scom{$v['gid']}">
-	               		<div class="plcontent">
-		                	<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：看起来很好就是不知道到底怎么样呢？很期待看一下！</p>
-		                	<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：看起来很好就是不知道到底怎么样呢？</p>
-		                	<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：和卖家说的一样，质量也是不错的，看着不太想</p>
-		                	<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：质量不错。手感也好。没味道。服务。物流 满意 就是卖家的二十字好评返还两元不满意。</p>
-		                	<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：宝贝确实不错，比想象中好的多，手感好，没有色差，穿上显得特淑女</p>
-		                	<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：收到宝贝了，物流挺快的，面料很舒服，不会刺身的，客服服务态度也好</p>
-		                	<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：款式很喜欢 跟图片上的一样 质量和做工都不错 穿上也很舒服 卖家服务态度好 发货快</p>
-		                	<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：看起来很好就是不知道到底怎么样呢？很期待看一下！</p>
-		                	<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：看起来很好就是不知道到底怎么样呢？很期待看一下！</p>
-		                	<p><em style="color: rgba(127, 253, 11, 0.92);">test</em>：看起来很好就是不知道到底怎么样呢？很期待看一下！</p>        	
+	               		<div class="plcontent" id="plcontent{$v['gid']}">
+		                	<?php foreach($v['comments'] as $data){ ?><p><em class="plname"><?php echo $data['username']; ?></em>：<?php echo $data['content']; ?></p><?php } ?>              	       	
 	                	</div>
 	                	<div class="plsend">
-	                		<input type="text"/>
-	                		<a href="javascript:void(0)" class="pl_bg">发送</a>
+	                		<input type="text" id="comment{$v['gid']}" placeholder="字数少于20大于3哦"/>
+	                		<a href="javascript:void(0)" class="pl_bg" onclick="sendComment({$v['gid']})">发送</a>
 	                	</div>
                 	</div>
                     <li class="goods_pic">
@@ -364,7 +364,7 @@
                             <li class="goods_info_left">
                                 <ul>
                                     <li class="pirce">￥ <span><?php echo floatval($v['price']); ?></span></li>
-                                    <li><span class="original">￥<?php echo floatval($v['oldprice']); ?></span> <span class="discount">-<?php echo (floatval($v['oldprice'])-floatval($v['price'])); ?></span></li>
+                                    <li><span class="original">￥<?php echo floatval($v['oldprice']); ?></span> <span class="discount">-<?php echo (floatval($v['oldprice'])-floatval($v['price'])); ?>元</span></li>
                                     <li class="sell_out">
                                         <span>已售{$v['yishou']}</span>
                                         
@@ -404,7 +404,9 @@
         </ul>
     </div>
     <div class="page center">
-           <ul>
+    <div style="margin: 0 auto;text-align: center; margin-top:2.5%;">{$show}</div>
+    		
+           <!--   <ul>
                <li class="arrow"><a href="#">&lsaquo;</a></li>
                <li class="active"><a href="#">1</a></li>
                <li><a href="#">2</a></li>
@@ -414,7 +416,7 @@
                <li><a href="#">&hellip;</a></li>
                <li><a href="#">11</a></li>
                <li class="arrow"><a href="#">&rsaquo;</a></li>
-           </ul>
+           </ul>-->
     </div>
 </div>
 
@@ -506,6 +508,7 @@
         </li>
     </ul>
 </div>
+<input type="hidden" value="<?php echo session('user.username'); ?>" id="username" />
 </body>
 <script src="__PUBLIC__/js/index/jquery-1.11.3.min.js"></script>
 <script src="__PUBLIC__/js/index/lunbo.js"></script>
@@ -513,6 +516,7 @@
 <script src="__PUBLIC__/js/index/jquery.smint.js"></script>
 
 <script src="__PUBLIC__/js/index/praise.js"></script>
+<script src="__PUBLIC__/js/index/sweet-alert-index.js"></script>
 <!-- 轮播图JS实现 -->
 <script>
     $(function(){
@@ -534,13 +538,11 @@ var login = <?php if($uid = is_login()){echo $uid;}else{echo 'false';}  ?>;
 /*
  * 评论点击出来
  */
- 
 function comment(id){
 	//$("#scom"+id).css("display","block");
 	  $("#scom"+id).fadeToggle("slow");
 
 }
-
 /*
  * 鼠标离开评论隐藏
  */
@@ -569,6 +571,14 @@ var _hmt = _hmt || [];
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
+
+//百度自动推送代码
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();          
 </script>
 
 <!-- baidu 统计代码开始 -->
