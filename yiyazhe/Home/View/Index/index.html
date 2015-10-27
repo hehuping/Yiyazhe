@@ -113,7 +113,70 @@
 	color: rgba(127, 253, 11, 0.92);
 }
 
+#cellclien{
+	width:150px;
+	color:white;
+	line-height:40px;
+	margin-left:50px;
+	position: absolute;
+}
+#cellclien:hover .qrcode{
+	display:block;
+}
 
+.qrcode{
+	display:none;	
+	position:absolute;
+	z-index:9995; 
+	left:-45px;
+	top:40px;
+}
+
+#jifen{
+	color:white;
+	margin-left:150px;
+	line-height:40px;
+	position: absolute;
+}
+
+#weixin{
+	margin-top: 65px;
+	padding-left:5px;
+	text-align:left;
+	width:100px;
+	position: absolute;
+}
+
+#weixin:hover .weixincode{
+	display:block;
+}
+
+.weixincode{
+	top:1px;
+	height:100px;
+	left:-100px;
+	position: absolute;
+	display:none;
+}
+
+#weibo{
+	padding-left:5px;
+	text-align:left;
+	width:100px;
+	position: absolute;
+}
+
+#weibo:hover .weibocode{
+	display:block;
+}
+
+.weibocode{
+	top:1px;
+	height:100px;
+	left:-100px;
+	position: absolute;
+	display:none;
+}
 
 </style>
 
@@ -127,7 +190,7 @@
                 <li class="line"></li>
                 <li><a href="/Login">登录</a>&nbsp;&nbsp;<a href="/Signup">免费注册</a></li>
             <?php }else{ ?>
-            	<li class="active"><a href="/User" target="blanck"><?php echo session('user.username'); ?></a></li>
+            	<li class="active"><a href="/User" target="blanck" style="color:red"><?php echo session('user.username'); ?></a></li>
             <?php } ?>
             
                 <li class="line"></li>
@@ -231,6 +294,11 @@
 	                    <span>文体</span>
 	                </a>
 	            </li>
+	            	
+	                <a href="javascript:void(0)" id="cellclien">手机客户端<img class="qrcode" src="__PUBLIC__/images/index/qrcode.png" /></a>
+	                
+	                <a href="javascript:void(0)" id="jifen">签到领积分</a>
+	           
 	        </ul>
 	    </div>
 	</div>
@@ -456,11 +524,13 @@
         <li>
             <a href="#"><img src="__PUBLIC__/images/index/float_03.png" alt=""/><span>评论</span></a>
         </li>
-        <li>
-            <a href="#"><img src="__PUBLIC__/images/index/float_04.png" alt=""/><span>微博</span></a>
+        <li id="weibo">
+      	  <img class="weibocode" src="__PUBLIC__/images/index/qrcode.png"  />
+            <a href="javascript:void(0)"><img src="__PUBLIC__/images/index/float_04.png" alt=""/><span>微博</span></a>
         </li>
-        <li>
-            <a href="#"><img src="__PUBLIC__/images/index/float_05.png" alt=""/><span>微信</span></a>
+        <li id="weixin">
+        	<img class="weixincode" src="__PUBLIC__/images/index/qrcode.png"  />
+            <a href="javascript:void(0)"><img src="__PUBLIC__/images/index/float_05.png" alt=""/><span>微信</span></a>
         </li>
         <li style="margin-top: 160px;">
             <a href="#"><img src="__PUBLIC__/images/index/float_06.png" alt=""/><span>其他</span></a>

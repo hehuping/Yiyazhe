@@ -118,7 +118,7 @@ a:active,a:focus {
 }
 .goods_navbar ul>li{
     float:left;
-    width: 115px;
+    width: 98px;
     height:40px;
     line-height: 40px;
     text-align: center;
@@ -185,8 +185,8 @@ a:active,a:focus {
 
 .star_goods .goods_pic .NO_num{
     position: absolute;
-    top:10px;
-    right:10px;
+    top:0px;
+    right:0px;
 }
 .star_goods_list .goods_title a{
     color: #000;
