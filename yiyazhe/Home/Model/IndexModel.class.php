@@ -40,4 +40,10 @@ class IndexModel extends Model
 		
 		return array($goodsData, $show);
 	}
+	
+	public function getStart5(){
+		$model = M('goods');
+		return $start = $model->where('status=1 && fromwhere="jiukuaiyou" && end_time>"'.date('Y-m-d H:i:s', time()).'"')
+						->limit(5)->select();
+	}
 }

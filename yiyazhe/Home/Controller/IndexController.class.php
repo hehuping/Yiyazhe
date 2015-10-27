@@ -13,6 +13,9 @@ class IndexController extends Controller {
 		$goods_model = D('Index');
 		list($goodsArr, $show) = $goods_model->getIndexGoods($p, 80);
 		
+		$start = $goods_model->getStart5();
+		
+		$this->assign('start', $start);
 		$this->assign('show', $show);
 		$this->assign('goodlist', $goodsArr);
 		$this->display();

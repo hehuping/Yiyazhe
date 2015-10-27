@@ -2,14 +2,21 @@
 namespace Admin\Controller;
 use Think\Controller;
 class IndexController extends Controller {
+	//初始化，判断登录
+	public function _initialize(){
+		$ip = get_client_ip();
+		$iplist = array('127.0.0.1','0.0.0.0','localhost');
+		if(!in_array_case($ip, $iplist)){
+			$this->error("非法来源");
+		}
+	}
     public function index(){
     	
     }
     
     //获取卷皮XML（淘宝API调用）
-    public function getDate(){
+    private function getDate($url='http://api.juanpi.com/open/juanpi'){
     	//卷皮商品XML接口
-    	$url = 'http://api.juanpi.com/open/juanpi';
     	$content = file_get_contents($url);
     	$xml  =  simplexml_load_string ( $content );
     	//解析到商品详情数组
@@ -56,8 +63,15 @@ class IndexController extends Controller {
     	
     }
     
+    public function getJiukuayou(){
+    	$this->getDate("http://api.juanpi.com/open/jiukuaiyou");
+    }
+    public function getJuanpi(){
+    	$this->getDate("http://api.juanpi.com/open/jiukuaiyou");
+    }
+    
     //调用淘宝API获取已售
-    public function  getDetail($id){
+    private function  getDetail($id){
     	
     	define('M_ROOT', dirname(dirname(__FILE__)));
     	$ss =  M_ROOT;
