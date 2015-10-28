@@ -18,7 +18,7 @@ class FavorateModel extends Model{
 	
 	public function getUserFavorate($uid){
 		$model = M('favorate');
-		return $model->field('goods.gimage, goods.title, goods.price, goods.oldprice, goods.gurl')
+		return $model->field('favorate.fid, goods.gimage, goods.title, goods.price, goods.oldprice, goods.gurl')
 				->join('goods on favorate.gid=goods.gid')
 				->where('favorate.uid='.$uid)
 				->select();

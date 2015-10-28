@@ -178,6 +178,20 @@
 	display:none;
 }
 
+.favorate{
+	position: absolute;
+    top: 5px;
+    right: 5px;
+    display:none;
+}
+
+.goods_pic:hover .favorate{
+	display:block;
+	cursor:pointer
+}
+
+
+
 </style>
 
 <body>  
@@ -387,6 +401,7 @@
                     <li class="goods_pic">
                         <a href="#"><div class="big"><img src="{$v['gimage']}" alt=""/></div></a>
                         <img src="__PUBLIC__/images/index/xinpin.png" alt="" class="new"/>
+                        <img onclick="favorate({$v['gid']});" id="favorate{$v['gid']}" src="__PUBLIC__/images/index/favorate.png" alt="" class="favorate"/>
                     </li>
                     <li class="goods_title"><p><a href="#">【咿呀折】{$v['title']}</a></p></li>
                     <li class="goods_info">

@@ -219,5 +219,31 @@ class UserController extends Controller {
 		$this->assign('favorate',$list);
 		$this->display();
 	}
+	/*
+	 * 删除收藏
+	 * */
+	/*
+	 * 用户自我评论删除
+	 * */
+	public function delFavorate(){
+		$data = array('s'=>0, 'error'=>'');
+		if(IS_POST){
+			$fid = I('id');
+			empty($fid) ? $this->ajaxReturn($data) : $fid;
+				
+			$model = M('favorate');
+			if($model->where('fid='.$fid)->delete()){
+				$data['s'] = 0;
+				$data['error'] = "";
+				$this->ajaxReturn($data);
+			}else{
+				$data['s'] = 2;
+				$data['error'] = "数据错误";
+				$this->ajaxReturn($data);
+			}
+		}else{
+			$this->error('非法访问');
+		}
+	}
 	
 }

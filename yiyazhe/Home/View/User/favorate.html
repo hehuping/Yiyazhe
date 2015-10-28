@@ -31,7 +31,7 @@
                 <ul>
                     <li class="goods_pic">
                       <img src="{$v['gimage']}" alt=""/>
-                      <a href="javascript:void(0)"><img onclick="toDelete({$v['cid']})" src="__PUBLIC__/images/user/delete.png" alt="" class="NO_num"/></a>
+                      <a href="javascript:void(0)"><img onclick="toDelete({$v['fid']})" src="__PUBLIC__/images/user/delete.png" alt="" class="NO_num"/></a>
                     </li>
                     <li class="goods_title"><p><span style="color:red"></span>{$v['title']}</p></li>
                     
@@ -62,7 +62,7 @@
 					CancelButtonText:"取消"
 					}, 
 					function(){
-						$.post("/User/delComment",
+						$.post("/User/delFavorate",
 								  {
 								    "id":id,
 								  },

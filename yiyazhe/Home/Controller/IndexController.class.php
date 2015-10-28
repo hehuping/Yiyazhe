@@ -14,8 +14,8 @@ class IndexController extends Controller {
 		empty($p) ? $p=1 : $p;
 		$p -= 1;
 		$goods_model = D('Index');
+		$fav_model = M('favorate');
 		list($goodsArr, $show) = $goods_model->getIndexGoods($p, 80);
-		
 		$start = $goods_model->getStart5();
 		
 		$this->assign('start', $start);
@@ -123,6 +123,38 @@ class IndexController extends Controller {
 	}
 	
 	/*
+	 *收藏
+	 */
+	public function favorate(){
+		$gid = I('gid');
+		if(IS_AJAX){
+			$uid = is_login();
+			$arr = array('s'=>0, 'error'=>'');
+			$model = M('favorate');
+			$has = $model->where("uid={$uid} && gid={$gid}")->find();
+			if(!empty($has)){
+				$arr['s'] = 1;
+				$arr['error'] = "已经收藏过了，请到用户中心查看";
+				$this->ajaxReturn($arr);
+				die();
+			}
+			$data = array(
+					'gid' => $gid,
+					'uid' => $uid,
+			);
+			if($model->add($data)){
+				$this->ajaxReturn($arr);
+			}else{
+				$arr['s'] = 1;
+				$arr['error'] = "数据错误";
+				$this->ajaxReturn($arr);
+			}
+		}else{
+			$this->error("非法访问");
+		}
+	}
+	
+	/*
 	 * 过滤评论空格，验证其字数
 	 * */
 	private function valideContent($content){
@@ -134,4 +166,7 @@ class IndexController extends Controller {
 			return true;
 		}
 	}
+	
+
+	
 }

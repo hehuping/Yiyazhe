@@ -59,7 +59,7 @@ function dislike(id){
  * */
 function sendComment(id){
 	var content = $("#comment"+id).val();
-	if(login){
+	if(is_login()){
 	var username = $("#username").val();
 		$.ajax({
             type: "POST",
@@ -87,9 +87,34 @@ function sendComment(id){
                      }
         });
 		
-	}else{
+	}
+}
+
+/*
+ * 收藏
+ * */
+function favorate(id){
+	if(is_login()){
+		$.ajax({
+            type: "POST",
+            url: "/Index/favorate",
+            data: {'gid':id},
+            dataType: "json",
+            success: function(data){
+            			if(data.s != 0){
+            				sweetAlert("有点小错误", data.error,'warning');
+            			}else{
+            				$("#favorate"+id).attr("src","/Public/images/index/favorates.png");
+            			}
+                     }
+        });
+	}
+}
+
+function is_login(){
+	if(!login){
 		swal({   
-			title: "会员独享评论", 
+			title: "", 
 			text: "亲爱的，你还没登录哦，去登录吧？", 
 			type: "warning",
 			showCancelButton: true,
@@ -99,7 +124,9 @@ function sendComment(id){
 			function(){
 				window.location.href="/Login";
 			});
+		return false;
+	}else{
+		return true;
 	}
-
 }
 
