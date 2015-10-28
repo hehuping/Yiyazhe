@@ -33,4 +33,7 @@ return array (
 		
 		// 多个伪静态后缀设置 用|分割
         'URL_HTML_SUFFIX' => 'html|shtml|xml|htm' ,
+		
+		//开启布局模块
+		'LAYOUT_ON'=>true,
 );
