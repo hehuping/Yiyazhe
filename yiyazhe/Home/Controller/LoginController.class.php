@@ -8,7 +8,7 @@ use Org\Util\Date;
 class LoginController extends Controller {
 	
 	public function index(){
-	
+		layout(false);
 		$this->display();
 	}
 	

@@ -29,15 +29,15 @@ class CommentModel extends Model{
 	 * @return array
 	 */
 	public function getUserComment($uid, $p){
-		$p *= 6;
+		$p *= 20;
 		$comment =  array();
 		$model = M();
-		$sql = "select cid from comment where uid={$uid} && status=0 order by addtime asc limit {$p},6";
+		$sql = "select cid from comment where uid={$uid} && status=0 order by addtime asc limit {$p},20";
 		$sqlCount = "select count(*) from comment where uid={$uid} && status=0 order by addtime asc";
 		$commentId = $model->query($sql);
 		$countComment = $model->query($sqlCount);
 		$count = $countComment[0]['count(*)'];// 查询满足要求的总记录数
-		$Page       = new \Think\Page($count,6);// 实例化分页类 传入总记录数和每页显示的记录数
+		$Page       = new \Think\Page($count,20);// 实例化分页类 传入总记录数和每页显示的记录数
 		$Page->setConfig('prev', '上一页');
 		$Page->setConfig('next', '下一页');
 		$show       = $Page->show();// 分页显示输出

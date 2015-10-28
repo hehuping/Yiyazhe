@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0, user-scalable=yes">
+    <link rel="icon" href=""  type="image/png" sizes="">
+    <link rel="stylesheet" href="__PUBLIC__/css/index/neat.css" type="text/css"  />
+    <link rel="stylesheet" href="__PUBLIC__/css/user/comment/index.css" type="text/css"  />
+    <link rel="stylesheet" href="__PUBLIC__/css/index/sweet-alert.css" />
+	<script src="__PUBLIC__/js/index/jquery-1.11.3.min.js"></script>
+	<script src="__PUBLIC__/js/index/prefixfree.min.js"></script>
+	<script src="__PUBLIC__/js/index/jquery.smint.js"></script>
+	<script src="__PUBLIC__/js/index/sweet-alert-index.js"></script>
+</head>
+
+<style>
+.big:hover > img {
+    transform: scale(1.05, 1.05);
+    transition: .5s transform;
+}
+
+.big img{
+	width:275px;
+	height:275px;
+}
+
+.new_goods_list > ul:hover{
+	border:1px solid #ef6060;
+}
+
+.subMenu {
+	position: absolute;
+	top: 127px;
+	height: 40px;
+	z-index: 9998;
+	width: 100%;
+	max-width: 100%;
+	min-width: 960px;
+	background: #aabd46;
+
+}
+
+.info_state span{
+	display:block;
+}
+
+
+.goods-pl{
+	background: #aabd46;
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:9995;
+	padding-top: 12px;
+  	background-color: rgba(0,0,0,0.7);/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+  	display:none;
+}
+
+.goods-pl p{
+	color: white;
+}
+
+
+.plcontent{
+	width:100%;
+	height:80%;
+	overflow-x: hidden; overflow-y: auto; 
+}
+.plsend{
+	padding-left:6%;
+	padding-top:5%;
+}
+
+.plsend a{
+	color:white;
+}
+
+.plsend input{
+	width:70%;
+	height:30px;
+	border-radius: 4px 4px 4px 4px;
+	border: 1px solid #fb6d78;
+}
+
+.pl_bg {
+	display: inline-block;
+	background: #fb6d78;
+	height: 30px;
+	line-height: 30px;
+	width: 44px;
+	text-align: center;
+	border-radius: 4px 4px 4px 4px;
+}
+.plname{
+	color: rgba(127, 253, 11, 0.92);
+}
+
+#cellclien{
+	width:150px;
+	color:white;
+	line-height:40px;
+	margin-left:50px;
+	position: absolute;
+}
+#cellclien:hover .qrcode{
+	display:block;
+}
+
+.qrcode{
+	display:none;	
+	position:absolute;
+	z-index:9995; 
+	left:-45px;
+	top:40px;
+}
+
+#jifen{
+	color:white;
+	margin-left:150px;
+	line-height:40px;
+	position: absolute;
+}
+
+#weixin{
+	margin-top: 65px;
+	padding-left:5px;
+	text-align:left;
+	width:100px;
+	position: absolute;
+}
+
+#weixin:hover .weixincode{
+	display:block;
+}
+
+.weixincode{
+	top:1px;
+	height:100px;
+	left:-100px;
+	position: absolute;
+	display:none;
+}
+
+#weibo{
+	padding-left:5px;
+	text-align:left;
+	width:100px;
+	position: absolute;
+}
+
+#weibo:hover .weibocode{
+	display:block;
+}
+
+.weibocode{
+	top:1px;
+	height:100px;
+	left:-100px;
+	position: absolute;
+	display:none;
+}
+
+</style>
+
+<body>  
+<div class="header">
+    <div class="header_up">
+        <div class="center">
+            <ul class="top_navbar">
+            <?php $login=session('user.uid'); if(!$login){ ?>
+                <li><a href="#">QQ登录</a></li>
+                <li class="line"></li>
+                <li><a href="/Login">登录</a>&nbsp;&nbsp;<a href="/Signup">免费注册</a></li>
+            <?php }else{ ?>
+            	<li class="active"><a href="/User" target="blanck" style="color:red"><?php echo session('user.username'); ?></a></li>
+            <?php } ?>
+            
+                <li class="line"></li>
+                <li class="active"><a href="#">我的评论</a></li>
+                <li class="line"></li>
+                <li class="active"><a href="#">我的收藏</a></li>
+                <li class="line"></li>
+                <li><a href="#">联系客服</a></li>
+                <li class="line"></li>
+                <li><a href="#">卖家报名</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="header_down">
+        <div class="center">
+            <div class="logo">
+                <a href="#"><img src="__PUBLIC__/images/index/logo.png" alt=""/></a>
+            </div>
+            <div class="search">
+                <div class="search_box">
+                    <input type="search" placeholder="打几个字儿呗"/>
+                    <a href="#" class="search_bg">
+                        GO
+                    </a>
+                </div>
+            </div>
+            <div class="top_text">
+                <ul>
+                    <li>
+                        <img src="__PUBLIC__/images/index/top_icon_01.png" alt=""/>
+                        <span>每天11:00开抢</span>
+                    </li>
+                    <li>
+                        <img src="__PUBLIC__/images/index/top_icon_02.png" alt=""/>
+                        <span>校园专业挑款</span>
+                    </li>
+                    <li>
+                        <img src="__PUBLIC__/images/index/top_icon_03.png" alt=""/>
+                        <span>商家品质保证</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="subMenu">
+	<div class="goods_navbar">
+	    <div class="center">
+	        <ul>
+	            <li class="active">
+	                <a href="#">
+	                    <img src="__PUBLIC__/images/index/goods_type_01.png" alt=""/>
+	                    <span>全部</span>
+	                </a>
+	            </li>
+	            <li>
+	                <a href="#">
+	                    <img src="__PUBLIC__/images/index/goods_type_02.png" alt=""/>
+	                    <span>女神</span>
+	                </a>
+	            </li>
+	            <li>
+	                <a href="#">
+	                    <img src="__PUBLIC__/images/index/goods_type_03.png" alt=""/>
+	                    <span>男神</span>
+	                </a>
+	            </li>
+	            <li>
+	                <a href="#">
+	                    <img src="__PUBLIC__/images/index/goods_type_04.png" alt=""/>
+	                    <span>美食</span>
+	                </a>
+	            </li>
+	            <li>
+	                <a href="#">
+	                    <img src="__PUBLIC__/images/index/goods_type_05.png" alt=""/>
+	                    <span>鞋包</span>
+	                </a>
+	            </li>
+	            <li>
+	                <a href="#">
+	                    <img src="__PUBLIC__/images/index/goods_type_06.png" alt=""/>
+	                    <span>宅宿舍</span>
+	                </a>
+	            </li>
+	            <li>
+	                <a href="#">
+	                    <img src="__PUBLIC__/images/index/goods_type_07.png" alt=""/>
+	                    <span>数码</span>
+	                </a>
+	            </li>
+	            <li>
+	                <a href="#">
+	                    <img src="__PUBLIC__/images/index/goods_type_08.png" alt=""/>
+	                    <span>美妆</span>
+	                </a>
+	            </li>
+	            <li>
+	                <a href="#">
+	                    <img src="__PUBLIC__/images/index/goods_type_09.png" alt=""/>
+	                    <span>文体</span>
+	                </a>
+	            </li>
+	            	
+	                <a href="javascript:void(0)" id="cellclien">手机客户端<img class="qrcode" src="__PUBLIC__/images/index/qrcode.png" /></a>
+	                
+	                <a href="javascript:void(0)" id="jifen">签到领积分</a>
+	           
+	        </ul>
+	    </div>
+	</div>
+</div>
