@@ -1,20 +1,5 @@
 ﻿@charset "utf-8";
 
-body {
-	background: #f6f6f6
-}
-
-em, i {
-	font-style: normal
-}
-
-#header {
-	background: white;
-}
-
-#header .area {
-	padding: 30px 0 18px
-}
 
 #header .logo a {
 	width: 240px;

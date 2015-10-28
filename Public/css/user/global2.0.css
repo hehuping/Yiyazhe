@@ -2,19 +2,6 @@
 /* CSS Document */
 
 /* 全局CSS定义 */
-body{margin:0 auto;padding:0;background:#fbfbfb;color:#666;font:12px '';text-align:center;}
-body > div{margin-right:auto;margin-left:auto;text-align:center; } 
-div,form,ul,ol,li,span,p,dl,dt,dd,img,header,section,footer,nav,figure,figcaption,article{margin:0;padding:0;border:0;}
-h1,h2,h3,h4,h5,h6{margin:0;padding:0;font-size:12px;font-weight:normal;}
-ul,ol,li{list-style:none}
-table,td,input,textarea{font-size:12px}
-/* 链接颜色 */
-header, section, footer, nav, figure, figcaption, article{display: block}
-a{color:#333;text-decoration:none;}
-a:hover{color:#C00;text-decoration:underline;}
-/* 标题 */
-h2{text-align:right;}
-h2 span{float:left;font-weight: bold;}
 
 .clear,.area,.pp,.pt{zoom:1}
 .show{display:block;}

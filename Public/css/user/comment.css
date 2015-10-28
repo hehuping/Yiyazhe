@@ -1,4 +1,163 @@
+/************************************学校选择**********************************************/
+#schoolName {
+	width: 200px;
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #ccc;
+	padding: 0 8px;
+	cursor: pointer;
+	font-size: 12px;
+}
 
+.provinceSchool {
+	display: none;
+	position: absolute;
+	width: 580px;
+	height: auto;
+	border: 1px solid #f38e81;
+}
+
+.provinceSchool .title {
+	width: 100%;
+	height: 30px;
+	background: #f38e81;
+	cursor: move;
+}
+
+.provinceSchool .title span {
+	margin-left: 10px;
+	font-weight: 600;
+	color: #FFF;
+	line-height: 30px;
+}
+
+.provinceSchool .proSelect {
+	width: 550px;
+	text-align: center;
+	padding: 15px 0;
+}
+
+.provinceSchool .proSelect select {
+	width: 136px;
+}
+
+.provinceSchool .proSelect span {
+	padding-left: 10px;
+}
+
+.provinceSchool .proSelect input {
+	display: none;
+}
+
+.provinceSchool .schoolList {
+	width: 550px;
+	height: 180px;
+	padding: 10px 0;
+	overflow-y: auto;
+	border: 1px solid #ddd;
+}
+
+.provinceSchool .schoolList ul {
+	width: 510px;
+	clear: both;
+}
+
+.provinceSchool .schoolList ul span.entertext {
+	display: block;
+	height: 180px;
+	font: normal 16px/180px 'microsoft yahei';
+	color: #999;
+}
+
+.provinceSchool .schoolList ul li {
+	float: left;
+	text-align: center;
+	width: 160px;
+	margin: 5px;
+	height: 25px;
+	line-height: 25px;
+	cursor: pointer;
+	background: #fafafa;
+	border-radius: 3px;
+}
+
+.provinceSchool .schoolList ul li.DoubleWidthLi {
+	overflow: hidden;
+}
+
+.provinceSchool .schoolList ul li:hover {
+	background: #f38e81;
+	color: #fff;
+}
+
+.provinceSchool .button {
+	width: 100%;
+	height: 40px;
+	margin-top: 8px;
+}
+
+.provinceSchool .button button {
+	float: right;
+	height: 30px;
+	margin-right: 15px;
+	padding: 2px 15px;
+	background: #f38e81;
+	border: none;
+	color: #FFF;
+	font-weight: 600;
+	cursor: pointer;
+	border-radius: 3px;
+}
+
+.provinceSchool .button button:hover {
+	background: #2e90bd;
+}
+.schSelect {
+    width: 66px;
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 32px;
+    line-height: 17px;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 0px 2px;
+    background-color: #f38e81;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+}
+/************************************************************************************/
+
+.table_peyton {
+    float: right;
+    width: 46px;
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 27px;
+    line-height: 17px;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 0px 2px;
+    background-color: #FF4A76;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+}
+.table1 {
+    width: 400px;
+    /* border: none; */
+    margin: none;
+    line-height: 20px;
+    padding: 0px;
+}
+.table1 td {
+    font-size: 14px;
+    color: black;
+}
 #user {
 	 margin: 0 auto;
 	background: #f6f6f6;

@@ -1,46 +1,13 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>咿呀折用户中心</title>
-
-<link href="__PUBLIC__/css/user/style.css" media="screen" ></link>
-<link href="__PUBLIC__/css/user/global2.0.css" media="screen" rel="stylesheet"> </link>
-<link href="__PUBLIC__/css/user/style1.0.5.css" media="screen" rel="stylesheet" ></link>
+﻿
 
 <script type="text/javascript" src="__PUBLIC__/js/user/jquery.min.js"></script> 
-
-<script type="text/javascript" src="__PUBLIC__/js/user/cropbox.js"></script>
-
 <script type="text/javascript" src="__PUBLIC__/js/user/school.js"></script>
-
 <script type="text/javascript" src="__PUBLIC__/js/user/sweet-alert.js"></script>
-
-<!--<script type="text/javascript" src="__PUBLIC__/js/user/sweet-alert.min.js"></script>-->
-
 <script type="text/javascript" src="__PUBLIC__/js/user/zDialog.js"></script>
-
 <script type="text/javascript" src="__PUBLIC__/js/user/zDrag.js"></script>
-
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/user/example.css"></link>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/user/sweet-alert.css"></link>
-
-</head>
-
-<body>
-	<div id="header">
-		<div class="area">
-			<div class="logo">
-				<a href="http://www.yiyazhe.com/"></a>
-			</div>
-		</div>
-	</div>
-
-	<div class="line"></div>
-
-
-
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/user/comment.css"></link>
 	<!--  -->
 	<div id="user" class="area clear">
 		
@@ -99,35 +66,7 @@
 				</div>
 				<div class="container">
 
-					<div class="imageBox">
-
-						<div class="thumbBox"></div>
-
-						<div class="spinner" style="display: none"></div>
-
-					</div>
-
-					<div class="action">
-
-						<!-- <input type="file" id="file" style=" width: 200px">-->
-
-						<div class="new-contentarea tc">
-							<a href="javascript:void(0)" class="upload-img"> <label
-								for="upload-file">点击修改</label>
-
-							</a> <input type="file" class="" name="upload-file" id="upload-file" />
-
-						</div>
-
-						<input type="button" onclick="doChangePic();" class="Btnsty_peyton" value="OK"> <input
-							type="button" id="btnZoomIn" class="Btnsty_peyton" value="+">
-
-								<input type="button" id="btnZoomOut" class="Btnsty_peyton"
-								value="-">
-					</div>
-
-					<div class="cropped"><img id="endPic"  src="<?php echo $showPic; ?>" align="absmiddle" style="width:150px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>150px*150px</p></div>
-
+					
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -161,19 +100,6 @@
 			</div>
 		</div>
 	</div>
-
-	<div id="footer">
-		<div class="area">
-			<a style="color: #666" target="_blank" href="">这个是test</a>&nbsp;这里都是什么备案号什么的
-			Copyright&copy;2011-2015 版权所有 YIYAZHE.COM <br /> <a
-				href="#"
-				target="_blank">
-		</div>
-	</div>
-
-	<span style="display: none"> </span>
-
-
 <!-- 昵称修改 -->
 <script type="text/javascript">
 
@@ -545,65 +471,3 @@ $(function(){
 </script>
 
 
-
-<!-- 图片上传 -->
-	<script type="text/javascript">
-	var showPic = '<?php echo $showPic; ?>';
-	
-	$(window).load(
-						function() {
-							//$('#btnCrop').click();$("#idName").css("cssText","background-color:red!important");
-							//$(".imageBox").css("cssText","background-position:88px 88px!important");$(".imageBox").css("cssText","background-size:222px 222px!important");
-							var options = {
-								thumbBox : '.thumbBox',
-								spinner : '.spinner',
-								imgSrc : showPic,
-							}
-							var cropper = $('.imageBox').cropbox(options);
-							var img = showPic;
-							//getImg();
-							$('#upload-file').on('change', function() {
-								var reader = new FileReader();
-								reader.onload = function(e) {
-									options.imgSrc = e.target.result;
-									cropper = $('.imageBox').cropbox(options);
-									getImg();
-								}
-								reader.readAsDataURL(this.files[0]);
-								this.files = [];
-								//getImg();
-							})
-							$('#btnCrop').on('click', function() {
-								alert("图片上传喽");
-							})
-							function getImg() {
-								img = cropper.getDataURL();
-								if(img == ""){
-									img = showPic;
-								}
-								$('.cropped').html('');
-								$('.cropped')
-										.append(
-												'<img id="endPic" src="'+img+'" align="absmiddle" style="width:150px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>150px*150px</p>');
-
-							}
-							$(".imageBox").on("mouseup", function() {
-								getImg();
-							});
-							$('#btnZoomIn').on('click', function() {
-								//getImg();
-								cropper.zoomIn();
-							})
-							$('#btnZoomOut').on('click', function() {
-								//getImg();
-								cropper.zoomOut();
-							})
-						});
-	
-	
-	</script>
-
-
-
-</body>
-</html>

@@ -12,6 +12,7 @@ class UserController extends Controller {
 	
 	//首页
 	public function index(){
+		//layout(false);
 		$user_model = M('yuser');
 		$showPic = '';
 		$find = $user_model->field('base64pic,school')->where('uid='.session('user.uid'))->find();
@@ -207,6 +208,16 @@ class UserController extends Controller {
 	 * */
 	public function my_rank(){
 		
+	}
+	
+	/*
+	 *收藏 
+	 */
+	public function favorate(){
+		$model = D('Favorate');
+		$list = $model->getUserFavorate(session('user.uid'));
+		$this->assign('favorate',$list);
+		$this->display();
 	}
 	
 }

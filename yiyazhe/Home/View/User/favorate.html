@@ -10,9 +10,8 @@
 		<div class="sider-bar">
 			<ul>
 				<li><a href="<?php echo U("User/index"); ?>">基本资料</a></li>
-				<li class="activ"><a href="<?php echo U("User/comment"); ?>"
-						style="color:rgb(255,255,255);">我的评论</a></li>
-				<li><a href="<?php echo U("User/favorate"); ?>">我的收藏</a></li>
+				<li ><a href="<?php echo U("User/comment"); ?>">我的评论</a></li>
+				<li class="activ"><a style="color:rgb(255,255,255);" href="<?php echo U("User/favorate"); ?>">我的收藏</a></li>
 				<li><a href="<?php echo U("User/beans"); ?>">我的积分</a></li>
 			</ul>
 		</div>
@@ -23,20 +22,20 @@
 		      		 	 <div class="star_goods" >
         <h3>
             <img src="__PUBLIC__/images/index/star.png" alt=""/>
-            <span>我的评论</span>
+            <span>我的收藏</span>
             <span class="vice"></span>
         </h3> 
         <ul>
-        <?php  foreach($comment as $k=>$v){ ?>
+        <?php  foreach($favorate as $k=>$v){ ?>
             <li class="star_goods_list">
                 <ul>
                     <li class="goods_pic">
                       <img src="{$v['gimage']}" alt=""/>
-                      <a href="javascript:void(0)"><img class="NO_num" onclick="toDelete({$v['cid']})" src="__PUBLIC__/images/user/delete.png" alt=""/></a>
+                      <a href="javascript:void(0)"><img onclick="toDelete({$v['cid']})" src="__PUBLIC__/images/user/delete.png" alt="" class="NO_num"/></a>
                     </li>
-                    <li class="goods_title"><p><span style="color:red">评论内容：</span>{$v['content']}</p></li>
-                    <li class="goods_title"><p style="color:#968888"><span style="color:red">时间：</span>{$v['addtime']}</p></li>
-                    <li class="pirce"><span></span></li>
+                    <li class="goods_title"><p><span style="color:red"></span>{$v['title']}</p></li>
+                    
+                    <li class="pirce"><span>{$v['price']}</span></li>
                 </ul>
             </li>
            <?php } ?>
@@ -69,7 +68,7 @@
 								  },
 								  function(data){
 								    if(data.s != 0){
-								    	alert("参数错误");	
+								    	alert("参数错误");
 								    }else{
 								    	location.reload(true);
 								    }
