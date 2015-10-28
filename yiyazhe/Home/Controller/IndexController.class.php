@@ -3,10 +3,13 @@
 namespace Home\Controller;
 
 use Think\Controller;
+use Home\Model\DataModel;
+use Home\Model\Data;
 
 class IndexController extends Controller {
 	
 	public function index() {
+		layout(false);
 		$p = I ( 'p' );
 		empty($p) ? $p=1 : $p;
 		$p -= 1;
@@ -25,7 +28,13 @@ class IndexController extends Controller {
 		$goods_model = M ( 'goods' );
 		$goodlist = $goods_model->where()->limit(0, 20)->order('addtime asc')->select();
 		
-		$this->ajaxReturn($goodlist);
+		$relist['page'] = 1;
+		$relist['object_list'] = $goodlist;
+		$obj = new Data();
+		$obj->status = 1;
+		$obj->data = $relist;
+		
+		$this->ajaxReturn($obj);
 	}
 	
 	/*
