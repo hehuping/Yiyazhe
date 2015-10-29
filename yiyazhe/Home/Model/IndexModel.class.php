@@ -17,7 +17,7 @@ class IndexModel extends Model
 {
 	protected $tableName = 'goods';
 	public function getIndexGoods($p, $class_id,$pageSize=50){
-		$condition = empty(!$class_id) ? " && class_id in ({$class_id})" : '';
+		$condition = !empty($class_id) ? " && class_id in ({$class_id})" : '';
 		$p *= $pageSize;
 		$goods_model = M('goods');
 		$commet_model = M('comment');
