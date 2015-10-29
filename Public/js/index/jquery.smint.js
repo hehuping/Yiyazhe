@@ -63,7 +63,7 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
 			///////////////////////////////////////
     
         
-        	$(this).on('click', function(e){
+        	/*$(this).on('click', function(e){
 
 
 				// gets the height of the users div. This is used for off-setting the scroll so th emenu doesnt overlap any content in the div they jst scrolled to
@@ -76,12 +76,12 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
 		 		var id = $(this).attr('id');
 				
 				// gets the distance from top of the div class that matches your button id minus the height of the nav menu. This means the nav wont initially overlap the content.
-				var goTo =  $('div.'+ id).offset().top -selectorHeight;
+				var goTo =  127;//$('div.'+ id).offset().top -selectorHeight;
 				
 				// Scroll the page to the desired position!
 				$("html, body").animate({ scrollTop: goTo }, scrollSpeed);
 
-			});	
+			});	*/
 
             
 

@@ -24,7 +24,7 @@ define('APP_PATH','./yiyazhe/');
 //define('BIND_MODULE','Admin');
 //define('BIND_MODULE','Home');
 //自动生成控制器
-//define('BUILD_CONTROLLER_LIST','Index,Login,Signup,Jiukuai');
+//define('BUILD_CONTROLLER_LIST','Girls,Boys,Foods,Shoe_and_Bags,Dormitory,Digital,Beauty,Sports');
 
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';

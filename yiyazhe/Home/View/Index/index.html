@@ -200,7 +200,7 @@
         <div class="center">
             <ul class="top_navbar">
             <?php $login=session('user.uid'); if(!$login){ ?>
-                <li><a href="#">QQ登录</a></li>
+                <li><a href="/Login/qqlogin">QQ登录</a></li>
                 <li class="line"></li>
                 <li><a href="/Login">登录</a>&nbsp;&nbsp;<a href="/Signup">免费注册</a></li>
             <?php }else{ ?>
@@ -221,7 +221,7 @@
     <div class="header_down">
         <div class="center">
             <div class="logo">
-                <a href="#"><img src="__PUBLIC__/images/index/logo.png" alt=""/></a>
+                <a href="/"><img src="__PUBLIC__/images/index/logo.png" alt=""/></a>
             </div>
             <div class="search">
                 <div class="search_box">
@@ -255,55 +255,55 @@
 	    <div class="center">
 	        <ul>
 	            <li class="active">
-	                <a href="#">
+	                <a href="/">
 	                    <img src="__PUBLIC__/images/index/goods_type_01.png" alt=""/>
 	                    <span>全部</span>
 	                </a>
 	            </li>
 	            <li>
-	                <a href="#">
+	                <a href="/Girls">
 	                    <img src="__PUBLIC__/images/index/goods_type_02.png" alt=""/>
 	                    <span>女神</span>
 	                </a>
 	            </li>
 	            <li>
-	                <a href="#">
+	                <a href="Boys">
 	                    <img src="__PUBLIC__/images/index/goods_type_03.png" alt=""/>
 	                    <span>男神</span>
 	                </a>
 	            </li>
 	            <li>
-	                <a href="#">
+	                <a href="/Foods">
 	                    <img src="__PUBLIC__/images/index/goods_type_04.png" alt=""/>
 	                    <span>美食</span>
 	                </a>
 	            </li>
 	            <li>
-	                <a href="#">
+	                <a href="/ShoeAndBags">
 	                    <img src="__PUBLIC__/images/index/goods_type_05.png" alt=""/>
 	                    <span>鞋包</span>
 	                </a>
 	            </li>
 	            <li>
-	                <a href="#">
+	                <a href="/Dormitory">
 	                    <img src="__PUBLIC__/images/index/goods_type_06.png" alt=""/>
 	                    <span>宅宿舍</span>
 	                </a>
 	            </li>
 	            <li>
-	                <a href="#">
+	                <a href="/Digital">
 	                    <img src="__PUBLIC__/images/index/goods_type_07.png" alt=""/>
 	                    <span>数码</span>
 	                </a>
 	            </li>
 	            <li>
-	                <a href="#">
+	                <a href="/Beauty">
 	                    <img src="__PUBLIC__/images/index/goods_type_08.png" alt=""/>
 	                    <span>美妆</span>
 	                </a>
 	            </li>
 	            <li>
-	                <a href="#">
+	                <a href="/Sports">
 	                    <img src="__PUBLIC__/images/index/goods_type_09.png" alt=""/>
 	                    <span>文体</span>
 	                </a>
@@ -401,7 +401,7 @@
                     <li class="goods_pic">
                         <a href="#"><div class="big"><img src="{$v['gimage']}" alt=""/></div></a>
                         <img src="__PUBLIC__/images/index/xinpin.png" alt="" class="new"/>
-                        <img onclick="favorate({$v['gid']});" id="favorate{$v['gid']}" src="__PUBLIC__/images/index/favorate.png" alt="" class="favorate"/>
+                        <img <?php $has=cookie("fav".$v['gid']); if(empty($has)){ ?>onclick="favorate({$v['gid']});"<?php } ?> id="favorate{$v['gid']}" src="__PUBLIC__/images/index/<?php if($has){echo 'favorates.png';}else{echo 'favorate.png';} ?>" alt="" class="favorate"/>
                     </li>
                     <li class="goods_title"><p><a href="#">【咿呀折】{$v['title']}</a></p></li>
                     <li class="goods_info">
@@ -581,23 +581,6 @@
 
 <script>
 var login = <?php if($uid = is_login()){echo $uid;}else{echo 'false';}  ?>;
-
-/*
- * 评论点击出来
- */
-function comment(id){
-	//$("#scom"+id).css("display","block");
-	  $("#scom"+id).fadeToggle("slow");
-
-}
-/*
- * 鼠标离开评论隐藏
- */
-$(".goods-pl").mouseleave(function(){
-	 $(this).fadeOut("slow");
-	// alert(3232);
-
-});
 
 </script>
 <!-- 浮动导航 -->

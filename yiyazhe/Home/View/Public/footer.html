@@ -87,15 +87,29 @@
         </li>
     </ul>
 </div>
+<input type="hidden" value="<?php echo session('user.username'); ?>" id="username" />
 
 <!-- 浮动导航 -->
 <script src="__PUBLIC__/js/index/jquery.smint.js"></script>
+<script src="__PUBLIC__/js/index/lunbo.js"></script>
+<script src="__PUBLIC__/js/index/praise.js"></script>
 <script type="text/javascript">
 $(document).ready( function() {
     $('.subMenu').smint({
     	'scrollSpeed' : 1000
     });
 });
+
+var login = <?php if($uid = is_login()){echo $uid;}else{echo 'false';}  ?>;
+
+</script>
+<script>
+    $(function(){
+        $(".return").click(function(){
+            $('body,html').animate({scrollTop:0},200);
+
+        });
+    });
 </script>
 </body>
 </html>

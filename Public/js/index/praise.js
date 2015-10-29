@@ -101,11 +101,8 @@ function favorate(id){
             data: {'gid':id},
             dataType: "json",
             success: function(data){
-            			if(data.s != 0){
-            				sweetAlert("有点小错误", data.error,'warning');
-            			}else{
-            				$("#favorate"+id).attr("src","/Public/images/index/favorates.png");
-            			}
+            			$("#favorate"+id).attr("src","/Public/images/index/favorates.png");
+            			$("#favorate"+id).attr("onclick","");
                      }
         });
 	}
@@ -129,4 +126,21 @@ function is_login(){
 		return true;
 	}
 }
+
+/*
+ * 评论点击出来
+ */
+function comment(id){
+	//$("#scom"+id).css("display","block");
+	  $("#scom"+id).fadeToggle("slow");
+
+}
+/*
+ * 鼠标离开评论隐藏
+ */
+$(".goods-pl").mouseleave(function(){
+	 $(this).fadeOut("slow");
+	// alert(3232);
+
+});
 

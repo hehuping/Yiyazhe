@@ -9,15 +9,16 @@ use Home\Model\Data;
 class IndexController extends Controller {
 	
 	public function index() {
+		//\Think\Build::buildController('H','Girls,Boys,Foods,Shoe_and_Bags,Dormitory,Digital,Beauty,Sports');
 		layout(false);
 		$p = I ( 'p' );
 		empty($p) ? $p=1 : $p;
 		$p -= 1;
 		$goods_model = D('Index');
-		$fav_model = M('favorate');
-		list($goodsArr, $show) = $goods_model->getIndexGoods($p, 80);
+		list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p,'',80);
 		$start = $goods_model->getStart5();
 		
+		$this->assign('count', $count);
 		$this->assign('start', $start);
 		$this->assign('show', $show);
 		$this->assign('goodlist', $goodsArr);
@@ -133,6 +134,7 @@ class IndexController extends Controller {
 			$model = M('favorate');
 			$has = $model->where("uid={$uid} && gid={$gid}")->find();
 			if(!empty($has)){
+				cookie("fav{$gid}",rand(10000,1000000),24*60*60*5);
 				$arr['s'] = 1;
 				$arr['error'] = "已经收藏过了，请到用户中心查看";
 				$this->ajaxReturn($arr);
@@ -143,6 +145,7 @@ class IndexController extends Controller {
 					'uid' => $uid,
 			);
 			if($model->add($data)){
+				cookie("fav{$gid}",rand(10000,1000000),24*60*60*5);
 				$this->ajaxReturn($arr);
 			}else{
 				$arr['s'] = 1;

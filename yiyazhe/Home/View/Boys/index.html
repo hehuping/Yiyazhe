@@ -1,0 +1,126 @@
+<div class="container-fluid">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active" >
+                <img src="__PUBLIC__/images/index/brandbanner01.jpg" alt="">
+                <div class="carousel-caption">
+
+                </div>
+            </div>
+            <div class="item">
+                <img src="__PUBLIC__/images/index/brandbanner02.jpg" alt="">
+                <div class="carousel-caption">
+
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="__PUBLIC__/images/index/brandbanner01.jpg" alt="">
+                <div class="carousel-caption">
+
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="font-size: 50px;"></span>
+            <span class="sr-only"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="font-size: 50px;"></span>
+            <span class="sr-only"></span>
+        </a>
+    </div>
+</div>
+
+<div class="contentgirl">
+    <div class="new_goods center" >
+        <h3>
+            <img src="__PUBLIC__/images/index/now.png" alt=""/>
+            <span>全站女装</span>
+            <span class="vice">{$count}款</span>
+        </h3>
+        <ul>
+        <?php foreach($goodlist as $k=>$v){ ?>
+            <li class="new_goods_list">
+                <ul style="position:relative">
+               		<div class="goods-pl" id="scom{$v['gid']}">
+	               		<div class="plcontent" id="plcontent{$v['gid']}">
+		                	<?php foreach($v['comments'] as $data){ ?><p><em class="plname"><?php echo $data['username']; ?></em>：<?php echo $data['content']; ?></p><?php } ?>              	       	
+	                	</div>
+	                	<div class="plsend">
+	                		<input type="text" id="comment{$v['gid']}" placeholder="字数少于20大于3哦"/>
+	                		<a href="javascript:void(0)" class="pl_bg" onclick="sendComment({$v['gid']})">发送</a>
+	                	</div>
+                	</div>
+                    <li class="goods_pic">
+                        <a href="#"><div class="big"><img src="{$v['gimage']}" alt=""/></div></a>
+                        <img src="__PUBLIC__/images/index/xinpin.png" alt="" class="new"/>
+                        <img <?php $has=cookie("fav".$v['gid']); if(empty($has)){ ?>onclick="favorate({$v['gid']});"<?php } ?> id="favorate{$v['gid']}" src="__PUBLIC__/images/index/<?php if($has){echo 'favorates.png';}else{echo 'favorate.png';} ?>" alt="" class="favorate"/>
+                    </li>
+                    <li class="goods_title"><p><a href="#">【咿呀折】{$v['title']}</a></p></li>
+                    <li class="goods_info">
+                        <ul>
+                            <li class="goods_info_left">
+                                <ul>
+                                    <li class="pirce">￥ <span><?php echo floatval($v['price']); ?></span></li>
+                                    <li><span class="original">￥<?php echo floatval($v['oldprice']); ?></span> <span class="discount">-<?php echo (floatval($v['oldprice'])-floatval($v['price'])); ?>元</span></li>
+                                    <li class="sell_out">
+                                        <span>已售{$v['yishou']}</span>
+                                        
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="goods_info_right">
+                                <ul>
+                                    <li class="info_state">
+                                        <ul style="position:rela">
+                                            <li>
+                                               <a href="javascript:void(0);" onclick="<?php $has=cookie('like'.$v['gid']); if(empty($has)){echo 'like('.$v['gid'].')'; } ?>" id="za{$v['gid']}"><img id="z{$v['gid']}" width="20px" src="__PUBLIC__/images/index/<?php if(empty($has)){echo 'info_icon_01.png';}else{echo 'like.png'; } ?>" alt="{$v['praise']}人喜欢"/></a>
+                                                <span id="zn{$v['gid']}">{$v['praise']}</span>
+                                            </li>
+                                            <li>
+                                             <a href="javascript:void(0);" onclick="comment({$v['gid']});" id="pl{$v['gid']}"><img src="__PUBLIC__/images/index/info_icon_02.png" alt=""/></a>
+                                                <span id="pn{$v['gid']}">{$v['comment']}</span>
+                                            </li>
+                                            <li>
+                                               <a href="javascript:void(0);" onclick="<?php $has=cookie('dislike'.$v['gid']); if(empty($has)){echo 'dislike('.$v['gid'].')'; } ?>" id="da{$v['gid']}"><img id="nz{$v['gid']}"  width="20px" src="__PUBLIC__/images/index/<?php if(empty($has)){echo 'info_icon_03.png';}else{echo 'dislike.png'; } ?>" alt="{$v['dislike']}人不喜欢"/></a>
+                                                <span id="dn{$v['gid']}">{$v['dislike']}</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="tmall">
+                                        <a href="#">
+                                            <img src="__PUBLIC__/images/index/tmall.png" alt=""/> {$v['shop']}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <?php } ?>
+        </ul>
+    </div>
+    <div class="page center">
+    <div style="margin: 0 auto;text-align: center; margin-top:2.5%;">{$show}</div>
+    		
+           <!--   <ul>
+               <li class="arrow"><a href="#">&lsaquo;</a></li>
+               <li class="active"><a href="#">1</a></li>
+               <li><a href="#">2</a></li>
+               <li><a href="#">3</a></li>
+               <li><a href="#">4</a></li>
+               <li><a href="#">5</a></li>
+               <li><a href="#">&hellip;</a></li>
+               <li><a href="#">11</a></li>
+               <li class="arrow"><a href="#">&rsaquo;</a></li>
+           </ul>-->
+    </div>
+</div>

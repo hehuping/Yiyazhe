@@ -16,11 +16,12 @@ use Think\Model;
 class IndexModel extends Model
 {
 	protected $tableName = 'goods';
-	public function getIndexGoods($p, $pageSize=50){
+	public function getIndexGoods($p, $class_id,$pageSize=50){
+		$condition = empty(!$class_id) ? " && class_id in ({$class_id})" : '';
 		$p *= $pageSize;
 		$goods_model = M('goods');
 		$commet_model = M('comment');
-		$count = $goods_model->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'"')->count();
+		$count = $goods_model->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'"'.$condition)->count();
 		
 		$Page       = new \Think\Page($count,$pageSize);// 实例化分页类 传入总记录数和每页显示的记录数
 		$Page->setConfig('prev', '上一页');
@@ -31,14 +32,15 @@ class IndexModel extends Model
 					->field('gid,title,class_id,price,oldprice,gurl,
 							gimage,shop,delimg,detail,yishou,praise,
 							dislike,comment')
-					->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'"')
+					->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'"'.$condition)
+					->order('gid desc')
 					->limit($p, $pageSize)
 					->select();
 		foreach ($goodsData as $k=>$v){
 			$goodsData[$k]['comments'] = $commet_model->where('gid='.$v['gid'].' && status=1')->select();
 		}
 		
-		return array($goodsData, $show);
+		return array($goodsData, $show, $count);
 	}
 	
 	public function getStart5(){
