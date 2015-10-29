@@ -82,7 +82,7 @@ class LoginController extends Controller {
 					'openid' => $opid,
 					'tokenid' => $atid,
 					'addtime' => date ( 'Y-m-d H:i:s' ),
-					'loginip' => getIP (),
+					'loginip' => get_client_ip(),
 					'status' => 1 
 			);
 			
