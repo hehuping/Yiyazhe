@@ -30,6 +30,9 @@ class LoginController extends Controller {
 			$arr['error']='用户名或者密码错误';
 			$this->ajaxReturn($arr);
 		}else{
+			$picName = $find['userpic'];
+			$picInfo = pathinfo($picName);
+			$find['userpic'] = $picInfo['filename'].'70.'.$picInfo['extension'];
 			$_SESSION['user'] = $find;
 			$data =array( 'lastlogin' => date('Y-m-d H:i:s',time()), 'uid'=>session('user.uid'));
 			$user_model->save($data);
@@ -68,8 +71,9 @@ class LoginController extends Controller {
 		$qc = new \QC ( $atid, $opid ); // 重新带参地new一次否则会丢失信息
 		$user_model = M ( 'yuser' );
 		$find = $user_model->field ( 'uid,username,nickname,figureurl,userpic' )->where ( ' openid=' . '"' . $opid . '"' )->find ();
-		if (empty ( $find ))
+		if (empty ( $find )){
 			$info = $qc->__call ( 'get_user_info' );
+		}
 		
 		if (! empty ( $info )) {
 			$data = array (
@@ -89,10 +93,16 @@ class LoginController extends Controller {
 			
 			if ($id = $user_model->add ( $data )) {
 				$user = $user_model->field ( 'uid,username,figureurl,userpic' )->where ( 'uid=' . $id )->find();
+				$picName = $find['userpic'];
+				$picInfo = pathinfo($picName);
+				$find['userpic'] = $picInfo['filename'].'70.'.$picInfo['extension'];
 				$_SESSION ['user'] = $user;
 				$this->redirect ( '/Index', '登录成功，正在跳转到首页', 0 );
 			}
 		} else {
+			$picName = $find['userpic'];
+			$picInfo = pathinfo($picName);
+			$find['userpic'] = $picInfo['filename'].'70.'.$picInfo['extension'];
 			$data =array( 'lastlogin' => date('Y-m-d H:i:s',time()), 'uid'=>session('user.uid'));
 			$user_model->save($data);
 			$_SESSION ['user'] = $find;
