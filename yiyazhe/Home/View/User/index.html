@@ -1,6 +1,6 @@
 ﻿
 
-<script type="text/javascript" src="__PUBLIC__/js/user/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/js/user/jquery.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/js/user/school.js"></script>
 <script type="text/javascript" src="__PUBLIC__/js/user/sweet-alert.js"></script>
 <script type="text/javascript" src="__PUBLIC__/js/user/zDialog.js"></script>
@@ -8,98 +8,175 @@
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/user/example.css"></link>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/user/sweet-alert.css"></link>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/user/comment.css"></link>
-	<!--  -->
-	<div id="user" class="area clear">
-		
-		<div id="userleft">
-		<div class="left-top">
-			<img src="<?php echo $showPic; ?>" width="150px" height="150px"></img>
-		</div>
-			<div class="sider-bar">
-				<ul>
-					<li class="activ"><a href="" style="color:rgb(255,255,255);">基本资料</a></li>
-					<li><a href="<?php echo U("User/comment"); ?>">我的评论</a></li>
-					<li><a href="<?php echo U("User/favorate"); ?>">我的收藏</a></li>
-					<li><a href="<?php echo U("User/beans"); ?>">我的积分</a></li>
-				</ul>
-			</div>
-		</div>
-		<div id="userright">
-			<div class="userpic">
-				<span>帐号信息</span>
-			</div>
-			<div class="userinfo1">
-				<div class="userbase">
-				<div class="nickname">Hi ~ Dear <span style="color:rgb(243, 83, 153);"><?php echo $_SESSION['user']['username']; ?></span>，欢迎回家！</div>
-					
-					<table class="table1">
-						
-						<tr>
-							<td>昵称：</td>
-							<td id="user_name"><?php echo $_SESSION['user']['username']; ?></td>
-							<td><input type="button" id="change1" onclick="open1('<?php echo $_SESSION['user']['username']; ?>',1);" class="table_peyton" value="修改"></td>
-						</tr>
-						
-						<tr>
-							<td>手机号：</td>
-							<td id="user_phone"><?php echo $_SESSION['user']['phone']; ?></td>
-							<td><input type="button" id="change2"  onclick="open2('<?php echo $_SESSION['user']['phone']; ?>',2);"  class="table_peyton" value="修改"></td>
-						</tr>
-						<tr>
-							<td id="user_qq">QQ：</td>
-							<td><?php echo $_SESSION['user']['qq']; ?></td>
-							<td><input type="button" id="change3" onclick="open1('<?php echo $_SESSION['user']['qq']; ?>',3);" class="table_peyton" value="修改"></td>
-						</tr>
-						<tr>
-							<td>性别：</td>
-							<td id="user_sixe"><?php echo $_SESSION['user']['sex']; ?></td>
-							<td><input type="button" id="change4" onclick="open3('<?php if(empty($_SESSION['user']['sex'])){echo 'null'; }else{ echo $_SESSION['user']['sex'];} ?>',4)" class="table_peyton" value="修改"></td>
-						</tr>
-						<tr>
-							<td>年龄：</td>
-							<td id="user_age"><?php echo $_SESSION['user']['age']; ?></td>
-							<td><input type="button" id="change5" onclick="open1('<?php echo $_SESSION['user']['age']; ?>',5);" class="table_peyton" value="修改"></td>
-						</tr>
-						
-						
-					</table>
-				</div>
-				<div class="container">
+<script src="__PUBLIC__/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/uploadify/uploadify.css">
 
-					
+<style>
+.container{
+    float: left;
+    width: 50%;
+    height: 100%;
+    padding:20px;
+}
+.headerpic{
+	border:1px solid #EFEFEF;
+	 margin:8px;
+	 border-radius: 10px;
+}
+</style>
+
+<!--  -->
+<div id="user" class="area clear">
+
+	<div id="userleft">
+		<div class="left-top">
+			<img src="/uploads/<?php echo $info['smallPic']; ?>" width="150px" height="150px"></img>
+		</div>
+		<div class="sider-bar">
+			<ul>
+				<li class="activ"><a href="" style="color: rgb(255, 255, 255);">基本资料</a></li>
+				<li><a href="<?php echo U("User/comment"); ?>">我的评论</a></li>
+				<li><a href="<?php echo U("User/favorate"); ?>">我的收藏</a></li>
+				<li><a href="<?php echo U("User/beans"); ?>">我的积分</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="userright">
+		<div class="userpic">
+			<span>帐号信息</span>
+		</div>
+		<div class="userinfo1">
+			<div class="userbase">
+				<div class="nickname">
+					Hi ~ Dear <span style="color: rgb(243, 83, 153);">
+						<?php echo $info['username']; ?>
+					</span>，欢迎回家！
 				</div>
-				<div class="clear"></div>
+
+				<table class="table1">
+
+					<tr>
+						<td>昵称：</td>
+						<td id="user_name">
+							<?php echo $info['username']; ?>
+						</td>
+						<td><input type="button" id="change1"
+							onclick="open1('<?php echo $info['username']; ?>',1);"
+							class="table_peyton" value="修改"></td>
+					</tr>
+
+					<tr>
+						<td>手机号：</td>
+						<td id="user_phone">
+							<?php echo $info['phone']; ?>
+						</td>
+						<td><input type="button" id="change2"
+							onclick="open2('<?php echo $info['phone']; ?>',2);"
+							class="table_peyton" value="修改"></td>
+					</tr>
+					<tr>
+						<td id="user_qq">QQ：</td>
+						<td>
+							<?php echo $info['qq']; ?>
+						</td>
+						<td><input type="button" id="change3"
+							onclick="open1('<?php echo$info['qq']; ?>',3);"
+							class="table_peyton" value="修改"></td>
+					</tr>
+					<tr>
+						<td>性别：</td>
+						<td id="user_sixe">
+							<?php echo $info['sex']; ?>
+						</td>
+						<td><input type="button" id="change4"
+							onclick="open3('<?php if(empty($info['sex'])){echo 'null'; }else{ echo $info['sex'];} ?>',4)"
+							class="table_peyton" value="修改"></td>
+					</tr>
+					<tr>
+						<td>年龄：</td>
+						<td id="user_age">
+							<?php echo $info['age']; ?>
+						</td>
+						<td><input type="button" id="change5"
+							onclick="open1('<?php echo $info['age']; ?>',5);"
+							class="table_peyton" value="修改"></td>
+					</tr>
+
+
+				</table>
 			</div>
-			<div class="userpic">
-				<span>其它资料</span>
+			<div class="container">
+				<form>
+					<div id="queue"></div>
+					<input id="file_upload" name="file_upload" type="file"
+						multiple="true">
+				</form>
+				<img class="headerpic" style="width:200px;height:200px;"  src="/uploads/{$info['userpic']}" />
+				<img class="headerpic" style="width:150px;height:150px;"  src="/uploads/{$info['smallPic']}" />
+				<img class="headerpic" style="width:70px;height:70px;"  src="/uploads/{$info['smallPic2']}" />
 			</div>
-			<div class="userinfo1" style="height:400px;">
-				<div class="school">
-					<center>
-<label for=''>学校名称：</label>
-<input type="text" id="schoolName"  value="<?php echo session('user.school'); ?>"/>
-<input type="button" id="selectSch"  class="schSelect"  value="选择"/>
-<input type="button" id="doPic" onclick="sendBack(6);"  class="schSelect"  value="确定"/>
-<div id="proSchool" class="provinceSchool">
-    <div class="title"><span>请选择学校</span></div>
-    <div class="proSelect">
-        <select></select>
-        <span>如没找到选择项，请选择其他手动填写</span>
-        <input type="text" />
-    </div>
-    <div class="schoolList">
-        <ul></ul>
-    </div>
-    <div class="button">
-        <button flag='0'>取消</button>
-        <button flag='1'>确定</button>
-    </div>
-</div>	
-</center>
-				</div>
+			<div class="clear"></div>
+		</div>
+		<div class="userpic">
+			<span>其它资料</span>
+		</div>
+		<div class="userinfo1" style="height: 400px;">
+			<div class="school">
+				<center>
+					<label for=''>学校名称：</label> <input type="text" id="schoolName"
+						value="<?php echo $info['school']; ?>" /> <input
+						type="button" id="selectSch" class="schSelect" value="选择" /> <input
+						type="button" id="doPic" onclick="sendBack(6);" class="schSelect"
+						value="确定" />
+					<div id="proSchool" class="provinceSchool">
+						<div class="title">
+							<span>请选择学校</span>
+						</div>
+						<div class="proSelect">
+							<select></select> <span>如没找到选择项，请选择其他手动填写</span> <input
+								type="text" />
+						</div>
+						<div class="schoolList">
+							<ul></ul>
+						</div>
+						<div class="button">
+							<button flag='0'>取消</button>
+							<button flag='1'>确定</button>
+						</div>
+					</div>
+				</center>
 			</div>
 		</div>
 	</div>
+</div>
+<script type="text/javascript">
+<?php $timestamp = time();?>
+	$(function() {
+	$('#file_upload').uploadify({
+		'formData'     : {
+		'timestamp' : '<?php echo $timestamp;?>',
+		'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
+		},
+		'multi'    : false,
+		'buttonText' : '头像上传',
+		'fileSizeLimit' : '500KB',
+		'fileTypeDesc' : 'Image Files',
+        'fileTypeExts' : '*.gif; *.jpg; *.png',
+		'swf'      : '__PUBLIC__/uploadify/uploadify.swf',
+		'uploader' : '/User/uploadify',
+		'onUploadSuccess' : function(file, data, response) {
+			var file=data;
+			var realname=file.substring(0,file.lastIndexOf(".")); 
+			var fileExt=(/[.]/.exec(file)) ? /[^.]+$/.exec(file.toLowerCase()) : '';  
+			$(".container").children()[1].src = '/uploads/'+data;
+			$(".container").children()[2].src = '/uploads/'+realname+'150.'+fileExt;
+			$(".container").children()[3].src = '/uploads/'+realname+'70.'+fileExt;
+			window.location.reload(true);
+	        
+	    }
+	});
+});
+</script>
 <!-- 昵称修改 -->
 <script type="text/javascript">
 

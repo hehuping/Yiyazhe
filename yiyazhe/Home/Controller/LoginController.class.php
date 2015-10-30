@@ -19,7 +19,7 @@ class LoginController extends Controller {
 		$password=md5(I('password'));
 		$code = I('code');
 		$user_model = M('yuser');
-		$find = $user_model->field('uid,username,figureurl,base64pic,school,qq,age,phone,sex')->where('phone="'.$username.'" && password="'.$password.'"')->find();
+		$find = $user_model->field('uid,username,figureurl,userpic')->where('phone="'.$username.'" && password="'.$password.'"')->find();
 		 
 		if(!check_verify($code)){
 			$arr['s']=1;
@@ -73,6 +73,7 @@ class LoginController extends Controller {
 		
 		if (! empty ( $info )) {
 			$data = array (
+					'username' => $info['nickname'],
 					'nickname' => $info ['nickname'],
 					'sex' => $info ['gender'],
 					'province' => $info ['province'],
@@ -87,7 +88,7 @@ class LoginController extends Controller {
 			);
 			
 			if ($id = $user_model->add ( $data )) {
-				$user = $user_model->field ( 'uid,nickname,figureurl' )->where ( 'uid=' . $id )->select ();
+				$user = $user_model->field ( 'uid,username,figureurl,userpic' )->where ( 'uid=' . $id )->select ();
 				$_SESSION ['user'] = $user;
 				$this->redirect ( '/Index', '登录成功，正在跳转到首页', 0 );
 			}
