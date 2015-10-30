@@ -151,7 +151,7 @@
     width: 400px;
     /* border: none; */
     margin: none;
-    line-height: 20px;
+    line-height: 40px;
     padding: 0px;
 }
 .table1 td {
@@ -160,7 +160,7 @@
 }
 #user {
 	 margin: 0 auto;
-	background: #f6f6f6;
+	
 	width: 1200px;
 	margin-top: 30px;
 }
@@ -180,6 +180,11 @@
 	width:150px;
 	height:150px;
 	border: 1px solid #ECDDDD;
+	border-radius: 20px;
+}
+
+.left-top img{
+	border-radius: 20px;
 }
 
 #userright {
@@ -195,7 +200,7 @@
 	margin-top: 20px;
 	width: 162px;
 	/*border: 1px solid #e2e2e2;*/
-	padding: 12px 20px 47px 15px;
+	padding: 12px 20px 7px 15px;
 	float: left;
 	background-color: #ffffff;
 }

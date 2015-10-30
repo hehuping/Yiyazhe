@@ -175,14 +175,15 @@
                 <li class="line"></li>
                 <li><a href="/Login">登录</a>&nbsp;&nbsp;<a href="/Signup">免费注册</a></li>
             <?php }else{ ?>
+            	<li class="active"><a href="/user" target="blanck"><img width="25px;" src="/uploads/<?php echo session('user.userpic'); ?>" /></a></li>
             	<li class="active"><a href="/User" target="blanck" style="color:red"><?php echo session('user.username'); ?></a></li>
             	<li class="active"><a href="/Login/loginout" target="blanck" style="color:red">退出</a></li>
             <?php } ?>
             
                 <li class="line"></li>
-                <li class="active"><a href="#">我的评论</a></li>
+                <li class="active"><a href="/user/comment">我的评论</a></li>
                 <li class="line"></li>
-                <li class="active"><a href="#">我的收藏</a></li>
+                <li class="active"><a href="/user/favorate">我的收藏</a></li>
                 <li class="line"></li>
                 <li><a href="#">联系客服</a></li>
                 <li class="line"></li>

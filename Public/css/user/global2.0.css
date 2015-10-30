@@ -19,7 +19,6 @@
 .list14 li,.list12 li{padding:3px 0;color:#333;font-size:12px;line-height:16px;text-align:left;}
 .list14 li{padding:4px 0;font-size:14px;}
 /* 浮动属性 */
-.left,.center,.l,.right,.r{display:inline;float:left;}
 .right,.r{float:right;}
 .fontArial{font-family:'Arial'}
 .b{font-weight:bold;}/* 加粗 */

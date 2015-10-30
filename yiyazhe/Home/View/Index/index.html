@@ -204,13 +204,15 @@
                 <li class="line"></li>
                 <li><a href="/Login">登录</a>&nbsp;&nbsp;<a href="/Signup">免费注册</a></li>
             <?php }else{ ?>
-            	<li class="active"><a href="/User" target="blanck" style="color:red"><?php echo session('user.username'); ?></a></li>
+           		 <li class="active"><a href="/user" target="blanck"><img width="25px;" src="/uploads/<?php echo session('user.userpic'); ?>" /></a></li>
+            	<li class="active"><a href="/User" target="blanck" style="color:#F50505"><?php echo session('user.username'); ?></a></li>
+           		<li class="active"><a href="/Login/loginout" target="blanck" style="color:#F50505">退出</a></li>
             <?php } ?>
             
                 <li class="line"></li>
-                <li class="active"><a href="#">我的评论</a></li>
+                <li class="active"><a href="/user/comment">我的评论</a></li>
                 <li class="line"></li>
-                <li class="active"><a href="#">我的收藏</a></li>
+                <li class="active"><a href="/user/favorate">我的收藏</a></li>
                 <li class="line"></li>
                 <li><a href="#">联系客服</a></li>
                 <li class="line"></li>
@@ -534,10 +536,10 @@
             <a href="#"><img src="__PUBLIC__/images/index/float_01.png" alt=""/><span>用户</span></a>
         </li>
         <li>
-            <a href="#"><img src="__PUBLIC__/images/index/float_02.png" alt=""/><span>收藏</span></a>
+            <a href="/user/favorate"><img src="__PUBLIC__/images/index/float_02.png" alt=""/><span>收藏</span></a>
         </li>
         <li>
-            <a href="#"><img src="__PUBLIC__/images/index/float_03.png" alt=""/><span>评论</span></a>
+            <a href="/user/comment"><img src="__PUBLIC__/images/index/float_03.png" alt=""/><span>评论</span></a>
         </li>
         <li id="weibo">
       	  <img class="weibocode" src="__PUBLIC__/images/index/qrcode.png"  />

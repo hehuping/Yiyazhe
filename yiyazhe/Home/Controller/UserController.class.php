@@ -288,6 +288,7 @@ class UserController extends Controller {
 		$data['userpic'] = $imageName.'.'.$info['extension'];
 		$data['uid'] = is_login();
 		if($model->save($data)){
+			session('user.userpic',$data['userpic']);
 			echo $imageName.'.'.$info['extension'];
 		}
 		

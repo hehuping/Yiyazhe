@@ -23,6 +23,9 @@
 	 margin:8px;
 	 border-radius: 10px;
 }
+.button-class{
+	background-color:red;
+}
 </style>
 
 <!--  -->
@@ -158,7 +161,10 @@
 		'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
 		},
 		'multi'    : false,
-		'buttonText' : '头像上传',
+		
+		 'buttonImage' : '/Public/images/user/uploads.png',
+		 'buttonText' : '头像上传',
+		 'buttonClass' : 'button-class',
 		'fileSizeLimit' : '500KB',
 		'fileTypeDesc' : 'Image Files',
         'fileTypeExts' : '*.gif; *.jpg; *.png',
@@ -253,7 +259,7 @@ function open2(name,id){
 	diag.Height = 70;
 	diag.Title = "起个响亮的名字吧！";
 	diag.InnerHtml='<div style="text-align:center;color:red;font-size:14px;margin-top:10px;"><input style="width:200px;border: 1px solid #d2d2d2;padding: 2px 3px;line-height: 30px;border-radius: 5px; margin-top:-10px;" type="text" value="'+name+
-	'" id="pemail" /> <input style="width:80px;border: 1px solid #d2d2d2;padding: 2px 3px;line-height: 30px;border-radius: 5px; margin-top:-10px;" type="text" id="validCode" />'+
+	'" id="pemail" /> <input style="width:90px;border: 1px solid #d2d2d2;padding: 2px 3px;line-height: 30px;border-radius: 5px; margin-top:10px;" type="text" id="validCode" />'+
 	'<input type="button" class="table_peyton" style="float:none;width:90px;" value="发送验证码" id="btnSendCode" onclick="sendMessage();" />'+'</div>'
 	diag.OKEvent = function(){doCode();swal("操作成功", "一次完美的修改", "success");diag.close();window.location.href="/user";/*var v=doCode();if(v==1){swal("操作成功", "恭喜你，操作成功", "success");diag.close();window.location.href="/user";}*/};
 	diag.show();

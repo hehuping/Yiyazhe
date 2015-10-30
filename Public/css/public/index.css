@@ -24,7 +24,7 @@ a:active,a:focus {
 
 .top_navbar>li{
     float: left;
-    margin:5px 0;
+    margin:3px 0;
     padding:0 10px;
 }
 
@@ -447,7 +447,7 @@ a:active,a:focus {
     min-width: 1200px;
     padding-bottom: 50px;
     overflow: hidden;
-    /*padding-top: 30px;*/
+    padding-top: 30px;
 }
 .footer_up{
     background: #fb7c84;
