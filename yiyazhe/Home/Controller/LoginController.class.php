@@ -67,7 +67,7 @@ class LoginController extends Controller {
 		$_SESSION ['state'] = $state;
 		$qc = new \QC ( $atid, $opid ); // 重新带参地new一次否则会丢失信息
 		$user_model = M ( 'yuser' );
-		$find = $user_model->field ( 'uid,nickname,figureurl' )->where ( ' openid=' . '"' . $opid . '"' )->find ();
+		$find = $user_model->field ( 'uid,username,nickname,figureurl,userpic' )->where ( ' openid=' . '"' . $opid . '"' )->find ();
 		if (empty ( $find ))
 			$info = $qc->__call ( 'get_user_info' );
 		
