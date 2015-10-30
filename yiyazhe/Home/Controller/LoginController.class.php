@@ -88,7 +88,7 @@ class LoginController extends Controller {
 			);
 			
 			if ($id = $user_model->add ( $data )) {
-				$user = $user_model->field ( 'uid,username,figureurl,userpic' )->where ( 'uid=' . $id )->select ();
+				$user = $user_model->field ( 'uid,username,figureurl,userpic' )->where ( 'uid=' . $id )->find();
 				$_SESSION ['user'] = $user;
 				$this->redirect ( '/Index', '登录成功，正在跳转到首页', 0 );
 			}
