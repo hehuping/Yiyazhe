@@ -162,7 +162,7 @@ class IndexController extends Controller {
 	 * */
 	private function valideContent($content){
 		$content = trim($content);
-		$strlen = mb_strlen($content);
+		$strlen = mb_strlen($content,'utf-8');
 		if($strlen>20 || $strlen<3){
 			return false;
 		}else{
