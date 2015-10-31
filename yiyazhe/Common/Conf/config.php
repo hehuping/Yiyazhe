@@ -36,4 +36,11 @@ return array (
 		
 		//开启布局模块
 		'LAYOUT_ON'=>true,
+		
+		//PHPMailer配置使用
+		'MAIL_ADDRESS'=>'user@yiyazhe.com', // 邮箱地址
+		'MAIL_LOGINNAME'=>'user@yiyazhe.com', // 邮箱登录帐号
+		'MAIL_SMTP'=>'smtp.qq.com', // 邮箱SMTP服务器
+		'MAIL_PASSWORD'=>'Aahehuping123', // 邮箱密码
+		// 'SHOW_PAGE_TRACE'=>true,
 );

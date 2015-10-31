@@ -109,7 +109,7 @@ class LoginController extends Controller {
 			$this->redirect ( '/Index', '登录成功，正在跳转到首页', 0 );
 		}
 	}
-	
+	//生成验证码
 	public function getVerify(){
 		$config =    array(
 				'fontSize'    =>    30,    // 验证码字体大小
@@ -121,9 +121,13 @@ class LoginController extends Controller {
 		$Verify->useImgBg = true;
 		$Verify->entry();
 	}
-	
+	//退出登录
 	public function loginOut(){
 		session('user','null');
 		$this->redirect('index');
+	}
+	//发送验证码邮件
+	public function sendEmail(){
+		SendMail('hehuping@126.com', '咿呀折用户注册测试', '欢迎注册咿呀折，在这里你将发现我们的乐趣', './uploads/default.png');
 	}
 }
