@@ -69,7 +69,7 @@ function get_client_ip2($type = 0) {
 //邮件发送函数
 function SendMail($address,$title,$message,$attachment)
 {
-	import('ORG.Net.PHPMailerAutoload');
+	import('Org.Net.PHPMailerAutoload');
 	$mail=new PHPMailer();
 	// 设置PHPMailer使用SMTP服务器发送Email
 	$mail->IsSMTP();
