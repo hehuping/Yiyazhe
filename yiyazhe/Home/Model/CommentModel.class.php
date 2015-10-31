@@ -32,7 +32,7 @@ class CommentModel extends Model{
 		$p *= 20;
 		$comment =  array();
 		$model = M();
-		$sql = "select cid from comment where uid={$uid} && status=0 order by addtime asc limit {$p},20";
+		$sql = "select cid from comment where uid={$uid} && status=1 order by addtime asc limit {$p},20";
 		$sqlCount = "select count(*) from comment where uid={$uid} && status=1 order by addtime asc";
 		$commentId = $model->query($sql);
 		$countComment = $model->query($sqlCount);
