@@ -33,7 +33,7 @@ class CommentModel extends Model{
 		$comment =  array();
 		$model = M();
 		$sql = "select cid from comment where uid={$uid} && status=0 order by addtime asc limit {$p},20";
-		$sqlCount = "select count(*) from comment where uid={$uid} && status=0 order by addtime asc";
+		$sqlCount = "select count(*) from comment where uid={$uid} && status=1 order by addtime asc";
 		$commentId = $model->query($sql);
 		$countComment = $model->query($sqlCount);
 		$count = $countComment[0]['count(*)'];// 查询满足要求的总记录数
