@@ -7,11 +7,6 @@ class SignupController extends Controller {
     	$this->display();
     }
     
-  
-    /*
-     * register  注册页面
-     * @author:hehuping
-     
     public function doSignup(){
     	$arr = array('s'=>0, 'error'=>'');
     	//获取参数
@@ -46,7 +41,6 @@ class SignupController extends Controller {
              );
     		// 注册用户 
              $model = D('Yuser');
-    		
     		if($data2 =  $model->create($data)) { 
     			if($model->add($data2)){
     				$this->ajaxReturn($arr);
@@ -56,12 +50,11 @@ class SignupController extends Controller {
     			$arr['error'] = $model->getError();
     			$arr['code'] = $code;
     			$this->ajaxReturn($arr);
-    			//$this->error($this->showRegError($uid));
     		}
-    	} else { //显示注册表单
+    	} else {
     		$this->error("非法访问",'Index/index');
     	}
-    }*/
+    }
     
     //发送验证码邮件
     public function sendVerifyEmail(){
