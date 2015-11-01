@@ -124,7 +124,8 @@ class LoginController extends Controller {
 	
 	//退出登录
 	public function loginOut(){
-		session('user','null');
+		//session('user','null');
+		unset($_SESSION['user']);
 		$this->redirect('index');
 	}
 }
