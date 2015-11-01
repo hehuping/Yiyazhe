@@ -101,7 +101,7 @@ class UserController extends Controller {
 				$this->ajaxReturn($arr);
 			}else{
 				$arr['s']=1;
-				$arr['error']="数据错误s";
+				$arr['error']="重复或者数据错误";
 				$this->ajaxReturn($arr);
 			}
 		}else{
