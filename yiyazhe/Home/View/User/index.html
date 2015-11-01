@@ -71,10 +71,10 @@
 					<tr>
 						<td>手机号：</td>
 						<td id="user_phone">
-							<?php echo $info['phone']; ?>
+							<?php echo $info['cellphone']; ?>
 						</td>
 						<td><input type="button" id="change2"
-							onclick="open2('<?php echo $info['phone']; ?>',2);"
+							onclick="open2('<?php echo $info['cellphone']; ?>',2);"
 							class="table_peyton" value="修改"></td>
 					</tr>
 					<tr>
@@ -188,31 +188,6 @@
 
 var showPic = '<?php echo $showPic; ?>';
 
-function doChangePic(){
-	var pimage =  document.getElementById("endPic").src;
-    if(pimage == showPic){
-    	sweetAlert("出错喽", "拖动图片才能修改哦","warning");
-    	return false;
-    }else{
-    	$.post("/User/doChangePic",
-  			  {
-  			    "image":pimage,
-  			  },
-  			  function(data){
-  			    if(data.s == 0){
-  			    	sweetAlert("修改成功", "果然是一张美美滴头像！",'success');
-  			    	//location.reload(true);
-  			    }else{
-  			    	
-  			    	sweetAlert("出错喽", "拖动图片才能修改哦","warning");
-  			    }
-  			  },"json");
-    }
-    
-    
-}
-
-
 var ffwe = false;
 //在外面先实例化一个对象
 var diag = new Dialog();
@@ -258,16 +233,16 @@ function open2(name,id){
 	diag.Width = 300;
 	diag.Height = 70;
 	diag.Title = "起个响亮的名字吧！";
-	diag.InnerHtml='<div style="text-align:center;color:red;font-size:14px;margin-top:10px;"><input style="width:200px;border: 1px solid #d2d2d2;padding: 2px 3px;line-height: 30px;border-radius: 5px; margin-top:-10px;" type="text" value="'+name+
-	'" id="pemail" /> <input style="width:90px;border: 1px solid #d2d2d2;padding: 2px 3px;line-height: 30px;border-radius: 5px; margin-top:10px;" type="text" id="validCode" />'+
-	'<input type="button" class="table_peyton" style="float:none;width:90px;" value="发送验证码" id="btnSendCode" onclick="sendMessage();" />'+'</div>'
-	diag.OKEvent = function(){doCode();swal("操作成功", "一次完美的修改", "success");diag.close();window.location.href="/user";/*var v=doCode();if(v==1){swal("操作成功", "恭喜你，操作成功", "success");diag.close();window.location.href="/user";}*/};
+	diag.InnerHtml='<div style="text-align:center;color:red;font-size:14px;margin-top:10px;"><input style="width:200px;border: 1px solid #d2d2d2;padding: 2px 3px;line-height: 30px;border-radius: 5px; margin-top:10px;" type="text" value="'+name+
+	'" id="pemail" />'+
+	''+'</div>'
+	diag.OKEvent = function(){doChange(2);swal("操作成功", "一次完美的修改", "success");diag.close();window.location.href="/user";/*var v=doCode();if(v==1){swal("操作成功", "恭喜你，操作成功", "success");diag.close();window.location.href="/user";}*/};
 	diag.show();
 
 }
 
 function sendBack(id){
-	if(id == 2 && checkPemail() && checkValidCode()){
+	if(id == 2 && checkPemail()){
 		doCode();
 	}else if(id != 2){
 		doChange(id);
@@ -331,12 +306,35 @@ function　doChange(type){
 			    	if(diag.TID != null){
 			    		diag.close();
 			    	}
-			    	sweetAlert("修改失败", '错误原因：“已存在”','error');
+			    	sweetAlert("修改失败", '错误原因：“'+data.error+'”','error');
 			    	setTimeout("location.reload(true)",1000);
 			    }
 			  },"json");
 	return result;
 }
+
+/*
+手机修改
+*/
+function doCode(){
+	 var name = $("#pemail").val();
+			$.post("/User/doCode",
+					  {
+					    "phone":name,
+					    "type":2,
+					  },
+					  function(data){
+					    if(data.s == 0){
+					    	diag.close();
+					    	sweetAlert("修改成功", "",'success');
+					    	setTimeout("location.reload(true)",1000);
+					    }else{
+					    	sweetAlert("修改失败", '错误原因：“'+data.error+'”','error');
+					    	setTimeout("location.reload(true)",1000);
+					    }
+					  },"json");
+		return ffwe;
+	}
 
 /*检查手机号*/
  function checkPemail(){
@@ -379,7 +377,6 @@ var count = 60; //间隔函数，1秒执行
 var curCount;//当前剩余秒数
 
 function sendMessage() {
-	//alert(90909);
   if(!checkPemail()){
 	  return false;
   }
@@ -413,57 +410,7 @@ function SetRemainTime() {
             }
        }
        
-/*
- * 验证码检查
- */
- 
- function checkValidCode(){
-	   var code = $("#validCode").val();
-	   if(code == ""){
-		   alert('验证码要填写哟');
-	        return false;
 
-	      }else if(code.length < 6){
-
-	    	alert('验证码应该是6位数哟');
-		        return false;
-	      }
-	   return true;
-	   
- }
- 
- /*
- 手机修改发送数据验证
- */
-  
- function toReturn(value){
-	 ffwe = value;
- }
-
- function doCode(){
-	 var name = $("#pemail").val();
-	 var codes = $("#validCode").val();
-			$.post("/User/doCode",
-					  {
-					    "phone":name,
-					    "code":codes,
-					    "type":2,
-					  },
-					  function(data){
-					    if(data.s == 1){
-					    	alert("验证码错误");
-					    	
-					    }else if(data.s == 2){
-					    	alert("手机号重复");
-					    }else{
-					    	alert("修改成功");
-					    	diag.close();
-					    	location.reload(true);
-					    }
-					  },"json");
-		return ffwe;
-	}
- 
 </script>
 <!-- 学校选择插件 -->
 <script type="text/javascript">

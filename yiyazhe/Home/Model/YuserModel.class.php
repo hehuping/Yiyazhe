@@ -34,15 +34,23 @@ class YuserModel extends Model
 
     /* 用户模型自动验证 */
     protected $_validate = array(
-        /* 验证用户名 
-        array('username', '4,32', -1, self::EXISTS_VALIDATE, 'length'), //用户名长度不合法
-        array('username', 'checkDenyMember', -2, self::EXISTS_VALIDATE, 'callback'), //用户名禁止注册
-        array('username', 'checkUsername', -20, self::EXISTS_VALIDATE, 'callback'),
-        array('username', '', -3, self::EXISTS_VALIDATE, 'unique'), //用户名被占用
-        */
-
+    	/* 验证用户名 */
+        array('username', '3,10', "昵称长度必须在3-10之间", 0, 'length',4), //用户名长度不合法
+        array('username', 'checkUsername', "昵称中不能包含空格", 0, 'callback',4),//用户名是否有空格
+        array('username', '', "昵称已被占用", 0, 'unique',4), //用户名被占用
+    	/* 验证qq */
+    	array('qq', '4,11', "QQ长度必须在4-12之间", 0, 'length',4), //长度不合法
+    	/* 验证年龄 */
+    	array('age', '1,3', '年龄不合法', 0, 'length',4), //长度不合法
+    	/* 验证学校 */
+    	array('school', '4,20', "学校名长度不合法", 0, 'length',4), //长度不合法
+    	/* 验证性别 */
+    	array('sex', '1', "性别不合法",0, 'length',4), //长度不合法
         /* 验证密码 */
-        array('password', '0,30', -4, self::EXISTS_VALIDATE, 'length'), //密码长度不合法
+        array('password', '6,30', "密码长度不合法", 0, 'length'), //密码长度不合法
+    	array('password', 'checkUsername', "密码中不能包含空格", 0, 'callback'),//用户名是否有空格
+    	/*验证手机号*/
+    	array('cellphone', '/^(1[3|4|5|8])[0-9]{9}$/', "手机号格式不正确", 0, 4),
         
     	/* 验证验证码*/
     	//array('verify_code', '6', -51, self::EXISTS_VALIDATE, 'length'), //验证码长度不合法
@@ -55,10 +63,11 @@ class YuserModel extends Model
         array('email', '', -8, self::EXISTS_VALIDATE, 'unique'), //邮箱被占用
         */
 
-        /* 验证手机号码 */
-        array('phone', '/^(1[3|4|5|8])[0-9]{9}$/', -9, self::EXISTS_VALIDATE), //手机格式不正确 TODO:
-        array('phone', 'checkDenyMobile', -10, self::EXISTS_VALIDATE, 'callback'), //手机禁止注册
-        array('phone', '', -11, self::EXISTS_VALIDATE, 'unique'), //手机号被占用
+        /* 验证登录号 */
+        //array('phone', '/^(1[3|4|5|8])[0-9]{9}$/', -9, self::EXISTS_VALIDATE), //手机格式不正确 TODO:
+       // array('phone', 'checkDenyMobile', -10, self::EXISTS_VALIDATE, 'callback'), //手机禁止注册
+        array('phone', '', "此账号已被注册，请更换！", self::EXISTS_VALIDATE, 'unique'), //手机号被占用
+    	//array('phone', 'email', -5, self::EXISTS_VALIDATE), //邮箱格式不正确
     );
 
     /* 用户模型自动完成 */
@@ -99,15 +108,6 @@ class YuserModel extends Model
         return true;
     }
 
-    /**
-     * 检测邮箱是不是被禁止注册
-     * @param  string $email 邮箱
-     * @return boolean       ture - 未禁用，false - 禁止注册
-     */
-    protected function checkDenyEmail($email)
-    {
-        return true; //TODO: 暂不限制，下一个版本完善
-    }
 
     protected function checkUsername($username)
     {
@@ -116,33 +116,15 @@ class YuserModel extends Model
         if (strpos($username, ' ') !== false) {
             return false;
         }
-        preg_match("/^[a-zA-Z0-9_]{4,32}$/", $username, $result);
+        /*preg_match("/^[a-zA-Z0-9_]{4,32}$/", $username, $result);
 
         if (!$result) {
             return false;
-        }
+        }*/
         return true;
     }
 
 
-    /**
-     * 检测手机是不是被禁止注册
-     * @param  string $mobile 手机
-     * @return boolean        ture - 未禁用，false - 禁止注册
-     */
-    protected function checkDenyMobile($mobile)
-    {
-        return true; //TODO: 暂不限制，下一个版本完善
-    }
-
-    /**
-     * 根据配置指定用户状态
-     * @return integer 用户状态
-     */
-    protected function getStatus()
-    {
-        return true; //TODO: 暂不限制，下一个版本完善
-    }
 
     /**
      * 注册一个新用户
@@ -584,7 +566,10 @@ class YuserModel extends Model
         $error = $error_code == null ? $this->error : $error_code;
         switch ($error) {
             case -1:
-                $error = '用户名长度必须在32个字符以内！';
+                $error = '昵称长度必须在3-8个字符以内！';
+                break;
+            case -20:
+                $error = '昵称不能包含空格！';
                 break;
             case -2:
                 $error = '用户名被禁止注册！';
@@ -639,6 +624,9 @@ class YuserModel extends Model
                 break;
             case -51:
                 $error = '验证码长度不合法';
+                break;
+            case -52:
+                $error = '长度不合法';
                 break;
 
             default:

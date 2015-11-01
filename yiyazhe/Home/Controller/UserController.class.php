@@ -15,7 +15,7 @@ class UserController extends Controller {
 		//layout(false);
 		$user_model = M('yuser');
 		$showPic = '';
-		$find = $user_model->field('userpic,school,age,sex,qq,phone,username')->where('uid='.session('user.uid'))->find();
+		$find = $user_model->field('userpic,school,age,sex,qq,cellphone,username')->where('uid='.session('user.uid'))->find();
 		
 		$picName = $find['userpic'];
 		$picInfo = pathinfo($picName);
@@ -59,11 +59,16 @@ class UserController extends Controller {
 				$data = array('qq'=>$name,'uid'=>session('user.uid'));
 				$this->updataDate($data);
 				break;
+			case 2:
+				$data = array('cellphone'=>$name,'uid'=>session('user.uid'));
+				$this->updataDate($data);
+				break;
 			case 4:
 				$data = array('sex'=>$name,'uid'=>session('user.uid'));
 				$this->updataDate($data);
 				break;
 			case 5:
+				$name = abs($name);
 				$data = array('age'=>$name,'uid'=>session('user.uid'));
 				$this->updataDate($data);
 				break;
@@ -85,14 +90,24 @@ class UserController extends Controller {
 	//入库函数
 	private function updataDate($data){
 		$arr = array('s'=>0,'error'=>'');
-		$user_model = M('yuser');
-		if($user_model->save($data)){
-			$find = $user_model->field('uid,username,figureurl,userpic')->where('uid='.session('user.uid'))->find();
-			session('user',$find);	
-			$this->ajaxReturn($arr);
+		$user_model = D('yuser');
+		if($user_model->create($data,4)){
+			if($user_model->save($data)){
+				$find = $user_model->field('uid,username,figureurl,userpic')->where('uid='.session('user.uid'))->find();
+				$picName = $find['userpic'];
+				$picInfo = pathinfo($picName);
+				$find['userpic'] = $picInfo['filename'].'70.'.$picInfo['extension'];
+				session('user',$find);	
+				$this->ajaxReturn($arr);
+			}else{
+				$arr['s']=1;
+				$arr['error']="数据错误s";
+				$this->ajaxReturn($arr);
+			}
 		}else{
-			$arr['s']=1;
-			$arr['error']="数据错误";
+			$arr['s'] = 3;
+			$arr['error'] = $user_model->getError();
+			$arr['code'] = $code;
 			$this->ajaxReturn($arr);
 		}
 	}
@@ -102,18 +117,15 @@ class UserController extends Controller {
 		
 		$user_model = M('yuser');
 		$phone = I('phone');
-		$code = I('code');
 		
 		$data = array(
-				'phone'=>$phone,
+				'cellphone'=>$phone,
 				'uid'=>session('user.uid'),
 		);
 		
-		if($code !== session('Code')){
-			$arr['s']=1;
-			$arr['error']='验证码敲错喽';
-			$this->ajaxReturn($arr);
-		}else if(!$user_model->save($data)){
+		$this->updataDate($data);
+		
+		/*if(!$user_model->save($data)){
 			$arr['s']=2;
 			$arr['error']='数据错误';
 			$this->ajaxReturn($arr);
@@ -121,7 +133,7 @@ class UserController extends Controller {
 			$find = $user_model->field('uid,username,figureurl,userpic')->where('uid='.session('user.uid'))->find();
 			session('user',$find);
 			$this->ajaxReturn($arr);
-		}
+		}*/
 	}
 	
 	public function doChangePic(){
@@ -293,5 +305,78 @@ class UserController extends Controller {
 		}
 		
 	}
+	
+ public function showRegError($code = 0)
+    {
+    	switch ($code) {
+    		 case -1:
+                $error = '昵称长度必须在3-8个字符以内！';
+                break;
+            case -20:
+                $error = '昵称不能包含空格！';
+                break;
+            case -2:
+                $error = '用户名被禁止注册！';
+                break;
+            case -3:
+                $error = '用户名被占用！';
+                break;
+            case -4:
+                $error = '密码长度必须在6-30个字符之间！';
+                break;
+            case -41:
+                $error = '用户旧密码不正确';
+                break;
+            case -5:
+                $error = '邮箱格式不正确！';
+                break;
+            case -6:
+                $error = '邮箱长度必须在1-32个字符之间！';
+                break;
+            case -7:
+                $error = '邮箱被禁止注册！';
+                break;
+            case -8:
+                $error = '邮箱被占用！';
+                break;
+            case -9:
+                $error = '手机格式不正确！';
+                break;
+            case -10:
+                $error = '手机被禁止注册！';
+                break;
+            case -11:
+                $error = '手机号被占用！';
+                break;
+            case -12:
+                $error = '用户名必须以中文或字母开始，只能包含拼音数字，字母，汉字！';
+                break;
+            case -31:
+                $error = '昵称禁止注册';
+                break;
+            case -33:
+                $error = '昵称长度不合法';
+                break;
+            case -32:
+                $error = '昵称不合法';
+                break;
+            case -30:
+                $error = '昵称已被占用';
+                break;
+            case -50:
+                $error = '验证码错误';
+                break;
+            case -51:
+                $error = '验证码长度不合法';
+                break;
+            case -52:
+                $error = '长度不合法';
+                break;
+
+            default:
+                $error = '未知错误';
+    	}
+    	return $error;
+    }
 	
 }

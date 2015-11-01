@@ -3,46 +3,11 @@ namespace Home\Controller;
 use Think\Controller;
 class SignupController extends Controller {
     public function index(){
+    	layout(false);
     	$this->display();
     }
     
-    public function doSignups(){
-    	$arr = array('s'=>0, 'error'=>'');
-    	$phone = I('post.phone');
-    	$code = I('post.code');
-    	$password = I('post.password');
-    	
-    	$data = array(
-    			'phone'=>$phone,
-    			'password'=>md5($password),
-    	);
-    	
-    	$user_model = M('yuser');
-    	$have = $user_model->where('phone='.$phone)->find();   	
-    	if($code != session('Code')){
-    		$arr['s'] = 3;
-    		$arr['error'] = "姐（哥），手机上的验证码敲错啦";
-    		$arr['code'] = $code;
-    		$this->ajaxReturn($arr);
-    	}else if(!empty($have)){
-    		$arr['s'] = 1;
-    		$arr['error'] = "姐（哥），这个手机已注册过了";
-    	    $this->ajaxReturn($arr);
-    	}else{
-    		if($uid = $user_model->add($data)){
-    			$find = $user_model->field('uid,username,figureurl,base64pic,school,qq,age,phone,sex')->where('uid='.$uid)->find();
-    			session('user',$find);
-    			$this->ajaxReturn($arr);
-    		}else{
-    			$arr['s'] = 2;
-    			$arr['error'] = "姐（哥），我们服务器出问题了，sorry";
-    			$this->ajaxReturn($arr);
-    			
-    		}
-    	}
-    	
-    }
-    
+  
     /**
      * register  注册页面
      * @author:hehuping
@@ -52,27 +17,44 @@ class SignupController extends Controller {
     	$arr = array('s'=>0, 'error'=>'');
     	//获取参数
     	$aUsername = I('post.phone');
-    	//$aNickname = I('post.nickname', '', 'op_t');
     	$aPassword = I('post.password');
     	$aVerify = I('post.code');
-    
+    	$pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
+    	if(!preg_match($pattern, $aUsername)){
+    		$arr['s'] = 3;
+    		$arr['error'] = "邮箱格式错误";
+    		$arr['code'] = $code;
+    		$this->ajaxReturn($arr);
+    		die();
+    	}
     	if (IS_POST) { //注册用户
     		/* 检测验证码 */
-    	 	 if ($aVerify != session('Code')) {
+    		$vemail = md5(md5(md5($aUsername)).md5(md5($aUsername)));
+    		$vcode  = md5(md5(md5($aVerify).md5($aVerify)).md5($aVerify));
+    			
+    	 	 if (empty(cookie($vemail)) || cookie($vemail) != $vcode) {
                  $arr['s'] = 3;
-    			$arr['error'] = "姐（哥），手机上的验证码敲错啦";
+    			$arr['error'] = "姐（哥），邮箱验证码错啦";
     			$arr['code'] = $code;
     			$this->ajaxReturn($arr);
+    			die();
              }
     		
+             $data = array(
+             		'username' => $aUsername,
+             		'phone' => $aUsername,
+             		'password' => $aPassword,
+             );
     		/* 注册用户 */
              $model = D('Yuser');
-    		$uid = $model->register($aUsername, $aPassword, $aVerify, $aUnType);
-    		if (0 < $uid) { //注册成功
-    			$this->ajaxReturn($arr);
+    		
+    		if($data2 =  $model->create($data)) { 
+    			if($model->add($data2)){
+    				$this->ajaxReturn($arr);
+    			}
     		} else { //注册失败，显示错误信息
     			$arr['s'] = 3;
-    			$arr['error'] = $this->showRegError($uid);
+    			$arr['error'] = $model->getError();
     			$arr['code'] = $code;
     			$this->ajaxReturn($arr);
     			//$this->error($this->showRegError($uid));
@@ -93,6 +75,30 @@ class SignupController extends Controller {
     	echo session('Code');
     }
     
+    //发送验证码邮件
+    public function sendVerifyEmail(){
+    	if(IS_AJAX){
+	    	$email = I('email');
+	    	$pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
+	    	$str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+	    	$str = str_shuffle($str);
+	    	$code = substr($str, 0, 6);
+	    	if(preg_match($pattern, $email)){
+	    		if(SendMail($email, '咿呀折用户注册测试', "<h3>欢迎注册咿呀折，在这里你将发现我们的乐趣以及我们的实惠！您的验证码是：<h3><strong>{$code}</strong>请在3分钟内输入验证码。", '')){
+	    			$vcode = md5(md5(md5($code).md5($code)).md5($code));
+	    			$vemail = md5(md5(md5($email)).md5(md5($email)));
+	    			cookie($vemail,$vcode,180);
+	    		}
+	    	}else{
+	    		$this->error('非法邮箱');
+	    	}
+    	}else{
+    		$this->error("非法访问");
+    	}
+    
+    }
+    
+
     /**
      * 获取用户注册错误信息
      * @param  integer $code 错误编码
@@ -123,7 +129,7 @@ class SignupController extends Controller {
     			$error = '邮箱被禁止注册！';
     			break;
     		case -8:
-    			$error = '邮箱被占用！';
+    			$error = '邮箱被占用！请直接登录';
     			break;
     		case -9:
     			$error = '手机格式不正确！';
