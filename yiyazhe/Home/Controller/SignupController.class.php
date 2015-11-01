@@ -11,9 +11,8 @@ class SignupController extends Controller {
     /*
      * register  注册页面
      * @author:hehuping
-     */
-    public function doSignup()
-    {
+     
+    public function doSignup(){
     	$arr = array('s'=>0, 'error'=>'');
     	//获取参数
     	$aUsername = I('post.phone');
@@ -28,7 +27,7 @@ class SignupController extends Controller {
     		die();
     	}
     	if (IS_POST) { //注册用户
-    		/* 检测验证码 */
+    		// 检测验证码 
     		$vemail = md5(md5(md5($aUsername)).md5(md5($aUsername)));
     		$vcode  = md5(md5(md5($aVerify).md5($aVerify)).md5($aVerify));
     			
@@ -45,7 +44,7 @@ class SignupController extends Controller {
              		'phone' => $aUsername,
              		'password' => $aPassword,
              );
-    		/* 注册用户 */
+    		// 注册用户 
              $model = D('Yuser');
     		
     		if($data2 =  $model->create($data)) { 
@@ -62,15 +61,7 @@ class SignupController extends Controller {
     	} else { //显示注册表单
     		$this->error("非法访问",'Index/index');
     	}
-    }
-    
-    public function getValidCode(){
-    	$str = '0123456789';
-    	$shuffled  =  str_shuffle( $str );
-    	$code = substr($shuffled, 0, 6);
-    	session('Code',$code);
-    }
-    
+    }*/
     
     //发送验证码邮件
     public function sendVerifyEmail(){
@@ -92,6 +83,5 @@ class SignupController extends Controller {
     	}else{
     		$this->error("非法访问");
     	}
-    
     }
 }
