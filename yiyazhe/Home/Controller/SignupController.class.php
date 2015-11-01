@@ -14,19 +14,22 @@ class SignupController extends Controller {
     	$aPassword = I('post.password');
     	$aVerify = I('post.code');
     	$pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
-    	/*if(!preg_match($pattern, $aUsername)){
+    	if(!preg_match($pattern, $aUsername)){
     		$arr['s'] = 3;
     		$arr['error'] = "邮箱格式错误";
     		$arr['code'] = $code;
     		$this->ajaxReturn($arr);
     		die();
-    	}*/
+    	}
     	if (IS_POST) { //注册用户
     		// 检测验证码 
     		$vemail = md5(md5(md5($aUsername)).md5(md5($aUsername)));
     		$vcode  = md5(md5(md5($aVerify).md5($aVerify)).md5($aVerify));
-    			
-    	 	 if (empty(cookie($vemail)) || cookie($vemail) != $vcode) {
+    		
+    		$tovemail = cookie($vemail);
+    		//$tovcode = cookie($vemail);
+    		
+    	 	 if (empty($tovemail) || ($tovemail != $vcode)) {
                  $arr['s'] = 3;
     			$arr['error'] = "姐（哥），邮箱验证码错啦";
     			$arr['code'] = $code;
