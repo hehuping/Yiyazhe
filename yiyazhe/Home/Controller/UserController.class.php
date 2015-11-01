@@ -13,6 +13,14 @@ class UserController extends Controller {
 	//首页
 	public function index(){
 		//layout(false);
+		
+		$pageInfo = array(
+				'title' => "基本资料修改-用户中心",
+				'keywords' => "咿呀折,用户资料,资料修改",
+				'description' => "咿呀折校园折扣网用户中心资料修改。【咿呀折-校园折扣】",
+		);
+		
+		
 		$user_model = M('yuser');
 		$showPic = '';
 		$find = $user_model->field('userpic,school,age,sex,qq,cellphone,username')->where('uid='.session('user.uid'))->find();
@@ -22,7 +30,7 @@ class UserController extends Controller {
 		$find['smallPic'] = $picInfo['filename'].'150.'.$picInfo['extension'];
 		$find['smallPic2'] = $picInfo['filename'].'70.'.$picInfo['extension'];
 		
-		
+		$this->assign('pageInfo',$pageInfo);
 		$this->assign('showPic',$showPic);
 		$this->assign('info', $find);
 		$this->display();
@@ -30,6 +38,13 @@ class UserController extends Controller {
 	
 	//评论页面
 	public function comment(){
+		
+		$pageInfo = array(
+				'title' => "我的评论-用户中心",
+				'keywords' => "咿呀折,用户评论,评论管理",
+				'description' => "咿呀折校园折扣网用户中心评论管理。【咿呀折-校园折扣】",
+		);
+		
 	
 			$p = I('p');
 			empty($p) ? $p=1 : $p=I('p');
@@ -37,7 +52,8 @@ class UserController extends Controller {
 			$page = '';
 			$model = D('Comment');
 			list($comment, $page) = $model->getUserComment(session('user.uid'), $p-1);
-
+			
+			$this->assign('pageInfo',$pageInfo);
 			$this->assign('page', $page);
 			$this->assign('comment', $comment);
 			$this->display('comment');
@@ -180,6 +196,12 @@ class UserController extends Controller {
 	 * */
 	public function beans(){
 		
+		$pageInfo = array(
+				'title' => "积分明细-用户中心",
+				'keywords' => "咿呀折,用户积分,积分管理",
+				'description' => "咿呀折校园折扣网用户中心积分管理。【咿呀折-校园折扣】",
+		);
+		
 		$p = I('p');
 		empty($p) ? $p=1 : $p=I('p');
 		$jifen = array();
@@ -187,6 +209,7 @@ class UserController extends Controller {
 		$model = D('Jifen');
 		list($jifen, $page) = $model->getUserBeans(session('user.uid'), $p-1, 0);
 		
+		$this->assign('pageInfo',$pageInfo);
 		$this->assign('page', $page);
 		$this->assign('jifen', $jifen);
 		$this->assign('type',0);
@@ -199,6 +222,13 @@ class UserController extends Controller {
 	
 	public function beansDown(){
 	
+		$pageInfo = array(
+				'title' => "我的积分-用户中心",
+				'keywords' => "咿呀折,用户积分,积分管理",
+				'description' => "咿呀折校园折扣网用户中心积分管理。【咿呀折-校园折扣】",
+		);
+		
+		
 		$p = I('p');
 		empty($p) ? $p=1 : $p=I('p');
 		$jifen = array();
@@ -206,6 +236,7 @@ class UserController extends Controller {
 		$model = D('Jifen');
 		list($jifen, $page) = $model->getUserBeans(session('user.uid'), $p-1, 1);
 		$type = 1;
+		$this->assign('pageInfo',$pageInfo);
 		$this->assign('page', $page);
 		$this->assign('jifen', $jifen);
 		$this->assign('type',$type);
@@ -223,8 +254,18 @@ class UserController extends Controller {
 	 *收藏 
 	 */
 	public function favorate(){
+		
+		$pageInfo = array(
+				'title' => "我的收藏-用户中心",
+				'keywords' => "咿呀折,用户收藏,收藏管理",
+				'description' => "咿呀折校园折扣网用户中心收藏管理。【咿呀折-校园折扣】",
+		);
+		
+		
 		$model = D('Favorate');
 		$list = $model->getUserFavorate(session('user.uid'));
+		
+		$this->assign('pageInfo', $pageInfo);
 		$this->assign('favorate',$list);
 		$this->display();
 	}

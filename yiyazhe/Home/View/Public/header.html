@@ -3,6 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0, user-scalable=yes">
+    <title>{$pageInfo['title']}</title>
+    <meta name="keywords" content="{$pageInfo['keywords']}"/>
+    <meta name="description" content="{$pageInfo['description']}"/>
+    
     <link rel="icon" href=""  type="image/png" sizes="">
     <link rel="stylesheet" href="__PUBLIC__/css/public/neat.css" type="text/css"  />
     <link rel="stylesheet" href="__PUBLIC__/css/index/lunbo.css" type="text/css"  />
@@ -227,55 +231,55 @@
 	<div class="goods_navbar">
 	    <div class="center">
 	        <ul>
-	            <li class="active">
+	            <li class="<?php $cate=$pageInfo['cate'];  if(empty($cate)){echo 'active';} ?>">
 	                <a href="/">
 	                    <img src="__PUBLIC__/images/index/goods_type_01.png" alt=""/>
 	                    <span>全部</span>
 	                </a>
 	            </li>
-	            <li>
+	            <li class="<?php if($pageInfo['cate']==1){echo 'active';} ?>">
 	                <a href="/Girls">
 	                    <img src="__PUBLIC__/images/index/goods_type_02.png" alt=""/>
 	                    <span>女神</span>
 	                </a>
 	            </li>
-	            <li>
+	            <li class="<?php if($pageInfo['cate']==2){echo 'active';} ?>">
 	                <a href="Boys">
 	                    <img src="__PUBLIC__/images/index/goods_type_03.png" alt=""/>
 	                    <span>男神</span>
 	                </a>
 	            </li>
-	            <li>
+	            <li class="<?php if($pageInfo['cate']==5){echo 'active';} ?>">
 	                <a href="/Foods">
 	                    <img src="__PUBLIC__/images/index/goods_type_04.png" alt=""/>
 	                    <span>美食</span>
 	                </a>
 	            </li>
-	            <li>
+	            <li class="<?php if($pageInfo['cate']==4){echo 'active';} ?>">
 	                <a href="/ShoeAndBags">
 	                    <img src="__PUBLIC__/images/index/goods_type_05.png" alt=""/>
 	                    <span>鞋包</span>
 	                </a>
 	            </li>
-	            <li>
+	            <li class="<?php if($pageInfo['cate']==187){echo 'active';} ?>">
 	                <a href="/Dormitory">
 	                    <img src="__PUBLIC__/images/index/goods_type_06.png" alt=""/>
 	                    <span>宅宿舍</span>
 	                </a>
 	            </li>
-	            <li>
+	            <li class="<?php if($pageInfo['cate']==188){echo 'active';} ?>">
 	                <a href="/Digital">
 	                    <img src="__PUBLIC__/images/index/goods_type_07.png" alt=""/>
 	                    <span>数码</span>
 	                </a>
 	            </li>
-	            <li>
+	            <li class="<?php if($pageInfo['cate']==3){echo 'active';} ?>">
 	                <a href="/Beauty">
 	                    <img src="__PUBLIC__/images/index/goods_type_08.png" alt=""/>
 	                    <span>美妆</span>
 	                </a>
 	            </li>
-	            <li>
+	            <li class="<?php if($pageInfo['cate']==8){echo 'active';} ?>">
 	                <a href="/Sports">
 	                    <img src="__PUBLIC__/images/index/goods_type_09.png" alt=""/>
 	                    <span>文体</span>
