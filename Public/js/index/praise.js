@@ -108,6 +108,27 @@ function favorate(id){
 	}
 }
 
+/*签到*/
+function qiandao(){
+	if(is_login){
+		$.ajax({
+            type: "POST",
+            url: "/user/qiandao",
+            data: {'do':'do'},
+            dataType: "json",
+            success: function(data){
+            			$("#jifen").html("已签到 <p id='isqiandao' style='font-size:18px;display:inline;color:#FFF684;'>+10</p>");
+            			$("#jifen").attr("onclick","");
+            			$("#isqiandao").animate({ 
+            				left:'25px',
+            			    opacity:'1.8',
+            			    });
+            			$("#isqiandao").fadeOut(1000);
+                     }
+        });
+	}
+}
+
 function is_login(){
 	if(!login){
 		swal({   

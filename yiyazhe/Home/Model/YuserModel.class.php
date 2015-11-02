@@ -123,6 +123,17 @@ class YuserModel extends Model
         }*/
         return true;
     }
+    
+    public function getQiandao($uid){
+    	$q_model = M('qiandao');
+    	$last = $q_model->where("uid={$uid}")->find();
+    	$now = date('Y-m-d',time());
+    	if(empty($last) || ($now != $last['date'])){
+    		return 0;
+    	}else{
+    		return 1;
+    	}
+    }
 
 
 

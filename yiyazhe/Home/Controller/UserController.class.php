@@ -21,7 +21,7 @@ class UserController extends Controller {
 		);
 		
 		
-		$user_model = M('yuser');
+		$user_model = D('yuser');
 		$showPic = '';
 		$find = $user_model->field('userpic,school,age,sex,qq,cellphone,username')->where('uid='.session('user.uid'))->find();
 		
@@ -29,6 +29,7 @@ class UserController extends Controller {
 		$picInfo = pathinfo($picName);
 		$find['smallPic'] = $picInfo['filename'].'150.'.$picInfo['extension'];
 		$find['smallPic2'] = $picInfo['filename'].'70.'.$picInfo['extension'];
+		
 		
 		$this->assign('pageInfo',$pageInfo);
 		$this->assign('showPic',$showPic);
@@ -113,6 +114,8 @@ class UserController extends Controller {
 				$picName = $find['userpic'];
 				$picInfo = pathinfo($picName);
 				$find['userpic'] = $picInfo['filename'].'70.'.$picInfo['extension'];
+				$qiandao = $user_model->getQiandao($find['uid']);
+				$find['qiandao'] = $qiandao;
 				session('user',$find);	
 				$this->ajaxReturn($arr);
 			}else{
@@ -243,12 +246,6 @@ class UserController extends Controller {
 		$this->display('beans');
 	}
 	
-	/*
-	 * 邀请好友注册
-	 * */
-	public function my_rank(){
-		
-	}
 	
 	/*
 	 *收藏 
@@ -269,11 +266,9 @@ class UserController extends Controller {
 		$this->assign('favorate',$list);
 		$this->display();
 	}
+
 	/*
-	 * 删除收藏
-	 * */
-	/*
-	 * 用户自我评论删除
+	 * 用户收藏删除
 	 * */
 	public function delFavorate(){
 		$data = array('s'=>0, 'error'=>'');
@@ -294,6 +289,50 @@ class UserController extends Controller {
 		}else{
 			$this->error('非法访问');
 		}
+	}
+	
+	//用户签到
+	public function qiandao(){
+		$arr = array('s'=>0, 'error'=>'');
+		if(IS_AJAX){
+			$uid = is_login();
+			$date = date('Y-m-d',time());
+			$data = array(
+					'uid' => $uid,
+					'date' => $date,
+			);
+			$data2 = array(
+					'uid' => $uid,
+					'Operation' => '【咿呀折PC端】',
+					'Description' => '签到',
+					'score' => 10
+			);
+			$q_model = M('qiandao');
+			$j_model = M('jifen');
+			$last = $q_model->where("uid={$uid}")->order('qid desc')->find();
+			if(empty($last)){
+				$_SESSION['user']['qiandao'] = 1;
+				$j_model->add($data2);
+				$q_model->add($data);
+				$this->ajaxReturn($arr);
+			}else{
+				if($last['date'] != $date){
+					$_SESSION['user']['qiandao'] = 1;
+					$j_model->add($data2);
+					$q_model->add($data);
+					$this->ajaxReturn($arr);
+				}else{
+					//$_SESSION['user']['qiandao'] = 1;
+					$arr['s'] =1;
+					$this->ajaxReturn($arr);
+				}
+			}
+		}else{
+			$this->error('非法访问');
+		}
+	}
+	public function toecho(){
+		print_r($_SESSION);
 	}
 	
 	public function uploadify(){
@@ -346,78 +385,5 @@ class UserController extends Controller {
 		}
 		
 	}
-	
- public function showRegError($code = 0)
-    {
-    	switch ($code) {
-    		 case -1:
-                $error = '昵称长度必须在3-8个字符以内！';
-                break;
-            case -20:
-                $error = '昵称不能包含空格！';
-                break;
-            case -2:
-                $error = '用户名被禁止注册！';
-                break;
-            case -3:
-                $error = '用户名被占用！';
-                break;
-            case -4:
-                $error = '密码长度必须在6-30个字符之间！';
-                break;
-            case -41:
-                $error = '用户旧密码不正确';
-                break;
-            case -5:
-                $error = '邮箱格式不正确！';
-                break;
-            case -6:
-                $error = '邮箱长度必须在1-32个字符之间！';
-                break;
-            case -7:
-                $error = '邮箱被禁止注册！';
-                break;
-            case -8:
-                $error = '邮箱被占用！';
-                break;
-            case -9:
-                $error = '手机格式不正确！';
-                break;
-            case -10:
-                $error = '手机被禁止注册！';
-                break;
-            case -11:
-                $error = '手机号被占用！';
-                break;
-            case -12:
-                $error = '用户名必须以中文或字母开始，只能包含拼音数字，字母，汉字！';
-                break;
-            case -31:
-                $error = '昵称禁止注册';
-                break;
-            case -33:
-                $error = '昵称长度不合法';
-                break;
-            case -32:
-                $error = '昵称不合法';
-                break;
-            case -30:
-                $error = '昵称已被占用';
-                break;
-            case -50:
-                $error = '验证码错误';
-                break;
-            case -51:
-                $error = '验证码长度不合法';
-                break;
-            case -52:
-                $error = '长度不合法';
-                break;
-
-            default:
-                $error = '未知错误';
-    	}
-    	return $error;
-    }
 	
 }

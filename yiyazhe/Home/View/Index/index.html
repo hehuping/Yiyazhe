@@ -204,7 +204,7 @@
                 <li class="line"></li>
                 <li><a href="/Login">登录</a>&nbsp;&nbsp;<a href="/Signup">免费注册</a></li>
             <?php }else{ ?>
-           		 <li class="active"><a href="/user" target="_blank"><img width="25px;" src="/uploads/<?php echo session('user.userpic'); ?>" /></a></li>
+           		 <li class="active"><a href="/user" target="_blank"><img width="20px;" src="/uploads/<?php echo session('user.userpic'); ?>" /></a></li>
             	<li class="active"><a href="/User" target="_blank" style="color:#F50505"><?php echo session('user.username'); ?></a></li>
            		<li class="active"><a href="/Login/loginout" target="_blank" style="color:#F50505">退出</a></li>
             <?php } ?>
@@ -313,7 +313,7 @@
 	            	
 	                <a href="javascript:void(0)" id="cellclien">手机客户端<img class="qrcode" src="__PUBLIC__/images/index/qrcode.png" /></a>
 	                
-	                <a href="javascript:void(0)" id="jifen">签到领积分</a>
+	                <a href="javascript:void(0)" id="jifen" <?php $qiandao=session('user.qiandao');if(!$qiandao){ ?>  onclick="qiandao()"<?php } ?>><?php $qiandao=session('user.qiandao'); if($qiandao){echo "已签到 ";}else{echo "签到领积分";} ?></a>
 	           
 	        </ul>
 	    </div>
@@ -329,24 +329,24 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="item active" >
-                <img src="__PUBLIC__/images/index/brandbanner01.jpg" alt="">
+                <img src="__PUBLIC__/images/index/brandbanner01.png" alt="">
                 <div class="carousel-caption">
 
                 </div>
             </div>
             <div class="item">
-                <img src="__PUBLIC__/images/index/brandbanner02.jpg" alt="">
+                <img src="__PUBLIC__/images/index/brandbanner02.png" alt="">
                 <div class="carousel-caption">
 
                 </div>
             </div>
 
-            <div class="item">
+            <!-- <div class="item">
                 <img src="__PUBLIC__/images/index/brandbanner01.jpg" alt="">
                 <div class="carousel-caption">
 
                 </div>
-            </div>
+            </div> -->
         </div>
         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="font-size: 50px;"></span>

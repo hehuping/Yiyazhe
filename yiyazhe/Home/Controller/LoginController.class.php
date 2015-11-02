@@ -1,7 +1,5 @@
 <?php
-
 namespace Home\Controller;
-
 use Think\Controller;
 use Org\Util\Date;
 
@@ -18,9 +16,9 @@ class LoginController extends Controller {
 		$username = I('username');
 		$password=md5(I('password'));
 		$code = I('code');
-		$user_model = M('yuser');
+		$user_model = D('yuser');
 		$find = $user_model->field('uid,username,figureurl,userpic')->where('phone="'.$username.'" && password="'.$password.'"')->find();
-		 
+		
 		if(!check_verify($code)){
 			$arr['s']=1;
 			$arr['error']='验证码敲错喽';
@@ -30,9 +28,11 @@ class LoginController extends Controller {
 			$arr['error']='用户名或者密码错误';
 			$this->ajaxReturn($arr);
 		}else{
+			$qiandao = $user_model->getQiandao($find['uid']);
 			$picName = $find['userpic'];
 			$picInfo = pathinfo($picName);
 			$find['userpic'] = $picInfo['filename'].'70.'.$picInfo['extension'];
+			$find['qiandao'] = $qiandao;
 			$_SESSION['user'] = $find;
 			$data =array( 'lastlogin' => date('Y-m-d H:i:s',time()), 'uid'=>session('user.uid'));
 			$user_model->save($data);
@@ -40,6 +40,10 @@ class LoginController extends Controller {
 		}
 		 
 	}
+	
+	/*
+	 * 
+	 * */
 	
 	public function qqlogin() {
 		define ( 'M_ROOT', dirname ( dirname ( __FILE__ ) ) );
@@ -69,7 +73,7 @@ class LoginController extends Controller {
 		$state = I ( 'state' );
 		$_SESSION ['state'] = $state;
 		$qc = new \QC ( $atid, $opid ); // 重新带参地new一次否则会丢失信息
-		$user_model = M ( 'yuser' );
+		$user_model = D ( 'yuser' );
 		$find = $user_model->field ( 'uid,username,nickname,figureurl,userpic' )->where ( ' openid=' . '"' . $opid . '"' )->find ();
 		if (empty ( $find )){
 			$info = $qc->__call ( 'get_user_info' );
@@ -103,6 +107,8 @@ class LoginController extends Controller {
 			$picName = $find['userpic'];
 			$picInfo = pathinfo($picName);
 			$find['userpic'] = $picInfo['filename'].'70.'.$picInfo['extension'];
+			$qiandao = $user_model->getQiandao($find['uid']);
+			$find['qiandao'] = $qiandao;
 			$data =array( 'lastlogin' => date('Y-m-d H:i:s',time()), 'uid'=>session('user.uid'));
 			$user_model->save($data);
 			$_SESSION ['user'] = $find;
