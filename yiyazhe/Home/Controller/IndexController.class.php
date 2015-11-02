@@ -34,6 +34,10 @@ class IndexController extends Controller {
 		$obj = new Data();
 		$obj->status = 1;
 		$obj->data = $relist;
+		$obj->barnner = array(
+				'http://www.yiyazhe.com/Public/images/index/brandbanner01.png',
+				'http://www.yiyazhe.com/Public/images/index/brandbanner02.png'
+		);
 		
 		$this->ajaxReturn($obj);
 	}
