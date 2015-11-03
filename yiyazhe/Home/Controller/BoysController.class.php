@@ -1,6 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+use Home\Model\Data;
 class BoysController extends Controller {
     public function index(){
     	$pageInfo = array(
@@ -30,7 +31,6 @@ class BoysController extends Controller {
     	$p -= 1;
     	$goods_model = D('Index');
     	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p, '2', 80);
-    	
     	$obj = new Data();
     	$obj->status = 1;
     	$obj->data = $goodsArr;
