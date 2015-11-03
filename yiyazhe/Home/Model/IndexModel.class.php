@@ -29,7 +29,7 @@ class IndexModel extends Model
 		$show       = $Page->show();// 分页显示输出
 		
 		$goodsData = $goods_model
-					->field('gid,title,class_id,price,oldprice,gurl,
+					->field('gid,title,cate,price,oldprice,gurl,
 							gimage,shop,delimg,detail,yishou,praise,
 							dislike,comment,star_time')
 					->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'"'.$condition)

@@ -191,7 +191,7 @@ class IndexController extends Controller {
     	foreach ($tt->small_images->string as $k=>$v){
     		$all.=$v.',';
     	}
-    	$back['image'] = $all;
+    	$back['image'] = rtrim($all,",");
     
     	$yishou = $resps->tbk_items->tbk_item->volume;
     	 

@@ -19,6 +19,8 @@ class IndexController extends Controller {
 		$start = $goods_model->getStart5();		
 		$today = date('Y-m-d',time());
 		
+		//print_r($goodsArr);
+		
 		$this->assign('today', $today);
 		$this->assign('count', $count);
 		$this->assign('start', $start);
