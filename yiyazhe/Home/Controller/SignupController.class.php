@@ -42,10 +42,18 @@ class SignupController extends Controller {
              		'phone' => $aUsername,
              		'password' => $aPassword,
              );
+             $jifenDate = array(
+             		'Operation' => "【咿呀折PC端】",
+             		'Description' => "新用户注册",
+             		'score' => 20
+             );
     		// 注册用户 
              $model = D('Yuser');
+             $j_model = D('Jifen');
     		if($data2 =  $model->create($data)) { 
-    			if($model->add($data2)){
+    			if($uid=$model->add($data2)){
+    				$jifenDate['uid'] = $uid;
+    				$j_model->add($jifenDate);
     				$this->ajaxReturn($arr);
     			}
     		} else { //注册失败，显示错误信息
