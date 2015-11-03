@@ -38,5 +38,7 @@ class BoysController extends Controller {
     	$obj->barnner = array(
     			'http://www.yiyazhe.com/Public/images/index/cateboys.png',
     	);
+    	
+    	$this->ajaxReturn($obj);
     }
 }
