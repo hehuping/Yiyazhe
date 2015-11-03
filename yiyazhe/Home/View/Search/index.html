@@ -1,0 +1,110 @@
+<style>
+.container-fluid{
+	margin-top:45px;
+	width:100%;
+	height:128px;
+	/*background-image:url('/Public/images/index/categirl.png');*/
+}
+.contentsearch {
+    max-width: 1920px;
+    min-width: 1200px;
+    background: #F9F9F9;
+    padding-bottom: 80px;
+}
+.contentsearch .center>h3 {
+    padding: 30px 0 10px 10px;
+    color: #fb7c84;
+}
+.vice {
+    font-size: 0.75em;
+}
+.empty{
+	margin:0 auto;
+	width:100%;
+	text-align:center;
+}
+</style>
+<div class="container-fluid">
+	<img src="/Public/images/index/categirl.png" alt="女学生时尚女装">
+</div>
+
+<div class="contentsearch">
+    <div class="new_goods center" >
+        <h3>
+            <img src="__PUBLIC__/images/index/now.png" alt=""/>
+            <span>关键字:</span>
+            <span class="vice">"{$keywords}" 共找到{$count}款</span>
+        </h3>
+        <?php if(empty($goodlist)){ ?>
+	        <div class="empty"> 
+	        	<h3>什么鬼，没找到您想要的宝贝？</h3> 
+	        	<span style="color:#8C8C8C">我们会尽快完善，给您带来喜欢的宝贝！先去<a href="/">首页</a>逛逛吧</span>      	
+	        </div>
+        <?php } ?>
+        <ul>
+        <?php foreach($goodlist as $k=>$v){ ?>
+            <li class="new_goods_list">
+                <ul style="position:relative">
+               		<div class="goods-pl" id="scom{$v['gid']}">
+	               		<div class="plcontent" id="plcontent{$v['gid']}">
+		                	<?php foreach($v['comments'] as $data){ ?><p><em class="plname"><?php echo $data['username']; ?></em>：<?php echo $data['content']; ?></p><?php } ?>              	       	
+	                	</div>
+	                	<div class="plsend">
+	                		<input type="text" id="comment{$v['gid']}" placeholder="字数少于20大于3哦"/>
+	                		<a href="javascript:void(0)" class="pl_bg" onclick="sendComment({$v['gid']})">发送</a>
+	                	</div>
+                	</div>
+                    <li class="goods_pic">
+                        <a href="#"><div class="big"><img src="{$v['gimage']}" alt=""/></div></a>
+                        <img src="__PUBLIC__/images/index/xinpin.png" alt="" class="new"/>
+                        <img <?php $has=cookie("fav".$v['gid']); if(empty($has)){ ?>onclick="favorate({$v['gid']});"<?php } ?> id="favorate{$v['gid']}" src="__PUBLIC__/images/index/<?php if($has){echo 'favorates.png';}else{echo 'favorate.png';} ?>" alt="" class="favorate"/>
+                    </li>
+                    <li class="goods_title"><p><a href="#">【咿呀折】{$v['title']}</a></p></li>
+                    <li class="goods_info">
+                        <ul>
+                            <li class="goods_info_left">
+                                <ul>
+                                    <li class="pirce">￥ <span><?php echo floatval($v['price']); ?></span></li>
+                                    <li><span class="original">￥<?php echo floatval($v['oldprice']); ?></span> <span class="discount">-<?php echo (floatval($v['oldprice'])-floatval($v['price'])); ?>元</span></li>
+                                    <li class="sell_out">
+                                        <span>已售{$v['yishou']}</span>
+                                        
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="goods_info_right">
+                                <ul>
+                                    <li class="info_state">
+                                        <ul style="position:rela">
+                                            <li>
+                                               <a href="javascript:void(0);" onclick="<?php $has=cookie('like'.$v['gid']); if(empty($has)){echo 'like('.$v['gid'].')'; } ?>" id="za{$v['gid']}"><img id="z{$v['gid']}" width="20px" src="__PUBLIC__/images/index/<?php if(empty($has)){echo 'info_icon_01.png';}else{echo 'like.png'; } ?>" alt="{$v['praise']}人喜欢"/></a>
+                                                <span id="zn{$v['gid']}">{$v['praise']}</span>
+                                            </li>
+                                            <li>
+                                             <a href="javascript:void(0);" onclick="comment({$v['gid']});" id="pl{$v['gid']}"><img src="__PUBLIC__/images/index/info_icon_02.png" alt=""/></a>
+                                                <span id="pn{$v['gid']}">{$v['comment']}</span>
+                                            </li>
+                                            <li>
+                                               <a href="javascript:void(0);" onclick="<?php $has=cookie('dislike'.$v['gid']); if(empty($has)){echo 'dislike('.$v['gid'].')'; } ?>" id="da{$v['gid']}"><img id="nz{$v['gid']}"  width="20px" src="__PUBLIC__/images/index/<?php if(empty($has)){echo 'info_icon_03.png';}else{echo 'dislike.png'; } ?>" alt="{$v['dislike']}人不喜欢"/></a>
+                                                <span id="dn{$v['gid']}">{$v['dislike']}</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="tmall">
+                                        <a href="#">
+                                            <img src="__PUBLIC__/images/index/tmall.png" alt=""/> {$v['shop']}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <?php } ?>
+        </ul>
+    </div>
+    <div class="page center">
+    	<div style="margin: 0 auto;text-align: center; margin-top:2.5%;">{$show}</div>
+    </div>
+</div>
