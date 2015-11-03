@@ -210,8 +210,9 @@ class UserController extends Controller {
 		$jifen = array();
 		$page = '';
 		$model = D('Jifen');
-		list($jifen, $page) = $model->getUserBeans(session('user.uid'), $p-1, 0);
+		list($jifen, $page, $sum) = $model->getUserBeans(session('user.uid'), $p-1, 0);
 		
+		$this->assign('sum', $sum);
 		$this->assign('pageInfo',$pageInfo);
 		$this->assign('page', $page);
 		$this->assign('jifen', $jifen);

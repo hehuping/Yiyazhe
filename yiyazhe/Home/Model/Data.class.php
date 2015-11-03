@@ -19,4 +19,5 @@ class Data
 	public $status = 0;
 	public $data = array(); 
 	public $barnner = array();
+	public $page = 0;
 }
