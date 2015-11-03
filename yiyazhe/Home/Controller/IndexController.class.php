@@ -16,15 +16,22 @@ class IndexController extends Controller {
 		$p -= 1;
 		$goods_model = D('Index');
 		list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p,'',80);
-		$start = $goods_model->getStart5();
+		$start = $goods_model->getStart5();		
+		$today = date('Y-m-d',time());
 		
+		$this->assign('today', $today);
 		$this->assign('count', $count);
 		$this->assign('start', $start);
 		$this->assign('show', $show);
 		$this->assign('goodlist', $goodsArr);
 		$this->display();
 	}
-
+	public function test(){
+		$date = date('Y-m-d:H:i:s',time());
+		$end = substr($date,0,10);
+		echo $end;
+	}
+	//安卓测试数据发送
 	public function send(){
 		$goods_model = M ( 'goods' );
 		$goodlist = $goods_model->where()->limit(0, 20)->order('addtime asc')->select();
@@ -172,15 +179,5 @@ class IndexController extends Controller {
 		}else{
 			return true;
 		}
-	}
-	
-	public function getInfo(){
-		phpinfo();
-	}
-	public function sendEmail(){
-		SendMail('hehuping@126.com', '咿呀折用户注册测试', '欢迎注册咿呀折，在这里你将发现我们的乐趣', './uploads/default.png');
-	}
-	
-
-	
+	}	
 }

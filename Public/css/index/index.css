@@ -6,6 +6,9 @@ a:active,a:focus {
     margin:0 auto;
     width: 1200px;
 }
+.vice {
+    font-size: 0.75em;
+}
 .header{
     max-width: 1920px;
     min-width: 1200px;

@@ -227,10 +227,10 @@
             </div>
             <div class="search">
                 <div class="search_box">
-                    <input type="search" placeholder="打几个字儿呗"/>
-                    <a href="#" class="search_bg">
-                        GO
-                    </a>
+                 <form id="searchfrom" method="get" action="/search/index">
+                    <input type="search" name="keywords" placeholder="打几个字儿呗"/>
+                    <a href="javascript:void(0)" onclick="submit()" class="search_bg">GO</a> 
+                    </form>
                 </div>
             </div>
             <div class="top_text">
@@ -402,7 +402,7 @@
                 	</div>
                     <li class="goods_pic">
                         <a href="#"><div class="big"><img src="{$v['gimage']}" alt=""/></div></a>
-                        <img src="__PUBLIC__/images/index/xinpin.png" alt="" class="new"/>
+                        <?php $pos=strpos($v['star_time'], $today); if($pos!==false){ ?><img src="__PUBLIC__/images/index/xinpin.png" alt="今日上新" class="new"/><?php } ?>
                         <img <?php $has=cookie("fav".$v['gid']); if(empty($has)){ ?>onclick="favorate({$v['gid']});"<?php } ?> id="favorate{$v['gid']}" src="__PUBLIC__/images/index/<?php if($has){echo 'favorates.png';}else{echo 'favorate.png';} ?>" alt="" class="favorate"/>
                     </li>
                     <li class="goods_title"><p><a href="#">【咿呀折】{$v['title']}</a></p></li>

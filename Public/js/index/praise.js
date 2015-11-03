@@ -110,7 +110,7 @@ function favorate(id){
 
 /*签到*/
 function qiandao(){
-	if(is_login){
+	if(is_login()){
 		$.ajax({
             type: "POST",
             url: "/user/qiandao",
@@ -127,6 +127,13 @@ function qiandao(){
                      }
         });
 	}
+}
+
+/*
+ * 提交搜索表单
+ * */
+function submit(){
+	$("#searchfrom").submit();
 }
 
 function is_login(){

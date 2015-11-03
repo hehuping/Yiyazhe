@@ -2,6 +2,7 @@
 namespace Admin\Controller;
 use Think\Controller;
 use Org\Util\String;
+use Org\Util\Date;
 class IndexController extends Controller {
 	//初始化，判断登录
 	public function _initialize(){
@@ -123,12 +124,29 @@ class IndexController extends Controller {
     	
     }
     
-    public function getJiukuayou(){
-    	$this->getApiDate("http://api.juanpi.com/open/jiukuaiyou");
+    public function getJiukuaiyou(){
+    	$date = date('Y-m-d',time());
+    	$this->getApiDate("./apidocument/jiukuaiyou{$date}.html");
     }
     public function getJuanpi(){
-    	$this->getApiDate("http://api.juanpi.com/open/juanpi");
+    	$date = date('Y-m-d',time());
+    	$this->getApiDate("./apidocument/juanpi{$date}.html");
     }
+    
+    public function getJiukuaiyouDocument(){
+    	$date = date('Y-m-d',time());
+    	$url = "http://api.juanpi.com/open/jiukuaiyou";
+    	$re = file_get_contents($url);
+    	file_put_contents("./apidocument/jiukuaiyou{$date}.html", $re);
+    }
+    
+    public function getJuanpiDocument(){
+    	$date = date('Y-m-d',time());
+    	$url = "http://api.juanpi.com/open/juanpi";
+    	$re = file_get_contents($url);
+    	file_put_contents("./apidocument/juanpi{$date}.html", $re);
+    }
+
     
     //对象转数组
 	public function object_array($array) {  

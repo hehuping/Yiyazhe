@@ -31,7 +31,7 @@ class IndexModel extends Model
 		$goodsData = $goods_model
 					->field('gid,title,class_id,price,oldprice,gurl,
 							gimage,shop,delimg,detail,yishou,praise,
-							dislike,comment')
+							dislike,comment,star_time')
 					->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'"'.$condition)
 					->order('gid desc')
 					->limit($p, $pageSize)
