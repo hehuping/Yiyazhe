@@ -1,0 +1,107 @@
+
+<style>
+.content{
+	text-align:center;
+	margin:0 auto;
+	background-color: beige;
+	margin-top:60px;
+	height:400px;
+	width:1200px;
+	padding:30px;
+}
+.label{
+	width:100px;
+}
+.cen{
+	text-align:center;
+	margin:0 auto;
+}
+.Panel {
+    width: 430px;
+}
+.reg_box {
+text-align: left;
+}
+.area_top {
+    height: 40px;
+}
+.reg_box {
+    text-align: left;
+}
+.reg_box .item {
+padding: 15px 0 15px 74px;
+position: relative;
+width: 356px;
+zoom: 1;
+}
+.reg_box .item label {
+margin-left: -74px;
+text-align: right;
+float: left;
+width: 94px;
+height: 36px;
+font: 14px/36px "宋体";
+display: inline;
+color: #333;
+}
+.reg_box .item .itext1 {
+color: #999;
+width: 282px;
+height: 30px;
+text-indent: 5px;
+border: 1px solid #d2d2d2;
+padding: 2px 3px;
+line-height: 30px;
+border-radius: 5px;
+}
+</style>
+
+
+<div class="content">
+	<div class="cen">
+	<div id="email" class="Panel PanelA clear l">
+			<div class="area_top">
+				<span><h1>老同学，欢迎回到咿呀折！</h1></span>
+			</div>
+			<div class="reg_box clear">
+				<div class="item msg_zt1" id="item1">
+					<label>手机号/邮箱：</label> <input type="text" id="pemail" class="itext1"
+						value="">
+						<div class="msg_box row1" id="row1">
+							<em></em><span class="msg" id="msg1">输入您的手机号或者邮箱</span>
+						</div>
+				</div>
+				<div class="item msg_zt1" id="item2">
+					<label>密码：</label> <input type="password" id="password"
+						class="itext1">
+						<div class="msg_box row1" id="row2">
+							<em></em><span class="msg" id="msg2">让密码跑起来</span>
+						</div>
+				</div>
+				
+				<div class="item i_code" id="item4">
+					<label>验证码：</label> <input type="text" id="validCode"
+						class="itext2"> <span id="vcode_box"></span> <a
+						href="javascript:void(0);" id="refresh_vcode"></a> <!-- <span class="i_codeP" style="display:display;"><a id="btnSendCode" onclick="sendMessage();" href="javascript:void(0);">免费获取手机验证码</a></span>-->
+						<span class="i_codeP" id="codeAdd">
+							<a href="javascript:void(0);" id="btnSendCode"><img src="/Login/getVerify" onclick="this.src='/Login/getVerify?d='+Math.random();"></img></a>
+							</span>
+						<div class="msg_box row1">
+							<span class="msg" id="msg4"></span>
+						</div>
+				</div>
+
+				<div class="item">
+					<a href="javascript:void(0)" onclick="doLogin();" class="i_btn i_btn1" id="reg_submit"><i>登录</i></a>
+				</div>
+			</div>
+		</div>
+		</div>
+
+</div>
+<script type="text/javascript">
+
+</script>
+
+
+</script>

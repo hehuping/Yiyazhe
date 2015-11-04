@@ -68,7 +68,7 @@ class IndexController extends Controller {
     	
     }
     
-    private function getApiDate($url = "http://api.juanpi.com/open/jiukuaiyou"){
+    private function getApiDate($url){
     	$content = file_get_contents($url);
     	$xml  =  simplexml_load_string ( $content );
     	//print_r($xml->goodslist);

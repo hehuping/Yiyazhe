@@ -362,9 +362,10 @@
 <div class="content">
     <div class="star_goods center" >
         <h3>
-            <img src="__PUBLIC__/images/index/star.png" alt=""/>
+            <img src="__PUBLIC__/images/index/star.png" alt="明星9.9前五名"/>
             <span>明星9.9</span>
-            <span class="vice">start 5</span>
+            <span class="vice">Start 5</span>
+            <!-- <span style="float:right;padding-right:10px;"><a style="color:#F30619" href="/Jiukuai">全部9块邮</a></span> -->
         </h3> 
         <ul>
         <?php foreach($start as $ks=>$vs){ ?>
@@ -384,8 +385,8 @@
     <div class="new_goods center" >
         <h3>
             <img src="__PUBLIC__/images/index/now.png" alt=""/>
-            <span>今天已更新啦</span>
-            <span class="vice">450款</span>
+            <span>今天宝贝总数:</span>
+            <span class="vice">{$count}款</span>
         </h3>
         <ul>
         <?php foreach($goodlist as $k=>$v){ ?>
@@ -401,9 +402,9 @@
 	                	</div>
                 	</div>
                     <li class="goods_pic">
-                        <a href="#"><div class="big"><img src="{$v['gimage']}" alt=""/></div></a>
+                        <a href="#"><div class="big"><img src="{$v['gimage']}" alt="{$v['title']}"/></div></a>
                         <?php $pos=strpos($v['star_time'], $today); if($pos!==false){ ?><img src="__PUBLIC__/images/index/xinpin.png" alt="今日上新" class="new"/><?php } ?>
-                        <img <?php $has=cookie("fav".$v['gid']); if(empty($has)){ ?>onclick="favorate({$v['gid']});"<?php } ?> id="favorate{$v['gid']}" src="__PUBLIC__/images/index/<?php if($has){echo 'favorates.png';}else{echo 'favorate.png';} ?>" alt="" class="favorate"/>
+                        <img alt="收藏" <?php $has=cookie("fav".$v['gid']); if(empty($has)){ ?>onclick="favorate({$v['gid']});"<?php } ?> id="favorate{$v['gid']}" src="__PUBLIC__/images/index/<?php if($has){echo 'favorates.png';}else{echo 'favorate.png';} ?>" alt="" class="favorate"/>
                     </li>
                     <li class="goods_title"><p><a href="#">【{$v['cate']}】{$v['title']}</a></p></li>
                     <li class="goods_info">
@@ -427,7 +428,7 @@
                                                 <span id="zn{$v['gid']}">{$v['praise']}</span>
                                             </li>
                                             <li>
-                                             <a href="javascript:void(0);" onclick="comment({$v['gid']});" id="pl{$v['gid']}"><img src="__PUBLIC__/images/index/info_icon_02.png" alt=""/></a>
+                                             <a href="javascript:void(0);" onclick="comment({$v['gid']});" id="pl{$v['gid']}"><img src="__PUBLIC__/images/index/info_icon_02.png" alt="{$v['comment']}人评论"/></a>
                                                 <span id="pn{$v['gid']}">{$v['comment']}</span>
                                             </li>
                                             <li>
@@ -533,27 +534,27 @@
 <div class="right_fix_nav">
     <ul>
         <li>
-            <a href="#"><img src="__PUBLIC__/images/index/float_01.png" alt=""/><span>用户</span></a>
+            <a href="/user"><img src="__PUBLIC__/images/index/float_01.png" alt="用户中心"/><span>用户</span></a>
         </li>
         <li>
-            <a href="/user/favorate"><img src="__PUBLIC__/images/index/float_02.png" alt=""/><span>收藏</span></a>
+            <a href="/user/favorate"><img src="__PUBLIC__/images/index/float_02.png" alt="我的收藏"/><span>收藏</span></a>
         </li>
         <li>
-            <a href="/user/comment"><img src="__PUBLIC__/images/index/float_03.png" alt=""/><span>评论</span></a>
+            <a href="/user/comment"><img src="__PUBLIC__/images/index/float_03.png" alt="我的评论"/><span>评论</span></a>
         </li>
         <li id="weibo">
       	  <img class="weibocode" src="__PUBLIC__/images/index/weiboqr.png"  />
-            <a href="javascript:void(0)"><img src="__PUBLIC__/images/index/float_04.png" alt=""/><span>微博</span></a>
+            <a href="javascript:void(0)"><img src="__PUBLIC__/images/index/float_04.png" alt="关注微博"/><span>微博</span></a>
         </li>
         <li id="weixin">
         	<img class="weixincode" src="__PUBLIC__/images/index/weixinqr.jpg"  />
-            <a href="javascript:void(0)"><img src="__PUBLIC__/images/index/float_05.png" alt=""/><span>微信</span></a>
+            <a href="javascript:void(0)"><img src="__PUBLIC__/images/index/float_05.png" alt="关注微信"/><span>微信</span></a>
         </li>
         <li style="margin-top: 160px;">
-            <a href="#"><img src="__PUBLIC__/images/index/float_06.png" alt=""/><span>其他</span></a>
+            <a href="#"><img src="__PUBLIC__/images/index/float_06.png" alt="意见反馈"/><span>意见</span></a>
         </li>
         <li class="return">
-            <a href="javascript:;"><img src="__PUBLIC__/images/index/float_07.png" alt=""/><span>回到顶部</span></a>
+            <a href="javascript:;"><img src="__PUBLIC__/images/index/float_07.png" alt="回到顶部"/><span>回到顶部</span></a>
         </li>
     </ul>
 </div>

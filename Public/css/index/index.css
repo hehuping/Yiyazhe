@@ -14,11 +14,13 @@ a:active,a:focus {
     min-width: 1200px;
 }
 .header_up{
-    border-bottom: 1px solid #e5e5e5;
+    /*border-bottom: 1px solid #e5e5e5;*/
+    background-color: rgb(249, 249, 249);
     overflow: hidden;
 }
 .top_navbar{
     float:right;
+    font-size: 12px;
 }
 
 .top_navbar>li{
@@ -37,7 +39,7 @@ a:active,a:focus {
 .top_navbar .line{
     height:10px;
     width: 1px!important;
-    margin-top:13px!important;
+    margin-top:9px!important;
     padding:0!important;
     background: #000;
 

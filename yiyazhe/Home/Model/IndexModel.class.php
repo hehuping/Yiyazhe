@@ -19,9 +19,10 @@ class IndexModel extends Model
 	public function getIndexGoods($p, $class_id,$pageSize=50){
 		$condition = !empty($class_id) ? " && class_id in ({$class_id})" : '';
 		$p *= $pageSize;
+		$p+=5;
 		$goods_model = M('goods');
 		$commet_model = M('comment');
-		$count = $goods_model->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'"'.$condition)->count();
+		$count = $goods_model->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'" && star_time<"'.date('Y-m-d H:i:s', time()).'"'.$condition)->count();
 		
 		$Page       = new \Think\Page($count,$pageSize);// 实例化分页类 传入总记录数和每页显示的记录数
 		$Page->setConfig('prev', '上一页');
@@ -32,7 +33,7 @@ class IndexModel extends Model
 					->field('gid,title,cate,price,oldprice,gurl,
 							gimage,shop,delimg,detail,yishou,praise,
 							dislike,comment,star_time')
-					->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'"'.$condition)
+					->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'" && star_time<"'.date('Y-m-d H:i:s', time()).'"'.$condition)
 					->order('gid desc')
 					->limit($p, $pageSize)
 					->select();
@@ -46,7 +47,7 @@ class IndexModel extends Model
 	public function getStart5(){
 		$model = M('goods');
 		return $start = $model->where('status=1 && fromwhere="jiukuaiyou" && end_time>"'.date('Y-m-d H:i:s', time()).'"')
-						->limit(5,5)
+						->limit(0,5)
 						->order('gid desc')
 						->select();
 	}
