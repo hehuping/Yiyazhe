@@ -60,7 +60,7 @@ class IndexController extends Controller {
 		$ip = get_client_ip();
 		$praise_model = M('praise');
 		$goods_model = M('goods');
-		if(IS_AJAX){
+		//if(IS_AJAX){
 			$gid = I('gid');
 			$type = I('type');
 			$data = array(
@@ -83,9 +83,9 @@ class IndexController extends Controller {
 				$arr['error'] = 'Sorry 数据错误';
 				$this->ajaxReturn($arr);
 			}
-		}else{
-			$this->error('非法访问！');
-		}
+		//}else{
+			//$this->error('非法访问！');
+		//}
 	}
 	
 	/*
