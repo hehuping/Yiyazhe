@@ -85,7 +85,6 @@ class SignupController extends Controller {
     		die();
     	}
     	if (IS_POST) { //注册用户
-
     		$data = array(
     				'username' => $aUsername,
     				'phone' => $aUsername,

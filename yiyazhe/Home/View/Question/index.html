@@ -80,6 +80,8 @@ function submits(){
         success: function(data){
         			if(data.s == 0){
         				sweetAlert("提交成功", '感谢您的反馈，我们会认真对待您的每一条建议，谢谢~！','success');
+        				setTimeout("window.location.reload(true)",2000);
+        				
         			}else{
         				sweetAlert("有点小错误", data.error,'warning');
         			}

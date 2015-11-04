@@ -61,15 +61,6 @@ class LoginController extends Controller {
 			$arr['error']='用户名或者密码错误';
 			$this->ajaxReturn($arr);
 		}else{
-			$qiandao = $user_model->getQiandao($find['uid']);
-			$picName = $find['userpic'];
-			$picInfo = pathinfo($picName);
-			$find['userpic'] = $picInfo['filename'].'70.'.$picInfo['extension'];
-			$find['qiandao'] = $qiandao;
-			$_SESSION['user'] = $find;
-			$data =array( 'lastlogin' => date('Y-m-d H:i:s',time()), 'uid'=>session('user.uid'));
-			$user_model->save($data);
-			$arr['userInfo'] = $find;
 			$this->ajaxReturn($arr);
 		}
 			
