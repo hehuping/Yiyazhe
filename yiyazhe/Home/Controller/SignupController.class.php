@@ -7,6 +7,9 @@ class SignupController extends Controller {
     	$this->display();
     }
     
+    /*
+     * PC端注册
+     * */
     public function doSignup(){
     	$arr = array('s'=>0, 'error'=>'');
     	//获取参数
@@ -51,6 +54,52 @@ class SignupController extends Controller {
              $model = D('Yuser');
              $j_model = D('Jifen');
     		if($data2 =  $model->create($data)) { 
+    			if($uid=$model->add($data2)){
+    				$jifenDate['uid'] = $uid;
+    				$j_model->add($jifenDate);
+    				$this->ajaxReturn($arr);
+    			}
+    		} else { //注册失败，显示错误信息
+    			$arr['s'] = 3;
+    			$arr['error'] = $model->getError();
+    			$arr['code'] = $code;
+    			$this->ajaxReturn($arr);
+    		}
+    	} else {
+    		$this->error("非法访问",'Index/index');
+    	}
+    }
+    /*
+     * 无线端注册
+     * */
+    public function phoneSignup(){
+    	$arr = array('s'=>0, 'error'=>'');
+    	//获取参数
+    	$aUsername = I('post.phone');
+    	$aPassword = I('post.password');
+    	$pattern = "/^(1[3|4|5|8])[0-9]{9}$/";
+    	if(!preg_match($pattern, $aUsername)){
+    		$arr['s'] = 1;
+    		$arr['error'] = "手机号格式错误";
+    		$this->ajaxReturn($arr);
+    		die();
+    	}
+    	if (IS_POST) { //注册用户
+
+    		$data = array(
+    				'username' => $aUsername,
+    				'phone' => $aUsername,
+    				'password' => $aPassword,
+    		);
+    		$jifenDate = array(
+    				'Operation' => "【咿呀折手机端】",
+    				'Description' => "新用户注册",
+    				'score' => 50
+    		);
+    		// 注册用户
+    		$model = D('Yuser');
+    		$j_model = D('Jifen');
+    		if($data2 =  $model->create($data)) {
     			if($uid=$model->add($data2)){
     				$jifenDate['uid'] = $uid;
     				$j_model->add($jifenDate);
