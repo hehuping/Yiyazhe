@@ -10,6 +10,10 @@ class LoginController extends Controller {
 		$this->display();
 	}
 	
+	
+	/*
+	 * 电脑登录
+	 * */
 	public function doLogin(){
 		session_start();
 		$arr = array('s'=>0,'error'=>'');
@@ -39,6 +43,36 @@ class LoginController extends Controller {
 			$this->ajaxReturn($arr);
 		}
 		 
+	}
+	
+	/*
+	 * 手机登录
+	 * */
+	
+	public function phoneLogin(){
+		$arr = array('s'=>0,'error'=>'');
+		$username = I('username');
+		$password=md5(I('password'));
+		$user_model = D('yuser');
+		$find = $user_model->field('uid,username,figureurl,userpic')->where('phone="'.$username.'" && password="'.$password.'"')->find();
+	
+		if(empty($find)){
+			$arr['s']=2;
+			$arr['error']='用户名或者密码错误';
+			$this->ajaxReturn($arr);
+		}else{
+			$qiandao = $user_model->getQiandao($find['uid']);
+			$picName = $find['userpic'];
+			$picInfo = pathinfo($picName);
+			$find['userpic'] = $picInfo['filename'].'70.'.$picInfo['extension'];
+			$find['qiandao'] = $qiandao;
+			$_SESSION['user'] = $find;
+			$data =array( 'lastlogin' => date('Y-m-d H:i:s',time()), 'uid'=>session('user.uid'));
+			$user_model->save($data);
+			$arr['userInfo'] = $find;
+			$this->ajaxReturn($arr);
+		}
+			
 	}
 	
 	/*
