@@ -15,9 +15,8 @@ class ShoeAndBagsController extends Controller {
     	
     	$p = I ( 'p' );
     	empty($p) ? $p=1 : $p;
-    	$p -= 1;
     	$goods_model = D('Index');
-    	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p, '4,273', 80);
+    	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p-1, '4,273', 80);
 
     	$this->assign('pageInfo', $pageInfo);
     	$this->assign('count', $count);

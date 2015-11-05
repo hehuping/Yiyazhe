@@ -29,9 +29,8 @@ class BeautyController extends Controller {
     public function sendBeauty(){
     	$p = I ( 'p' );
     	empty($p) ? $p=1 : $p;
-    	$p -= 1;
     	$goods_model = D('Index');
-    	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p, '3,275', 80);
+    	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p-1, '3,275', 80);
     	$obj = new Data();
     	$obj->status = 1;
     	$obj->data = $goodsArr;

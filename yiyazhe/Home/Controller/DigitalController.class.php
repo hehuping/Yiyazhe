@@ -29,9 +29,8 @@ class DigitalController extends Controller {
     public function sendDigital(){
     	$p = I ( 'p' );
     	empty($p) ? $p=1 : $p;
-    	$p -= 1;
     	$goods_model = D('Index');
-    	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p, 188, 80);
+    	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p-1, 188, 80);
     	$obj = new Data();
     	$obj->status = 1;
     	$obj->data = $goodsArr;
