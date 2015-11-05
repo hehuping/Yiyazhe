@@ -29,21 +29,22 @@ class IndexController extends Controller {
 		$this->display();
 	}
 
-	//安卓测试数据发送
-	public function send(){
-		$goods_model = M ( 'goods' );
-		$goodlist = $goods_model->where()->limit(0, 20)->order('addtime asc')->select();
-		
-		$relist['page'] = 1;
-		$relist['object_list'] = $goodlist;
+	//安卓数据发送
+	public function sendIndex(){
+		$p = I ( 'p' );
+		empty($p) ? $p=1 : $p;
+		$goods_model = D('Index');
+		list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p-1,'',80);
+
 		$obj = new Data();
 		$obj->status = 1;
-		$obj->data = $relist;
+		$obj->data = $goodsArr;
+		$obj->page = $p;
 		$obj->barnner = array(
-				'http://www.yiyazhe.com/Public/images/index/brandbanner01.png',
-				'http://www.yiyazhe.com/Public/images/index/brandbanner02.png'
+				'http://www.yiyazhe.com/Public/images/phone/phone-01.png',
+				'http://www.yiyazhe.com/Public/images/phone/phone-02.png',
 		);
-		
+		 
 		$this->ajaxReturn($obj);
 	}
 	
