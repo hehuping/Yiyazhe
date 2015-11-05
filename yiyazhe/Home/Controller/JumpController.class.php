@@ -9,7 +9,7 @@ class JumpController extends Controller {
 		layout(false);
 		$gid = I('id');
 		$model = M('goods');
-		$find = $model->field('gurl')->find();
+		$find = $model->field ( 'gurl' )->where ( 'gid=' . $gid )->find ();
 		
 		if(empty($find)){
 			$this->redirect('/Index');
