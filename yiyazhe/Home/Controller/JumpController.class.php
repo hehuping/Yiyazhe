@@ -10,10 +10,15 @@ class JumpController extends Controller {
 		$gid = I('id');
 		$model = M('goods');
 		$find = $model->field('gurl')->find();
+		
 		if(empty($find)){
 			$this->redirect('/Index');
 		}
+		$pos = strpos($find['gurl'], "=");
+		$pos++;
+		$pid = substr($find['gurl'], $pos);
 		
+		$this->assign('pid', $pid);
 		$this->assign('gurl', $find['gurl']);
 		$this->display();
 	}
