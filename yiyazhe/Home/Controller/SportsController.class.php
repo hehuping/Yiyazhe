@@ -24,4 +24,21 @@ class SportsController extends Controller {
     	$this->assign('goodlist', $goodsArr);
     	$this->display();
     }
+    
+    public function sendSports(){
+    	$p = I ( 'p' );
+    	empty($p) ? $p=1 : $p;
+    	$p -= 1;
+    	$goods_model = D('Index');
+    	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p, 8, 80);
+    	$obj = new Data();
+    	$obj->status = 1;
+    	$obj->data = $goodsArr;
+    	$obj->page = $p;
+    	$obj->barnner = array(
+    			'http://www.yiyazhe.com/Public/images/phone/phone-wenti.png',
+    	);
+    
+    	$this->ajaxReturn($obj);
+    }
 }

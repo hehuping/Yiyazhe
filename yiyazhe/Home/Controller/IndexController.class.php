@@ -28,11 +28,7 @@ class IndexController extends Controller {
 		$this->assign('goodlist', $goodsArr);
 		$this->display();
 	}
-	public function test(){
-		$date = date('Y-m-d:H:i:s',time());
-		$end = substr($date,0,10);
-		echo $end;
-	}
+
 	//安卓测试数据发送
 	public function send(){
 		$goods_model = M ( 'goods' );

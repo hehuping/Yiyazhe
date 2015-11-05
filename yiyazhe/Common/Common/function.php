@@ -105,6 +105,18 @@ function SendMail($address,$title,$message,$attachment)
 	$mail->AddAttachment($attachment);
 	return($mail->Send());
 }
+/*
+ * 过滤首位空格，并且判断字数
+ * */
+function valideContent($content){
+	$content = trim($content);
+	$strlen = mb_strlen($content,'utf-8');
+	if($strlen>20 || $strlen<3){
+		return false;
+	}else{
+		return true;
+	}
+}
 
 /**
  * 获取客户端IP地址

@@ -17,6 +17,7 @@ class Data
 {
 	//protected $tableName = 'goods';
 	public $status = 0;
+	public $error = '';
 	public $data = array(); 
 	public $barnner = array();
 	public $page = 0;

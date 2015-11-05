@@ -25,4 +25,21 @@ class ShoeAndBagsController extends Controller {
     	$this->display();
     
     }
+    
+    public function sendShoeAndBags(){
+    	$p = I ( 'p' );
+    	empty($p) ? $p=1 : $p;
+    	$p -= 1;
+    	$goods_model = D('Index');
+    	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p, '4,273', 80);
+    	$obj = new Data();
+    	$obj->status = 1;
+    	$obj->data = $goodsArr;
+    	$obj->page = $p;
+    	$obj->barnner = array(
+    			'http://www.yiyazhe.com/Public/images/phone/phone-xiebao.png',
+    	);
+    
+    	$this->ajaxReturn($obj);
+    }
 }
