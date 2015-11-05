@@ -25,7 +25,7 @@ class JumpController extends Controller {
 			);
 			$c_model->add($data);
 		}else {
-			$model->where('gid='.$gid)->setInc('count',1);
+			$c_model->where('gid='.$gid)->setInc('count',1);
 		}
 		
 		$pos = strpos($find['gurl'], "=");
