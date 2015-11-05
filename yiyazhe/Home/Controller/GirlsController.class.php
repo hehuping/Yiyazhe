@@ -1,6 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+use Home\Model\Data;
 class GirlsController extends Controller {
     public function index(){
 

@@ -1,6 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+use Home\Model\Data;
 class DigitalController extends Controller {
     public function index(){
     	
