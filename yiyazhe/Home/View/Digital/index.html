@@ -44,11 +44,11 @@
 	                	</div>
                 	</div>
                     <li class="goods_pic">
-                        <a href="/Jump/jump/id/{$v['gid']}"><div class="big"><img src="{$v['gimage']}" alt=""/></div></a>
+                        <a href="/Jump/jump/id/{$v['gid']}" target="_blank"><div class="big"><img src="{$v['gimage']}" alt=""/></div></a>
                         <?php $pos=strpos($v['star_time'], $today); if($pos!==false){ ?><img src="__PUBLIC__/images/index/xinpin.png" alt="今日上新" class="new"/><?php } ?>
                         <img <?php $has=cookie("fav".$v['gid']); if(empty($has)){ ?>onclick="favorate({$v['gid']});"<?php } ?> id="favorate{$v['gid']}" src="__PUBLIC__/images/index/<?php if($has){echo 'favorates.png';}else{echo 'favorate.png';} ?>" alt="" class="favorate"/>
                     </li>
-                    <li class="goods_title"><p><a href="/Jump/jump/id/{$v['gid']}">{$v['title']}</a></p></li>
+                    <li class="goods_title"><p><a href="/Jump/jump/id/{$v['gid']}" target="_blank">{$v['title']}</a></p></li>
                     <li class="goods_info">
                         <ul>
                             <li class="goods_info_left">
@@ -95,17 +95,5 @@
     </div>
     <div class="page center">
     <div style="margin: 0 auto;text-align: center; margin-top:2.5%;">{$show}</div>
-    		
-           <!--   <ul>
-               <li class="arrow"><a href="#">&lsaquo;</a></li>
-               <li class="active"><a href="#">1</a></li>
-               <li><a href="#">2</a></li>
-               <li><a href="#">3</a></li>
-               <li><a href="#">4</a></li>
-               <li><a href="#">5</a></li>
-               <li><a href="#">&hellip;</a></li>
-               <li><a href="#">11</a></li>
-               <li class="arrow"><a href="#">&rsaquo;</a></li>
-           </ul>-->
     </div>
 </div>
