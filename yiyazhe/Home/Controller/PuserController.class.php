@@ -71,7 +71,7 @@ class PuserController extends Controller {
 	/*
 	 * 积分页面
 	 * */
-	public function beans(){
+	public function getbeans(){
 
 		$p = I('p');
 		$uid = I('uid');
