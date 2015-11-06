@@ -261,10 +261,10 @@ a:active,a:focus {
     width: 45%;
 }
 .goods_info_left .pirce{
-    color: #e63955;
+    color: #ff3366;
 }
 .goods_info_left .pirce span{
-    font-size: 2.3em;
+    font-size: 2.8em;
 }
 
 .goods_info_left .original{
@@ -272,7 +272,7 @@ a:active,a:focus {
     color: #9d9d9d;
 }
 .goods_info_left .discount{
-    color: #ff6c90;
+    color: #ff3366;
 }
 .goods_info_left .sell_out{
     color: #999;

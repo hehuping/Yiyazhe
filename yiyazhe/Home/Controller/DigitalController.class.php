@@ -30,7 +30,7 @@ class DigitalController extends Controller {
     	$p = I ( 'p' );
     	empty($p) ? $p=1 : $p;
     	$goods_model = D('Index');
-    	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p-1, 188, 80);
+    	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p-1, 188, 20);
     	$obj = new Data();
     	$obj->status = 1;
     	$obj->data = $goodsArr;

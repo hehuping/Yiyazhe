@@ -29,6 +29,14 @@
 	height:275px;
 }
 
+
+
+.small:hover
+{
+	 transform: scale(1.02, 1.05);
+    transition: .5s transform;
+}
+
 .new_goods_list > ul:hover{
 	border:1px solid #ef6060;
 }
@@ -361,7 +369,7 @@
             <li class="star_goods_list">
                 <ul>
                     <li class="goods_pic">
-                      <a href="/Jump/jump/id/{$vs['gid']}" target="_blank"><img src="{$vs['gimage']}" alt="{$vs['title']}"/></a>
+                      <a href="/Jump/jump/id/{$vs['gid']}" target="_blank"><div class="small"><img src="{$vs['gimage']}" alt="{$vs['title']}"/></div></a>
                       <img src="__PUBLIC__/images/index/NO<?php echo $ks+1; ?>.png" alt="" class="NO_num"/>
                     </li>
                     <li class="goods_title"><p><a href="/Jump/jump/id/{$vs['gid']}">{$vs['title']}</a></p></li>

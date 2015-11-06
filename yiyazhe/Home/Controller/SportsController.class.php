@@ -17,7 +17,7 @@ class SportsController extends Controller {
     	empty($p) ? $p=1 : $p;
     	$p -= 1;
     	$goods_model = D('Index');
-    	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p, 8, 80);
+    	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p, 8, 20);
     	
     	$this->assign('pageInfo', $pageInfo);
     	$this->assign('count', $count);

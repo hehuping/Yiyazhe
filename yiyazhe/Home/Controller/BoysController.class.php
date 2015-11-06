@@ -29,7 +29,7 @@ class BoysController extends Controller {
     	empty($p) ? $p=1 : $p;
     	$p -= 1;
     	$goods_model = D('Index');
-    	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p, '2', 80);
+    	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p, '2', 20);
     	$obj = new Data();
     	$obj->status = 1;
     	$obj->data = $goodsArr;

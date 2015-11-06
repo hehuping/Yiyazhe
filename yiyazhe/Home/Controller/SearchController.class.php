@@ -38,7 +38,7 @@ class SearchController extends Controller {
 			die;
 		}
 		$model = D('Search');
-		list($result, $show, $count)=$model->getSearchGoods($p-1, $keywords, 80);
+		list($result, $show, $count)=$model->getSearchGoods($p-1, $keywords, 20);
 
 		$obj->count = $count;
 		$obj->data = $result;
