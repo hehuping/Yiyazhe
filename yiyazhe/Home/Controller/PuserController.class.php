@@ -5,7 +5,7 @@ use Home\Model\Data;
 class PuserController extends Controller {
 	public function getComment(){
 		$p = I('p');
-		$uid = I('post.uid');
+		$uid = I('uid');
 		empty($p) ? $p=1 : $p=I('p');
 		$comment = array();
 		$model = D('Comment');
