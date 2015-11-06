@@ -15,7 +15,7 @@ class IndexController extends Controller {
 		empty($p) ? $p=1 : $p;
 		$p -= 1;
 		$goods_model = D('Index');
-		list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p,'',80);
+		list($goodsArr, $show, $count) = $goods_model->getIndexGoods2($p,'',80);
 		$start = $goods_model->getStart5();		
 		$today = date('Y-m-d',time());
 		

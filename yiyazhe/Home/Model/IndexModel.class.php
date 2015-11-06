@@ -19,7 +19,10 @@ class IndexModel extends Model
 	public function getIndexGoods($p, $class_id,$pageSize=50){
 		$condition = !empty($class_id) ? " && class_id in ({$class_id})" : '';
 		$p *= $pageSize;
-		$p+=5;
+		if($class_id == ''){
+			$p+=5;
+		}
+		
 		$goods_model = M('goods');
 		$commet_model = M('comment');
 		$count = $goods_model->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'" && star_time<"'.date('Y-m-d H:i:s', time()).'"'.$condition)->count();
@@ -54,6 +57,7 @@ class IndexModel extends Model
 	
 	public function getIndexGoods2($p, $class_id,$pageSize=50){
 		$condition = !empty($class_id) ? " && class_id in ({$class_id})" : '';
+		$now = $p;
 		$p *= $pageSize;
 		$p+=5;
 		$goods_model = M('goods');
@@ -65,18 +69,42 @@ class IndexModel extends Model
 		$Page->setConfig('next', '下一页');
 		$show       = $Page->show();// 分页显示输出
 		
-		
-		$goodsData = $goods_model
-		->field('gid,title,cate,price,oldprice,gurl,
+		$cate_model = M('cate');
+		$cate = $cate_model->where('id not in(8,187)')->select();
+		/*if($now != 0){
+			shuffle($cate);
+		}*/
+		$alldate=array();
+		if($p<300){
+			foreach ($cate as $v){
+				//print_r($alldate);
+				$goodsData = $goods_model
+				->field('gid,title,cate,price,oldprice,gurl,
+						gimage,shop,delimg,detail,yishou,praise,
+						dislike,comment,star_time')
+							->where('status=1 && class_id='.$v['id'].' && end_time>"'.date('Y-m-d H:i:s', time()).'" && star_time<"'.date('Y-m-d H:i:s', time()).'"')
+							->order('gid desc')
+							->limit(($now*10), 10)
+							->select();
+				foreach ($goodsData as $k=>$v){
+					$goodsData[$k]['comments'] = $commet_model->where('gid='.$v['gid'].' && status=1')->select();
+				}
+				$alldate = array_merge($alldate, $goodsData);
+			}
+		}else{
+			$goodsData = $goods_model
+			->field('gid,title,cate,price,oldprice,gurl,
 							gimage,shop,delimg,detail,yishou,praise,
 							dislike,comment,star_time')
-								->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'" && star_time<"'.date('Y-m-d H:i:s', time()).'"'.$condition)
-								->order('gid desc')
-								->limit($p, $pageSize)
-								->select();
-		foreach ($goodsData as $k=>$v){
-			$goodsData[$k]['comments'] = $commet_model->where('gid='.$v['gid'].' && status=1')->select();
+							->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'" && star_time<"'.date('Y-m-d H:i:s', time()).'"')
+							->order('gid desc')
+							->limit($p, $pageSize)
+							->select();
+			foreach ($goodsData as $k=>$v){
+				$goodsData[$k]['comments'] = $commet_model->where('gid='.$v['gid'].' && status=1')->select();
+			}
+			$alldate = $goodsData;
 		}
-		return array($goodsData, $show, $count);
+		return array($alldate, $show, $count);
 	}
 }
