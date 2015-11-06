@@ -67,4 +67,28 @@ class PuserController extends Controller {
 			$this->error('非法访问！');
 		}
 	}
+	
+	/*
+	 * 积分页面
+	 * */
+	public function beans(){
+
+		$p = I('p');
+		$uid = I('uid');
+		empty($p) ? $p=1 : $p=I('p');
+		$jifen = array();
+		$page = '';
+		$model = D('Jifen');
+		list($jifen, $page, $sum) = $model->getUserBeans($uid, $p-1, 0);
+	
+
+		$obj = new Data();
+		$obj->status = 0;
+		$obj->data = $jifen;
+		$obj->page = $p;
+		$obj->totle = $sum;
+			
+		$this->ajaxReturn($obj);
+	}
+	
 }
