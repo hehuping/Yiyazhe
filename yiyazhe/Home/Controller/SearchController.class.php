@@ -7,6 +7,7 @@ use Home\Model\Data;
 
 class SearchController extends Controller {
 	public function index(){
+
 		$p = I('p');
 		empty($p) ? $p=1 : $p;
 		$p-=1;
@@ -17,6 +18,14 @@ class SearchController extends Controller {
 		$model = D('Search');
 		list($result, $show, $count)=$model->getSearchGoods($p, $keywords, 80);
 		
+		$pageInfo = array(
+				'title' => "{$keywords}-商品搜索- 咿呀折",
+				'keywords' => "",
+				'description' => "",
+				'cate' => 4,
+		);
+		
+		$this->assign('pageInfo', $pageInfo);
 		$this->assign('keywords', $keywords);
 		$this->assign('goodlist', $result);
 		$this->assign('show', $show);
