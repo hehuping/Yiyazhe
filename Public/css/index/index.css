@@ -205,7 +205,7 @@ a:active,a:focus {
     text-overflow:ellipsis;
 }
 .star_goods_list .pirce{
-    color: #e63955;
+    color: #ff3366;
 }
 .star_goods_list .pirce span{
     font-size: 2em;
@@ -272,7 +272,7 @@ a:active,a:focus {
     color: #9d9d9d;
 }
 .goods_info_left .discount{
-    color: #ff3366;
+    color: #FF002F;
 }
 .goods_info_left .sell_out{
     color: #999;
@@ -298,9 +298,10 @@ a:active,a:focus {
 }
 .goods_info_right .tmall{
     vertical-align: text-bottom;
+    color: #9E9E9E;
 }
 .goods_info_right .tmall img{
-    margin-top: 7px;
+    margin-top: 4px;
 }
 .goods_info_right .tmall a{
     color: #666;

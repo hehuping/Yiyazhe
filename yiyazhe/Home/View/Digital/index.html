@@ -79,10 +79,10 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="tmall">
-                                        <a href="#">
-                                            <img src="__PUBLIC__/images/index/tmall.png" alt=""/> {$v['shop']}
-                                        </a>
+                                     <li class="tmall">
+                                        	<img style="float:left" src="__PUBLIC__/images/index/baoyou.png" />
+                                            <img src="__PUBLIC__/images/index/<?php if($v['shop']=='淘宝'){echo 'taobao';}else{echo 'tmalls';} ?>.png" alt="来自：{$v['shop']}"/> {$v['shop']}
+                                        
                                     </li>
                                 </ul>
                             </li>
