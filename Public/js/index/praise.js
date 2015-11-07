@@ -25,8 +25,6 @@ function like(id){
 		
 	}
 }
-
-
 /*
  * 不喜欢按钮
  */
@@ -53,7 +51,6 @@ function dislike(id){
         });
 	}
 }
-
 /*
  * 评论
  * */

@@ -473,7 +473,7 @@ a:active,a:focus {
 .footer_down>.center>ul>li{
     float: left;
     width: 11.667%;
-    padding:20px 0 0 5%;
+    padding:20px 20px 0 5%;
 }
 .footer_down>.center>ul>li a{
     color: #747474;
@@ -484,7 +484,7 @@ a:active,a:focus {
 }
 .footer_down .code{
     text-align: center;
-    padding-left:0!important;
+    /*padding-left:0!important;*/
     font-size: 0.875em;
 }
 .footer_down .code img{
