@@ -16,42 +16,32 @@ use Think\Model;
 class GoodsModel extends Model{
 	protected $tableName = 'goods';
 	
-	/* 用户模型自动验证 */
-	protected $_validate = array(
-			/* 验证用户名
-			 array('username', '4,32', -1, self::EXISTS_VALIDATE, 'length'), //用户名长度不合法
-	array('username', 'checkDenyMember', -2, self::EXISTS_VALIDATE, 'callback'), //用户名禁止注册
-	array('username', 'checkUsername', -20, self::EXISTS_VALIDATE, 'callback'),
-	array('username', '', -3, self::EXISTS_VALIDATE, 'unique'), //用户名被占用
-	*/
 	
-	/* 验证密码 */
-	array('password', '0,30', -4, self::EXISTS_VALIDATE, 'length'), //密码长度不合法
+	public function getGoods($p,$pageSize=50, $condition='', $order){
+		$p *= $pageSize;
 	
-			/* 验证验证码*/
-			//array('verify_code', '6', -51, self::EXISTS_VALIDATE, 'length'), //验证码长度不合法
-			//array('verify_code', 'check_verify',-50, self::EXISTS_VALIDATE, 'function'), //验证码错误
+		$goods_model = M('goods');
+		$commet_model = M('comment');
+		$count = $goods_model->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'"'.$condition)->count();
 	
-			/* 验证邮箱
-			array('email', 'email', -5, self::EXISTS_VALIDATE), //邮箱格式不正确
-			array('email', '4,32', -6, self::EXISTS_VALIDATE, 'length'), //邮箱长度不合法
-			 array('email', 'checkDenyEmail', -7, self::EXISTS_VALIDATE, 'callback'), //邮箱禁止注册
-			array('email', '', -8, self::EXISTS_VALIDATE, 'unique'), //邮箱被占用
-			*/
+		$Page       = new \Think\Page($count,$pageSize);// 实例化分页类 传入总记录数和每页显示的记录数
+		$Page->setConfig('prev', '上一页');
+		$Page->setConfig('next', '下一页');
+		$show       = $Page->show();// 分页显示输出
 	
-			/* 验证手机号码 */
-			array('phone', '/^(1[3|4|5|8])[0-9]{9}$/', -9, self::EXISTS_VALIDATE), //手机格式不正确 TODO:
-			array('phone', 'checkDenyMobile', -10, self::EXISTS_VALIDATE, 'callback'), //手机禁止注册
-			array('phone', '', -11, self::EXISTS_VALIDATE, 'unique'), //手机号被占用
-			);
+		$goodsData = $goods_model
+		->field('gid,title,cate,price,oldprice,gurl,
+							gimage,shop,delimg,detail,yishou,praise,
+							dislike,comment,star_time')
+								->where('status=1 && end_time>"'.date('Y-m-d H:i:s', time()).'"'.$condition)
+								->order($order.'gid desc')
+								->limit($p, $pageSize)
+								->select();
+		foreach ($goodsData as $k=>$v){
+			$goodsData[$k]['comments'] = $commet_model->where('gid='.$v['gid'].' && status=1')->select();
+		}
 	
-			/* 用户模型自动完成 */
-			protected $_auto = array(
-			array('password', 'md5code', self::MODEL_BOTH, 'callback'),
-					//array('addtime', NOW_TIME, self::MODEL_INSERT),
-					array('loginip', 'get_client_ip', self::MODEL_INSERT, 'function'),
-					// array('update_time', NOW_TIME),
-					//array('status', 'getStatus', self::MODEL_BOTH, 'callback'),
-    );
+		return array($goodsData, $show, $count);
+	}
 
 }

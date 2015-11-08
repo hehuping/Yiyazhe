@@ -31,6 +31,7 @@ class BoysController extends Controller {
     	$goods_model = D('Index');
     	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p, '2', 20);
     	$obj = new Data();
+    	$obj->count = $count;
     	$obj->status = 1;
     	$obj->data = $goodsArr;
     	$obj->page = $p;

@@ -77,6 +77,7 @@ class SignupController extends Controller {
     	//获取参数
     	$aUsername = I('post.phone');
     	$aPassword = I('post.password');
+    	$nickname = I('post.username'); 
     	$pattern = "/^(1[3|4|5|8])[0-9]{9}$/";
     	if(!preg_match($pattern, $aUsername)){
     		$arr['s'] = 1;
@@ -86,7 +87,7 @@ class SignupController extends Controller {
     	}
     	if (IS_POST) { //注册用户
     		$data = array(
-    				'username' => $aUsername,
+    				'username' => $nickname,
     				'phone' => $aUsername,
     				'password' => $aPassword,
     		);

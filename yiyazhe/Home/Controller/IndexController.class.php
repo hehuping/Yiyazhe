@@ -37,6 +37,7 @@ class IndexController extends Controller {
 		list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p-1,'',20);
 
 		$obj = new Data();
+		$obj->count = $count;
 		$obj->status = 1;
 		$obj->data = $goodsArr;
 		$obj->page = $p;

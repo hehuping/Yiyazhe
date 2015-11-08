@@ -32,6 +32,7 @@ class DigitalController extends Controller {
     	$goods_model = D('Index');
     	list($goodsArr, $show, $count) = $goods_model->getIndexGoods($p-1, 188, 20);
     	$obj = new Data();
+    	$obj->count = $count;
     	$obj->status = 1;
     	$obj->data = $goodsArr;
     	$obj->page = $p;

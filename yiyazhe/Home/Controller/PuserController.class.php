@@ -2,6 +2,7 @@
 namespace Home\Controller;
 use Think\Controller;
 use Home\Model\Data;
+use Org\Util\Date;
 class PuserController extends Controller {
 	public function getComment(){
 		$p = I('p');
@@ -87,6 +88,81 @@ class PuserController extends Controller {
 		$obj->data = $jifen;
 		$obj->page = $p;
 		$obj->totle = $sum;
+			
+		$this->ajaxReturn($obj);
+	}
+	
+	/*
+	 * 今日上新
+	 * */
+	public function getToday(){
+		$p = I('p');
+		empty($p) ? $p=1 : $p=I('p');
+		$model = D('Goods');
+		$date = date('Y-m-d',time());
+		$condition = " && star_time >= {$date}";
+		list($goodsData, $show, $count) = $model->getgoods($p, 20, $condition);
+		
+		$obj = new Data();
+		$obj->status = 0;
+		$obj->data = $goodsData;
+		$obj->page = $p;
+		$obj->count = $count;
+			
+		$this->ajaxReturn($obj);
+	}
+	
+	/*
+	 * 昨日上新
+	 * */
+	public function getYesterday(){
+		$p = I('p');
+		empty($p) ? $p=1 : $p=I('p');
+		$model = D('Goods');
+		$date = date('Y-m-d',time()-(3600*24)).' 10:00:00';
+		$condition = " && star_time = '{$date}'";
+		list($goodsData, $show, $count) = $model->getgoods($p, 20, $condition);
+	
+		$obj = new Data();
+		$obj->status = 0;
+		$obj->data = $goodsData;
+		$obj->page = $p;
+		$obj->count = $count;
+			
+		$this->ajaxReturn($obj);
+	}
+	
+	/*
+	 * 九块九
+	 * */
+	public function getJiukuaijiu(){
+		$p = I('p');
+		empty($p) ? $p=1 : $p=I('p');
+		$model = D('Goods');
+		$condition = " && price<10";
+		list($goodsData, $show, $count) = $model->getgoods($p, 20, $condition);
+	
+		$obj = new Data();
+		$obj->status = 0;
+		$obj->data = $goodsData;
+		$obj->page = $p;
+		$obj->count = $count;
+			
+		$this->ajaxReturn($obj);
+	}
+	
+	/*
+	 * top100
+	 * */
+	public function getTop100(){
+		$model = D('Goods');
+		$order = "yishou desc,";
+		list($goodsData, $show, $count) = $model->getgoods($p, 100, $condition,$order);
+		
+		$obj = new Data();
+		$obj->status = 0;
+		$obj->data = $goodsData;
+		$obj->count = $count;
 			
 		$this->ajaxReturn($obj);
 	}
