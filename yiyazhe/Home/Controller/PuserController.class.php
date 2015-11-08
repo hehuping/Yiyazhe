@@ -131,7 +131,7 @@ class PuserController extends Controller {
 	 */
 	public function getFavorate(){
 		
-		$uid = I('post.uid');
+		$uid = I('uid');
 		$model = D('Favorate');
 		$list = $model->getUserFavorate($uid);
 		
