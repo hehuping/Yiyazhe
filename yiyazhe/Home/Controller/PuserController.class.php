@@ -97,7 +97,7 @@ class PuserController extends Controller {
 	 */
 	public function doFavorate(){
 		$gid = I('gid');
-		if(IS_AJAX){
+		if(IS_POST){
 			$uid = I('uid');
 			$arr = array('s'=>0, 'error'=>'');
 			$model = M('favorate');
