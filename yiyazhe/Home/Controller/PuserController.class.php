@@ -93,6 +93,45 @@ class PuserController extends Controller {
 	}
 	
 	/*
+	 *收藏
+	 */
+	public function getFavorate(){
+		
+		$uid = I('post.uid');
+		$model = D('Favorate');
+		$list = $model->getUserFavorate($uid);
+		
+		$obj = new Data();
+		$obj->status = 0;
+		$obj->data = $list;
+		$this->ajaxReturn($obj);
+	}
+	
+	/*
+	 * 用户收藏删除
+	 * */
+	public function delFavorate(){
+		$data = array('s'=>0, 'error'=>'');
+		if(IS_POST){
+			$fid = I('id');
+			empty($fid) ? $this->error("参数错误") : $fid;
+	
+			$model = M('favorate');
+			if($model->where('fid='.$fid)->delete()){
+				$data['s'] = 0;
+				$data['error'] = "";
+				$this->ajaxReturn($data);
+			}else{
+				$data['s'] = 2;
+				$data['error'] = "数据错误";
+				$this->ajaxReturn($data);
+			}
+		}else{
+			$this->error('非法访问');
+		}
+	}
+	
+	/*
 	 * 今日上新
 	 * */
 	public function getToday(){
