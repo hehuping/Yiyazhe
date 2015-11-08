@@ -95,6 +95,40 @@ class PuserController extends Controller {
 	/*
 	 *收藏
 	 */
+	public function doFavorate(){
+		$gid = I('gid');
+		if(IS_AJAX){
+			$uid = I('uid');
+			$arr = array('s'=>0, 'error'=>'');
+			$model = M('favorate');
+			$has = $model->where("uid={$uid} && gid={$gid}")->find();
+			if(!empty($has)){
+				cookie("fav{$gid}",rand(10000,1000000),24*60*60*5);
+				$arr['s'] = 1;
+				$arr['error'] = "已经收藏过了，请到用户中心查看";
+				$this->ajaxReturn($arr);
+				die();
+			}
+			$data = array(
+					'gid' => $gid,
+					'uid' => $uid,
+			);
+			if($model->add($data)){
+				cookie("fav{$gid}",rand(10000,1000000),24*60*60*5);
+				$this->ajaxReturn($arr);
+			}else{
+				$arr['s'] = 1;
+				$arr['error'] = "数据错误";
+				$this->ajaxReturn($arr);
+			}
+		}else{
+			$this->error("非法访问");
+		}
+	}
+	
+	/*
+	 *获取收藏
+	 */
 	public function getFavorate(){
 		
 		$uid = I('post.uid');
