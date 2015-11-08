@@ -241,4 +241,19 @@ class PuserController extends Controller {
 		$this->ajaxReturn($obj);
 	}
 	
+	public function getInfo(){
+		$uid= I('uid');
+		$b_model = M('jifen');
+		$u_model = M('yuser');
+		$beans = $b_model->where("uid={$uid}")->sum('score');
+		$userInfo = $u_model->field('username,userpic')->where("uid={$uid}")->find();
+		$data = array(
+				'beans' => $beans,
+				'username' => $userInfo['username'],
+				'userpic' => "http://www.yiyazhe.com/uploads/".$userInfo['userpic'],
+		);
+		
+		$this->ajaxReturn($data);
+	}
+	
 }
