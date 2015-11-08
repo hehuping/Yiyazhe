@@ -50,7 +50,7 @@ class LoginController extends Controller {
 	 * */
 	
 	public function phoneLogin(){
-		$arr = array('s'=>0,'error'=>'');
+		$arr = array('s'=>0,'error'=>'', 'uid'=>'');
 		$username = I('username');
 		$password=md5(I('password'));
 		$user_model = D('yuser');
@@ -61,6 +61,7 @@ class LoginController extends Controller {
 			$arr['error']='用户名或者密码错误';
 			$this->ajaxReturn($arr);
 		}else{
+			$arr['uid']= $find['uid'];
 			$this->ajaxReturn($arr);
 		}
 			
