@@ -27,7 +27,7 @@ class JifenModel extends Model{
 		$jifen =  array();
 		$model = M('jifen');
 		$count = $model->where("uid={$uid} && status=0 && type={$type}")->count();
-		$jifen = $model->where("uid={$uid} && status=0 && type={$type}")->limit($p,10)->select();
+		$jifen = $model->where("uid={$uid} && status=0 && type={$type}")->limit($p,10)->order('addtime desc')->select();
 		$sum = $model->where("uid={$uid} && status=0 && type={$type}")->sum("score");
 		
 		$Page       = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数

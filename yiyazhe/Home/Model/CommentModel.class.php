@@ -46,7 +46,7 @@ class CommentModel extends Model{
 			foreach ($commentId as $k=>$v){
 				$sql = "select goods.gid, goods.title, goods.price, goods.oldprice, goods.gimage, goods.gurl,
 						comment.cid, comment.content, comment.addtime from comment left join goods on comment.gid
-						= goods.gid where cid={$v['cid']}";
+						= goods.gid where cid={$v['cid']} order by comment.addtime desc";
 				$comArr =  $model->query($sql);
 				$comment[] = $comArr[0];
 			}
