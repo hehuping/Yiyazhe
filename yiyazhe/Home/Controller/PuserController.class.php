@@ -99,8 +99,8 @@ class PuserController extends Controller {
 		$p = I('p');
 		empty($p) ? $p=1 : $p=I('p');
 		$model = D('Goods');
-		$date = date('Y-m-d',time());
-		$condition = " && star_time >= {$date}";
+		$date = date('Y-m-d',time()).' 10:00:00';
+		$condition = " && star_time = '{$date}'";
 		list($goodsData, $show, $count) = $model->getgoods($p, 20, $condition);
 		
 		$obj = new Data();
