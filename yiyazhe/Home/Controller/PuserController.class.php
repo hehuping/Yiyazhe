@@ -174,7 +174,8 @@ class PuserController extends Controller {
 		$model = D('Goods');
 		$date = date('Y-m-d',time()).' 10:00:00';
 		$condition = " && star_time = '{$date}'";
-		list($goodsData, $show, $count) = $model->getgoods($p, 20, $condition);
+		$order = "addtime asc,";
+		list($goodsData, $show, $count) = $model->getgoods($p, 20, $condition, $order);
 		
 		$obj = new Data();
 		$obj->status = 0;
