@@ -257,12 +257,19 @@ class PuserController extends Controller {
 		$uid= I('uid');
 		$b_model = M('jifen');
 		$u_model = M('yuser');
+		$q_model = 	M('qiandao');
+		
+		$date = date('Y-m-d',time());
+		$qiandao = $q_model->where("date='{$data}' && uid=".$uid)->find();
+		empty($qiandao) ? $qd = 0 : $qd = 1;
 		$beans = $b_model->where("uid={$uid}")->sum('score');
 		$userInfo = $u_model->field('username,userpic')->where("uid={$uid}")->find();
+		
 		$data = array(
 				'beans' => $beans,
 				'username' => $userInfo['username'],
 				'userpic' => "http://www.yiyazhe.com/uploads/".$userInfo['userpic'],
+				'qiandao' => $qd,
 		);
 		
 		$this->ajaxReturn($data);
