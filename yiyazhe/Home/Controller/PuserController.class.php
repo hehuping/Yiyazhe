@@ -9,7 +9,8 @@ class PuserController extends Controller {
 		$gid = I('id');
 		$c_model = M('comment');
 		$data = $c_model->where("gid={$gid}")->select();
-		$this->ajaxReturn($data);
+		$re = $arr["data"] = $data;
+		$this->ajaxReturn($re);
 	}
 	
 	public function getComment(){
