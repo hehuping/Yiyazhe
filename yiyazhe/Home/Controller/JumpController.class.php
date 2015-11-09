@@ -9,9 +9,10 @@ class JumpController extends Controller {
 	public function jump(){
 		layout(false);
 		$gid = I('id');
+		$from = I('from');
 		$model = M('goods');
 		$find = $model->field ( 'gurl' )->where ( 'gid=' . $gid )->find ();
-		
+		empty($from)? $from='pc':$from='app';
 		if(empty($find)){
 			$this->redirect('/Index');
 		}
@@ -21,6 +22,8 @@ class JumpController extends Controller {
 			$data = array(
 					'gid' => $gid,
 					'count' =>1,
+					'ip' => get_client_ip(),
+					'from' => $from,
 					'endtime' => date('Y-m-d H:i:s'),
 			);
 			$c_model->add($data);

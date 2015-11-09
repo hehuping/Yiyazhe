@@ -4,6 +4,14 @@ use Think\Controller;
 use Home\Model\Data;
 use Org\Util\Date;
 class PuserController extends Controller {
+	
+	public function getComnetByid(){
+		$gid = I('id');
+		$c_model = M('comment');
+		$data = $c_model->where("gid={$gid}")->select();
+		$this->ajaxReturn($data);
+	}
+	
 	public function getComment(){
 		$p = I('p');
 		$uid = I('uid');

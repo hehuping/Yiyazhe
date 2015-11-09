@@ -42,7 +42,7 @@ class IndexModel extends Model
 					->select();
 		foreach ($goodsData as $k=>$v){
 			$goodsData[$k]['comments'] = $commet_model->where('gid='.$v['gid'].' && status=1')->select();
-			$goodsData[$k]['jumpurl'] = "http://www.yiyazhe.com/Jump/jump?id={$v['gid']}";
+			$goodsData[$k]['jumpurl'] = "http://www.yiyazhe.com/Jump/jump?id={$v['gid']}&from=app";
 			$goodsData[$k]['commenturl'] = "http://www.yiyazhe.com/Puser/getComnetByid?id={$v['gid']}";
 		}
 		
