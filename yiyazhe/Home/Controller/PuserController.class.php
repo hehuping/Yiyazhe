@@ -275,4 +275,43 @@ class PuserController extends Controller {
 		$this->ajaxReturn($data);
 	}
 	
+	//用户签到
+	public function qiandao(){
+		$arr = array('s'=>1, 'error'=>'');
+		if(IS_POST){
+			$uid = I('uid');
+			$date = date('Y-m-d',time());
+			$data = array(
+					'uid' => $uid,
+					'date' => $date,
+			);
+			$data2 = array(
+					'uid' => $uid,
+					'Operation' => '【咿呀折手机端】',
+					'Description' => '签到',
+					'score' => 10
+			);
+			$q_model = M('qiandao');
+			$j_model = M('jifen');
+			$last = $q_model->where("uid={$uid}")->order('qid desc')->find();
+			if(empty($last)){
+				$j_model->add($data2);
+				$q_model->add($data);
+				$this->ajaxReturn($arr);
+			}else{
+				if($last['date'] != $date){
+					$j_model->add($data2);
+					$q_model->add($data);
+					$this->ajaxReturn($arr);
+				}else{
+					$arr['s'] =0;
+					$arr['error'] = "数据库错误";
+					$this->ajaxReturn($arr);
+				}
+			}
+		}else{
+			$this->error('非法访问');
+		}
+	}
+	
 }
