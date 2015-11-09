@@ -19,13 +19,19 @@ div{
 
 }
 .buttom{
+width:100%;
 	margin-top:30px;
 	clear:both;
 	background-color: #FFFFFF;
+	position:fixed!important; 
+	position:absolute; 
+	 bottom:0px!important; 
+	 bottom:auto; 
+	 top: expression(eval(document.compatMode && document.compatMode=='CSS1Compat') ? documentElement.scrollTop+(documentElement.clientHeight - this.clientHeight):document.body.scrollTop+(document.body.clientHeight - this.clientHeight));
 }
 .buttom a{
     width:100%;
-    height: 70px;
+    height: 50px;
     line-height: 70px;
     display: block;
     color: #FE5164;
@@ -34,7 +40,7 @@ div{
     border-radius: 3px;
     margin-bottom: 28px;
     text-decoration:none;
-        font-family: "微软雅黑";
+    font-family: "微软雅黑";
 }
 .header{
 	height:30px;
@@ -50,10 +56,12 @@ div{
 </style>
 <body>
 <div class="header"></div>
+<div class=full>
 <div class="content">
 	<div class="dleft"><img src="/Public/images/index/downbg.png"></img></div>
 	<div class="dright"><img src="/Public/images/index/downbg2.png"></img></div>
 </div>
 	<div class="buttom"><a href="/app/yiyazhe.apk" >下载App</a></div>
+</div>
 </body>
 </html>
