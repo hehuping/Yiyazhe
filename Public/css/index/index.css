@@ -410,6 +410,40 @@ a:active,a:focus {
     box-shadow: 0px 0px 5px #B0B0B0;
     border: 0px #fff solid;
 }
+.end {
+    /* float: right; */
+    width: 46px;
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 30px;
+    line-height: 28px;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 0px 2px;
+    background-color: #FF4A76;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+}
+.first {
+    /* float: right; */
+    width: 46px;
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 30px;
+    line-height: 28px;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 0px 2px;
+    background-color: #FF4A76;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+}
 
 .footer{
     max-width: 1920px;
