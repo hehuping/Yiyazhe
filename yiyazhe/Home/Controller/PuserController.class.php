@@ -271,7 +271,7 @@ class PuserController extends Controller {
 				'userpic' => "http://www.yiyazhe.com/uploads/".$userInfo['userpic'],
 				'qiandao' => $qd,
 		);
-		print_r($date);
+		print_r($qiandao);
 		//$this->ajaxReturn($data);
 	}
 	
