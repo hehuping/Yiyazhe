@@ -6,8 +6,7 @@
     <title><?php echo ($pageInfo['title']); ?></title>
     <meta name="keywords" content="<?php echo ($pageInfo['keywords']); ?>"/>
     <meta name="description" content="<?php echo ($pageInfo['description']); ?>"/>
-    
-    <link rel="icon" href=""  type="image/png" sizes="">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/Public/css/public/neat.css" type="text/css"  />
     <link rel="stylesheet" href="/Public/css/index/lunbo.css" type="text/css"  />
     <link rel="stylesheet" href="/Public/css/public/index.css" type="text/css"  />
@@ -388,12 +387,12 @@
             </div>
         </div>
        <div class="footer_down">
-           <div class="center">
+           <div class="center" style="width:1000px;">
                <ul>
                    <li>
                        <ul>
                            <li class="title">关于我们</li>
-                           <li><a href="#">关于我们</a></li>
+                           <li><a href="/about">关于我们</a></li>
                            <li><a href="#">诚聘英才</a></li>
                            <li><a href="#">校园合伙人</a></li>
                        </ul>
@@ -419,18 +418,17 @@
                            <li><a href="#">微信号</a></li>
                        </ul>
                    </li>
-                   <li>
+                  <!-- <li>
                        <ul>
                            <li class="title">购物指南</li>
                            <li><a href="#">用户注册</a></li>
                            <li><a href="#">支付方式</a></li>
-                       </ul>
-                   </li>
+                       </ul>  
+                   </li>-->
                    <li class="code">
                        <ul>
                            <li><img src="/Public/images/index/code.png" alt=""/></li>
-                           <li>
-                               关注我们，更多惊喜
+                           <li>扫一扫下载App
                            </li>
                        </ul>
                    </li>
@@ -488,6 +486,16 @@ var login = <?php if($uid = is_login()){echo $uid;}else{echo 'false';} ?>;
 
         });
     });
+</script>
+<!-- baidu 统计代码开始 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?87d53a4157d24fd8de035acfe32d9886";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 </body>
 </html>
