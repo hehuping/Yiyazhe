@@ -10,7 +10,10 @@ class PuserController extends Controller {
 		$c_model = M('comment');
 		$data = $c_model->where("gid={$gid}")->select();
 		$re = $arr["data"] = $data;
-		$this->ajaxReturn($re);
+		$obj = new Data();
+		$obj->status = 0;
+		$obj->data = $re;
+		$this->ajaxReturn($obj);
 	}
 	
 	public function getComment(){
