@@ -260,7 +260,7 @@ class PuserController extends Controller {
 		$q_model = 	M('qiandao');
 		
 		$date = date('Y-m-d',time());
-		$qiandao = $q_model->where("date='{$data}' && uid=".$uid)->find();
+		$qiandao = $q_model->where("date='{$date}' && uid=".$uid)->find();
 		empty($qiandao) ? $qd = 0 : $qd = 1;
 		$beans = $b_model->where("uid={$uid}")->sum('score');
 		$userInfo = $u_model->field('username,userpic')->where("uid={$uid}")->find();
@@ -271,8 +271,7 @@ class PuserController extends Controller {
 				'userpic' => "http://www.yiyazhe.com/uploads/".$userInfo['userpic'],
 				'qiandao' => $qd,
 		);
-		print_r($qiandao);
-		//$this->ajaxReturn($data);
+		$this->ajaxReturn($data);
 	}
 	
 	//用户签到
