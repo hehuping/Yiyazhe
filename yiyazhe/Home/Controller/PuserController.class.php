@@ -188,7 +188,10 @@ class PuserController extends Controller {
 		$condition = " && star_time = '{$date}'";
 		$order = "addtime asc,";
 		list($goodsData, $show, $count) = $model->getgoods($p, 20, $condition, $order);
-		
+
+		if(empty($goodsData)){
+			list($goodsData, $show, $count) = $goods_model->getIndexGoods2($p,'',80);
+		}
 		$obj = new Data();
 		$obj->status = 0;
 		$obj->data = $goodsData;
