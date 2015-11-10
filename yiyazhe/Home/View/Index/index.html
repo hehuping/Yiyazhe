@@ -200,8 +200,50 @@
 .big{
 	background-image:url(/Public/images/index/backimg.png);
 }
+.free{
+	width:275px;
+	height:180px;
+	background-image:url(/Public/images/index/backimg.png);
+}
 
+.sendkf{
+font-size:15px;
+text-align:center;
+    border-radius: 10px;
+	width:70px;
+	background-color: #F0094B;
+	height: 58px;
+	line-height: 60px;
+	display: inline-block;
+	color:white;
+}
 
+.goods-free{
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:9995;
+	padding-top: 12px;
+  	background-color: rgba(0,0,0,0.7);/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+  	display:none;
+}
+.Qzon{
+	margin:0 auto;
+	text-align:center;
+	margin-top:50px;
+}
+.Qzon a{
+	background-image:url(/Public/images/index/intro.png);
+	width:39px;
+	height: 39px;
+	line-height: 60px;
+	display: inline-block;
+}
+.Qzon p{
+	color:white;
+}
 </style>
 
 <body>  
@@ -360,13 +402,56 @@
         </a>
     </div>
 </div>
-
 <div class="content">
+<!-- ----- -->
+	<div class="new_goods center" >
+        <h3>
+            <img src="__PUBLIC__/images/index/mianfei.png" alt=""/>
+            <a class="sendkf" target="_blank" href="http://sighttp.qq.com/authd?IDKEY=5e081757b1d6a946813932eca431382e13b5fe034d6ab08d">发给客服</a>
+        </h3>
+        <ul>
+        <?php foreach($free as $fk=>$fv){ ?>
+            <li class="new_goods_list">
+                <ul style="position:relative">
+               		<div class="goods-free" id="scom{$fk}">
+               		   <div class="Qzon">
+               		   <p>每天十点开奖</p>
+	               		<a target="_blank" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http%3A%2F%2Fwww.yiyazhe.com&title=咿呀折-学生党每天免费领商品！&pics=&summary=咿呀折，专注校园折扣！每天更新近千款学生折扣商品，9.9每天有！一切只为学生党。">
+	               		</a>
+	               		<p>分享到QQ空间提交客服抽奖吧！</p>	
+	               		</div>        		
+               		</div>
+                    <li class="goods_pic">
+                        <a  target="_blank"><div class="free"><img src="{$fv['image']}" alt=""/></div></a>
+                    </li>
+                    <li class="goods_title"><p><a target="_blank">{$fv['title']}</a></p></li>
+                    <li class="goods_info">
+                        <ul>
+                            <li class="goods_info_left">
+                                <ul>
+                                    <img style="float:right" src="__PUBLIC__/images/index/baoyou.png" />
+                                     
+                                </ul>
+                            </li>
+                            <li class="goods_info_right">
+                                <ul>
+                                    <img style="float:left;margin-left:10px;" src="__PUBLIC__/images/index/choujiang.png" />
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <?php } ?>
+        </ul>
+    </div>
+
+<!--  -->
     <div class="star_goods center" >
         <h3>
-            <img src="__PUBLIC__/images/index/star.png" alt="明星9.9前五名"/>
-            <span>明星9.9</span>
-            <span class="vice">Start 5</span>
+            <img src="__PUBLIC__/images/index/mingxin.png" alt="明星9.9前五名"/>
+            <span></span>
+            <!--<span class="vice">Start 5</span>  -->
             <!-- <span style="float:right;padding-right:10px;"><a style="color:#F30619" href="/Jiukuai">全部9块邮</a></span> -->
         </h3> 
         <ul>
@@ -386,8 +471,8 @@
     </div>
     <div class="new_goods center" >
         <h3>
-            <img src="__PUBLIC__/images/index/now.png" alt=""/>
-            <span>今日宝贝总数:</span>
+            <img src="__PUBLIC__/images/index/today.png" alt=""/>
+           
             <span class="vice">{$count}款</span>
         </h3>
         <ul>

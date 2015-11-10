@@ -18,9 +18,10 @@ class IndexController extends Controller {
 		list($goodsArr, $show, $count) = $goods_model->getIndexGoods2($p,'',80);
 		$start = $goods_model->getStart5();		
 		$today = date('Y-m-d',time());
+		$f_model = M('free');
+		$free = $f_model->order('id desc')->limit(4)->select();
 		
-		//print_r($goodsArr);
-		
+		$this->assign('free',$free);
 		$this->assign('today', $today);
 		$this->assign('count', $count);
 		$this->assign('start', $start);

@@ -168,4 +168,19 @@ $(".goods-pl").mouseleave(function(){
 	// alert(3232);
 
 });
+/*
+ * 鼠标焦点QQ空间出来
+ */
+$(".new_goods_list").mouseover(function(){
+	 $(this).find(".goods-free").css("display","block");
+	//$("#scom").css("display","block");
+
+});
+/*
+ * 鼠标离开QQ空间隐藏
+ */
+$(".new_goods_list").mouseout(function(){
+	 $(this).find(".goods-free").css("display","none");
+
+});
 

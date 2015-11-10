@@ -158,11 +158,12 @@ a:active,a:focus {
 
 .content .center>h3{
     padding:30px 0  10px 10px;
-    color: #fb7c84;
+    color: #F31A4D;
 }
 
 .content .center>h3 .vice{
     font-size: 0.75em;
+        line-height: 5;
 }
 
 .star_goods_list{
@@ -214,7 +215,7 @@ a:active,a:focus {
 
 
 .new_goods{
-    margin-top: 20px;
+    /*margin-top: 20px;*/
     overflow: hidden;
 }
 
@@ -222,7 +223,7 @@ a:active,a:focus {
     float:left;
     width:23%;
     padding:0 1%;
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
 }
 .new_goods_list>ul{
     background: #fff;
