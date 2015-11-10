@@ -190,6 +190,7 @@ class PuserController extends Controller {
 		list($goodsData, $show, $count) = $model->getgoods($p, 20, $condition, $order);
 
 		if(empty($goodsData)){
+			$goods_model = D('Index');
 			list($goodsData, $show, $count) = $goods_model->getIndexGoods2($p,'',80);
 		}
 		$obj = new Data();
