@@ -43,6 +43,7 @@ class IndexController extends Controller {
 		$obj->data = $goodsArr;
 		$obj->page = $p;
 		$obj->barnner = array(
+				'http://www.yiyazhe.com/Public/images/phone/p-shuanshiyi.png',
 				'http://www.yiyazhe.com/Public/images/phone/phone-01.png',
 				'http://www.yiyazhe.com/Public/images/phone/phone-02.png',
 		);
