@@ -125,7 +125,7 @@ class SignupController extends Controller {
 	    	$str = str_shuffle($str);
 	    	$code = substr($str, 0, 6);
 	    	if(preg_match($pattern, $email)){
-	    		if(SendMail($email, '咿呀折用户注册测试', "<h3>欢迎注册咿呀折，在这里你将发现我们的乐趣以及我们的实惠！您的验证码是：<h3><strong>{$code}</strong>请在3分钟内输入验证码。", '')){
+	    		if(SendMail($email, '咿呀折用户注册', "<h3>欢迎注册咿呀折，在这里你将发现我们的乐趣以及我们的实惠！您的验证码是：<h3><strong>{$code}</strong>请在3分钟内输入验证码。", '')){
 	    			$vcode = md5(md5(md5($code).md5($code)).md5($code));
 	    			$vemail = md5(md5(md5($email)).md5(md5($email)));
 	    			cookie($vemail,$vcode,180);
