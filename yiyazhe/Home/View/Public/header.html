@@ -186,7 +186,7 @@
         <div class="center">
             <ul class="top_navbar">
             <?php $login=session('user.uid'); if(!$login){ ?>
-                <li><a href="/Login/qqlogin">QQ登录</a></li>
+                <li><a href="/Login/qqlogin" data-no-instant>QQ登录</a></li>
                 <li class="line"></li>
                 <li><a href="/Login" data-no-instant>登录</a>&nbsp;&nbsp;<a href="/Signup" data-no-instant>免费注册</a></li>
             <?php }else{ ?>
