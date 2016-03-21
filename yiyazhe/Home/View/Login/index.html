@@ -9,10 +9,22 @@
 	rel="stylesheet" />
 <link href="__PUBLIC__/css/login/style1.0.5.css" media="screen"
 	rel="stylesheet" />
-<script src="__PUBLIC__/js/login/jquery1.7.2.min.js"> </script>
+	<script src="__PUBLIC__/js/login/jquery1.7.2.min.js"> </script>
 
+	<script src="__PUBLIC__/js/index/instantclick.js" data-no-instant></script>
+	<script src="__PUBLIC__/js/index/loading-indicator.js" data-no-instant></script>
 
 </head>
+
+<script data-no-instant>
+	/* Google Analytics code here, without ga('send', 'pageview') */
+
+	InstantClick.on('change', function() {
+		ga('send', 'pageview', location.pathname + location.search);
+	});
+
+	InstantClick.init();
+</script>
 
 <body>
 	<div id="header">
@@ -66,7 +78,7 @@
 		</div>
 		<div class="reg_right">
 			<div class="right_top">
-				<span>貌似还木有帐号 ？<a href="/signup">注册走起</a></span>
+				<span>貌似还木有帐号 ？<a href="/signup" data-no-instant>注册走起</a></span>
 			</div>
 			<div class="ada">
 				<a target="_blank"><img

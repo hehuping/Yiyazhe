@@ -10,10 +10,19 @@
 <link href="__PUBLIC__/css/signin/style1.0.5.css" media="screen"
 	rel="stylesheet" />
 <script src="__PUBLIC__/js/signin/jquery1.7.2.min.js"> </script>
-
+	<script src="__PUBLIC__/js/index/instantclick.js" data-no-instant></script>
+	<script src="__PUBLIC__/js/index/loading-indicator.js" data-no-instant></script>
 
 </head>
+<script data-no-instant>
+	/* Google Analytics code here, without ga('send', 'pageview') */
 
+	InstantClick.on('change', function() {
+		ga('send', 'pageview', location.pathname + location.search);
+	});
+
+	InstantClick.init();
+</script>
 <body>
 	<div id="header">
 		<div class="area">
@@ -71,7 +80,7 @@
 		</div>
 		<div class="reg_right">
 			<div class="right_top">
-				<span>原来是老朋友，快去登录吧！<a href="/login">登录</a></span>
+				<span>原来是老朋友，快去登录吧！<a href="/login" data-no-instant>登录</a></span>
 			</div>
 			<div class="ada">
 				<a target="_blank"><img

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="__PUBLIC__/css/index/neat.css" type="text/css"  />
     <link rel="stylesheet" href="__PUBLIC__/css/index/index.css" type="text/css"  />
     <link rel="stylesheet" href="__PUBLIC__/css/index/sweet-alert.css" />
+
 </head>
 
 <style>
@@ -254,7 +255,7 @@ text-align:center;
             <?php $login=session('user.uid'); if(!$login){ ?>
                 <li><a href="/Login/qqlogin">QQ登录</a></li>
                 <li class="line"></li>
-                <li><a href="/Login">登录</a>&nbsp;&nbsp;<a href="/Signup">免费注册</a></li>
+                <li><a href="/Login" data-no-instant>登录</a>&nbsp;&nbsp;<a href="/Signup" data-no-instant>免费注册</a></li>
             <?php }else{ ?>
            		 <li class="active"><a href="/user" target="_blank"><img width="20px;" src="/uploads/<?php echo session('user.userpic'); ?>" /></a></li>
             	<li class="active"><a href="/User" target="_blank" style="color:#F50505"><?php echo session('user.username'); ?></a></li>
@@ -262,9 +263,9 @@ text-align:center;
             <?php } ?>
             
                 <li class="line"></li>
-                <li class="active"><a href="/user/comment">我的评论</a></li>
+                <li class="active"><a href="/user/comment" data-no-instant>我的评论</a></li>
                 <li class="line"></li>
-                <li class="active"><a href="/user/favorate">我的收藏</a></li>
+                <li class="active"><a href="/user/favorate" data-no-instant>我的收藏</a></li>
                 <li class="line"></li>
                 <li><a href="#">联系客服</a></li>
                 <li class="line"></li>
@@ -598,13 +599,13 @@ text-align:center;
 <div class="right_fix_nav">
     <ul>
         <li>
-            <a href="/user"><img src="__PUBLIC__/images/index/float_01.png" alt="用户中心"/><span>用户</span></a>
+            <a href="/user" data-no-instant><img src="__PUBLIC__/images/index/float_01.png" alt="用户中心"/><span>用户</span></a>
         </li>
         <li>
-            <a href="/user/favorate"><img src="__PUBLIC__/images/index/float_02.png" alt="我的收藏"/><span>收藏</span></a>
+            <a href="/user/favorate" data-no-instant><img src="__PUBLIC__/images/index/float_02.png" alt="我的收藏"/><span>收藏</span></a>
         </li>
         <li>
-            <a href="/user/comment"><img src="__PUBLIC__/images/index/float_03.png" alt="我的评论"/><span>评论</span></a>
+            <a href="/user/comment" data-no-instant><img src="__PUBLIC__/images/index/float_03.png" alt="我的评论"/><span>评论</span></a>
         </li>
         <li id="weibo">
       	  <img class="weibocode" src="__PUBLIC__/images/index/weiboqr.png"  />
@@ -615,7 +616,7 @@ text-align:center;
             <a href="javascript:void(0)"><img src="__PUBLIC__/images/index/float_05.png" alt="关注微信"/><span>微信</span></a>
         </li>
         <li style="margin-top: 160px;">
-            <a href="/Question"><img src="__PUBLIC__/images/index/float_06.png" alt="意见反馈"/><span>意见</span></a>
+            <a href="/Question" data-no-instant><img src="__PUBLIC__/images/index/float_06.png" alt="意见反馈"/><span>意见</span></a>
         </li>
         <li class="return">
             <a href="javascript:;"><img src="__PUBLIC__/images/index/float_07.png" alt="回到顶部"/><span>回到顶部</span></a>
@@ -631,6 +632,17 @@ text-align:center;
 
 <script src="__PUBLIC__/js/index/praise.js"></script>
 <script src="__PUBLIC__/js/index/sweet-alert-index.js"></script>
+<script src="__PUBLIC__/js/index/instantclick.js" data-no-instant></script>
+<script src="__PUBLIC__/js/index/loading-indicator.js" data-no-instant></script>
+<script data-no-instant>
+    /* Google Analytics code here, without ga('send', 'pageview') */
+
+    InstantClick.on('change', function() {
+        ga('send', 'pageview', location.pathname + location.search);
+    });
+
+    InstantClick.init();
+</script>
 <!-- 轮播图JS实现 -->
 <script>
     $(function(){

@@ -11,12 +11,24 @@
     <link rel="stylesheet" href="__PUBLIC__/css/index/lunbo.css" type="text/css"  />
     <link rel="stylesheet" href="__PUBLIC__/css/public/index.css" type="text/css"  />
     <link rel="stylesheet" href="__PUBLIC__/css/index/sweet-alert.css" />
+	<script src="__PUBLIC__/js/index/instantclick.js" data-no-instant></script>
+	<script src="__PUBLIC__/js/index/loading-indicator.js" data-no-instant></script>
 	<script src="__PUBLIC__/js/index/jquery-1.11.3.min.js"></script>
 	<script src="__PUBLIC__/js/index/prefixfree.min.js"></script>
 	<script src="__PUBLIC__/js/index/jquery.smint.js"></script>
 	<script src="__PUBLIC__/js/index/sweet-alert-index.js"></script>
+
 </head>
 
+<script data-no-instant>
+	/* Google Analytics code here, without ga('send', 'pageview') */
+
+	InstantClick.on('change', function() {
+		ga('send', 'pageview', location.pathname + location.search);
+	});
+
+	InstantClick.init();
+</script>
 <style>
 .big:hover > img {
     transform: scale(1.05, 1.05);
@@ -176,17 +188,17 @@
             <?php $login=session('user.uid'); if(!$login){ ?>
                 <li><a href="/Login/qqlogin">QQ登录</a></li>
                 <li class="line"></li>
-                <li><a href="/Login">登录</a>&nbsp;&nbsp;<a href="/Signup">免费注册</a></li>
+                <li><a href="/Login" data-no-instant>登录</a>&nbsp;&nbsp;<a href="/Signup" data-no-instant>免费注册</a></li>
             <?php }else{ ?>
             	<li class="active"><a href="/user" ><img width="20px" src="/uploads/<?php echo session('user.userpic'); ?>" /></a></li>
             	<li class="active"><a href="/User" style="color:red"><?php echo session('user.username'); ?></a></li>
-            	<li class="active"><a href="/Login/loginout" style="color:red">退出</a></li>
+            	<li class="active"><a href="/Login/loginout" data-no-instant style="color:red">退出</a></li>
             <?php } ?>
             
                 <li class="line"></li>
-                <li class="active"><a href="/user/comment">我的评论</a></li>
+                <li class="active"><a href="/user/comment" data-no-instant>我的评论</a></li>
                 <li class="line"></li>
-                <li class="active"><a href="/user/favorate">我的收藏</a></li>
+                <li class="active"><a href="/user/favorate" data-no-instant>我的收藏</a></li>
                 <li class="line"></li>
                 <li><a href="#">联系客服</a></li>
                 <li class="line"></li>
