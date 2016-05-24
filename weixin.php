@@ -52,6 +52,7 @@ class wechatCallbackapiTest
                 	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 	echo $resultStr;
                 }elseif($MsgType == "image"){
+					$msgType = 'text';
                 	$contentStr = 'images';
                 	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 	echo $resultStr;
@@ -62,7 +63,7 @@ class wechatCallbackapiTest
         	exit;
         }
     }
-		
+	
 	private function checkSignature()
 	{
         // you must define TOKEN by yourself
