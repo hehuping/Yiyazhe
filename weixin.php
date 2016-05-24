@@ -76,7 +76,26 @@ class wechatCallbackapiTest
 									<FuncFlag>0</FuncFlag>
 									</xml>";
                 	echo $newsTplHead.$newsTplBody.$newsTplFoot;
-                }
+                }elseif($MsgType == "event"){
+					$Url = 'http://s2.juancdn.com/bao/160523/7/4/57429a03151ad16a468b45c7_400x400.jpg';
+					$newsTplHead = "<xml>
+									<ToUserName><![CDATA[$fromUsername]]></ToUserName>
+									<FromUserName><![CDATA[$toUsername]]></FromUserName>
+									<CreateTime>%$time</CreateTime>
+									<MsgType><![CDATA[news]]></MsgType>
+									<ArticleCount>1</ArticleCount>
+									<Articles>";
+					$newsTplBody = "<item>
+									<Title><![CDATA[感谢关注]]></Title>
+									<Description><![CDATA[欢迎您关注我们，我们会给你带来不一样的乐趣]]></Description>
+									<PicUrl><![CDATA[$Url]]></PicUrl>
+									<Url><![CDATA[http://www.qq.com]]></Url>
+									</item>";
+					$newsTplFoot = "</Articles>
+									<FuncFlag>0</FuncFlag>
+									</xml>";
+					echo $newsTplHead.$newsTplBody.$newsTplFoot;
+				}
 
         }else {
         	echo "";
