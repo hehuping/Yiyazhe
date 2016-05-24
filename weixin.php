@@ -34,6 +34,7 @@ class wechatCallbackapiTest
               	$postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
                 $fromUsername = $postObj->FromUserName;
                 $toUsername = $postObj->ToUserName;
+                $MsgType = $postObj->MsgType;
                 $keyword = trim($postObj->Content);
                 $time = time();
                 $textTpl = "<xml>
@@ -50,8 +51,8 @@ class wechatCallbackapiTest
                 	$contentStr = "Welcome to wechat world!$fromUsername,$toUsername";
                 	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 	echo $resultStr;
-                }else{
-                	echo "Input something...";
+                }elseif($MsgType == "image"){
+                	echo "image";
                 }
 
         }else {
