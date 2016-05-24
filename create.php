@@ -41,7 +41,7 @@ function getaccss(){
     return json_decode($content);
 }
 
-echo getaccss();
+print_r(getaccss()) ;
 
 
 
