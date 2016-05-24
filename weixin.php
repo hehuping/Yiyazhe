@@ -58,7 +58,7 @@ class wechatCallbackapiTest
                 	echo $resultStr;
                 }elseif($MsgType == "image"){
 
-					$rep = "<xml>
+					/*$rep = "<xml>
 							 <ToUserName><![CDATA[$fromUsername]]></ToUserName>
 							 <FromUserName><![CDATA[$toUsername]]></FromUserName>
 							 <CreateTime>$time</CreateTime>
@@ -66,8 +66,16 @@ class wechatCallbackapiTest
 							 <PicUrl><![CDATA[$PicUrl]]></PicUrl>
 							 <MediaId><![CDATA[$MediaId]]></MediaId>
 							 <MsgId>$MsgId</MsgId>
-							 </xml>";
+							 </xml>";*/
 
+					$textTpl = "<xml>
+							<ToUserName><![CDATA[$fromUsername]]></ToUserName>
+							<FromUserName><![CDATA[$toUsername]]></FromUserName>
+							<CreateTime>$time</CreateTime>
+							<MsgType><![CDATA[text]]></MsgType>
+							<Content><![CDATA[$MediaId]]></Content>
+							<FuncFlag>0</FuncFlag>
+							</xml>";
 					//$msgType = 'text';
                 	//$contentStr = 'images'.$PicUrl;
                 	echo $rep;
