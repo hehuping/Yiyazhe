@@ -78,7 +78,7 @@ class wechatCallbackapiTest
 							</xml>";
 					//$msgType = 'text';
                 	//$contentStr = 'images'.$PicUrl;
-                	echo $rep;
+                	echo $textTpl;
                 }
 
         }else {
