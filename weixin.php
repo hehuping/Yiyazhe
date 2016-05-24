@@ -59,30 +59,23 @@ class wechatCallbackapiTest
 
                 }elseif($MsgType == "image"){
 					$Url = 'http://s2.juancdn.com/bao/160523/7/4/57429a03151ad16a468b45c7_400x400.jpg';
-					/*$rep = "<xml>
-							 <ToUserName><![CDATA[$fromUsername]]></ToUserName>
-							 <FromUserName><![CDATA[$toUsername]]></FromUserName>
-							 <CreateTime>$time</CreateTime>
-							 <MsgType><![CDATA[image]]></MsgType>
-							 <PicUrl><![CDATA[$Url]]></PicUrl>
-							 <MediaId><![CDATA[$MediaId]]></MediaId>
-							 <MsgId>$MsgId</MsgId>
-							 </xml>";*/
-
-					$text = "$fromUsername | $toUsername | $time | $MsgType | $PicUrl | $MediaId | $MsgId";
-
-					$rep = "<xml>
-							<ToUserName><![CDATA[$fromUsername]]></ToUserName>
-							<FromUserName><![CDATA[$toUsername]]></FromUserName>
-							<CreateTime>$time</CreateTime>
-							<MsgType><![CDATA[image]]></MsgType>
-							<PicUrl><![CDATA[$Url]]></PicUrl>
-							<MediaId><![CDATA[$MediaId]]></MediaId>
-							<FuncFlag>0</FuncFlag>
-							</xml>";
-					//$msgType = 'text';
-                	//$contentStr = 'images'.$PicUrl;
-                	echo $rep;
+					$newsTplHead = "<xml>
+									<ToUserName><![CDATA[$fromUsername]]></ToUserName>
+									<FromUserName><![CDATA[$toUsername]]></FromUserName>
+									<CreateTime>%$time</CreateTime>
+									<MsgType><![CDATA[news]]></MsgType>
+									<ArticleCount>1</ArticleCount>
+									<Articles>";
+					$newsTplBody = "<item>
+									<Title><![CDATA[测试]]></Title>
+									<Description><![CDATA[哈哈哈哈哈哈]]></Description>
+									<PicUrl><![CDATA[$Url]]></PicUrl>
+									<Url><![CDATA[http://www.qq.com]]></Url>
+									</item>";
+					$newsTplFoot = "</Articles>
+									<FuncFlag>0</FuncFlag>
+									</xml>";
+                	echo $newsTplHead.$newsTplBody.$newsTplFoot;
                 }
 
         }else {
