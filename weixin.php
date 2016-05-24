@@ -57,28 +57,28 @@ class wechatCallbackapiTest
                 	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 	echo $resultStr;
                 }elseif($MsgType == "image"){
-
-					/*$rep = "<xml>
+					$Url = 'http://s2.juancdn.com/bao/160523/7/4/57429a03151ad16a468b45c7_400x400.jpg';
+					$rep = "<xml>
 							 <ToUserName><![CDATA[$fromUsername]]></ToUserName>
 							 <FromUserName><![CDATA[$toUsername]]></FromUserName>
 							 <CreateTime>$time</CreateTime>
 							 <MsgType><![CDATA[image]]></MsgType>
-							 <PicUrl><![CDATA[$PicUrl]]></PicUrl>
+							 <PicUrl><![CDATA[$Url]]></PicUrl>
 							 <MediaId><![CDATA[$MediaId]]></MediaId>
 							 <MsgId>$MsgId</MsgId>
-							 </xml>";*/
+							 </xml>";
 
-					$textTpl = "<xml>
+					/*$textTpl = "<xml>
 							<ToUserName><![CDATA[$fromUsername]]></ToUserName>
 							<FromUserName><![CDATA[$toUsername]]></FromUserName>
 							<CreateTime>$time</CreateTime>
 							<MsgType><![CDATA[text]]></MsgType>
 							<Content><![CDATA[$MediaId]]></Content>
 							<FuncFlag>0</FuncFlag>
-							</xml>";
+							</xml>";*/
 					//$msgType = 'text';
                 	//$contentStr = 'images'.$PicUrl;
-                	echo $textTpl;
+                	echo $rep;
                 }
 
         }else {
