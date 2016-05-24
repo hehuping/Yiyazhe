@@ -65,7 +65,9 @@ class wechatCallbackapiTest
 							 <CreateTime>$time</CreateTime>
 							 <MsgType><![CDATA[image]]></MsgType>
 							 <PicUrl><![CDATA[$Url]]></PicUrl>
-							 <MediaId><![CDATA[$MediaId]]></MediaId>
+							<Image>
+ 						        <MediaId><![CDATA[$MediaId]]></MediaId>
+   						    </Image>
 							 </xml>";
 					echo $rep;
 
