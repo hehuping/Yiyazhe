@@ -42,7 +42,7 @@ function getaccss(){
     return $obj->access_token;
 }
 
-print_r(getaccss()) ;
+
 
 
 
@@ -77,6 +77,16 @@ $mune = '{
             }]
        }]
  }';
+
+$token = getaccss();
+
+$url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=$token";
+
+
+print_r(post($url,$mune));
+
+
+
 
 
 
