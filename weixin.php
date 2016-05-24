@@ -75,8 +75,8 @@ class wechatCallbackapiTest
 							<ToUserName><![CDATA[$fromUsername]]></ToUserName>
 							<FromUserName><![CDATA[$toUsername]]></FromUserName>
 							<CreateTime>$time</CreateTime>
-							<MsgType><![CDATA[$text]]></MsgType>
-							<Content><![CDATA[]]></Content>
+							<MsgType><![CDATA[text]]></MsgType>
+							<Content><![CDATA[$text]]></Content>
 							<FuncFlag>0</FuncFlag>
 							</xml>";
 					//$msgType = 'text';
