@@ -37,7 +37,8 @@ function post($url, $post_data = '', $timeout = 5){//curl
 function getaccss(){
     $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxb096e505f9556191&secret=d4624c36b6795d1d99dcf0547af5443d";
     $content = file_get_contents($url);
-    return $content;
+
+    return json_deencode($content);
 }
 
 echo getaccss();
