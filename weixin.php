@@ -52,26 +52,14 @@ class wechatCallbackapiTest
 							</xml>";
 				if(!empty( $keyword ))
                 {
-              		/*$msgType = "text";
+              		$msgType = "text";
                 	$contentStr = "Welcome to wechat world!$fromUsername,$toUsername";
                 	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                	echo $resultStr;*/
-
-
-					$Url = 'http://s2.juancdn.com/bao/160523/7/4/57429a03151ad16a468b45c7_400x400.jpg';
-					$rep = "<xml>
-							<ToUserName><![CDATA[$fromUsername]]></ToUserName>
-							<FromUserName><![CDATA[$toUsername]]></FromUserName>
-							<CreateTime>$time</CreateTime>
-							<MsgType><![CDATA[image]]></MsgType>
-							<PicUrl><![CDATA[$Url]]></PicUrl>
-							<FuncFlag>0</FuncFlag>
-							</xml>";
-					echo $rep;
+                	echo $resultStr;
 
                 }elseif($MsgType == "image"){
 					$Url = 'http://s2.juancdn.com/bao/160523/7/4/57429a03151ad16a468b45c7_400x400.jpg';
-					$rep = "<xml>
+					/*$rep = "<xml>
 							 <ToUserName><![CDATA[$fromUsername]]></ToUserName>
 							 <FromUserName><![CDATA[$toUsername]]></FromUserName>
 							 <CreateTime>$time</CreateTime>
@@ -79,16 +67,18 @@ class wechatCallbackapiTest
 							 <PicUrl><![CDATA[$Url]]></PicUrl>
 							 <MediaId><![CDATA[$MediaId]]></MediaId>
 							 <MsgId>$MsgId</MsgId>
-							 </xml>";
+							 </xml>";*/
 
-					/*$textTpl = "<xml>
+					$text = "$fromUsername | $toUsername | $time | $MsgType | $PicUrl | $MediaId | $MsgId";
+
+					$rep = "<xml>
 							<ToUserName><![CDATA[$fromUsername]]></ToUserName>
 							<FromUserName><![CDATA[$toUsername]]></FromUserName>
 							<CreateTime>$time</CreateTime>
-							<MsgType><![CDATA[text]]></MsgType>
-							<Content><![CDATA[$MediaId]]></Content>
+							<MsgType><![CDATA[$text]]></MsgType>
+							<Content><![CDATA[]]></Content>
 							<FuncFlag>0</FuncFlag>
-							</xml>";*/
+							</xml>";
 					//$msgType = 'text';
                 	//$contentStr = 'images'.$PicUrl;
                 	echo $rep;
