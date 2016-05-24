@@ -49,13 +49,26 @@ class wechatCallbackapiTest
 							<MsgType><![CDATA[%s]]></MsgType>
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
-							</xml>";             
+							</xml>";
 				if(!empty( $keyword ))
                 {
-              		$msgType = "text";
+              		/*$msgType = "text";
                 	$contentStr = "Welcome to wechat world!$fromUsername,$toUsername";
                 	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                	echo $resultStr;
+                	echo $resultStr;*/
+
+
+					$Url = 'http://s2.juancdn.com/bao/160523/7/4/57429a03151ad16a468b45c7_400x400.jpg';
+					$rep = "<xml>
+							 <ToUserName><![CDATA[$fromUsername]]></ToUserName>
+							 <FromUserName><![CDATA[$toUsername]]></FromUserName>
+							 <CreateTime>$time</CreateTime>
+							 <MsgType><![CDATA[image]]></MsgType>
+							 <PicUrl><![CDATA[$Url]]></PicUrl>
+							 <MediaId><![CDATA[$MediaId]]></MediaId>
+							 </xml>";
+					echo $rep;
+
                 }elseif($MsgType == "image"){
 					$Url = 'http://s2.juancdn.com/bao/160523/7/4/57429a03151ad16a468b45c7_400x400.jpg';
 					$rep = "<xml>
