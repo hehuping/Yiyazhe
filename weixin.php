@@ -60,15 +60,13 @@ class wechatCallbackapiTest
 
 					$Url = 'http://s2.juancdn.com/bao/160523/7/4/57429a03151ad16a468b45c7_400x400.jpg';
 					$rep = "<xml>
-							 <ToUserName><![CDATA[$fromUsername]]></ToUserName>
-							 <FromUserName><![CDATA[$toUsername]]></FromUserName>
-							 <CreateTime>$time</CreateTime>
-							 <MsgType><![CDATA[image]]></MsgType>
-							 <PicUrl><![CDATA[$Url]]></PicUrl>
-							<Image>
- 						        <MediaId><![CDATA[$MediaId]]></MediaId>
-   						    </Image>
-							 </xml>";
+							<ToUserName><![CDATA[$fromUsername]]></ToUserName>
+							<FromUserName><![CDATA[$toUsername]]></FromUserName>
+							<CreateTime>$time</CreateTime>
+							<MsgType><![CDATA[image]]></MsgType>
+							<PicUrl><![CDATA[$Url]]></PicUrl>
+							<FuncFlag>0</FuncFlag>
+							</xml>";
 					echo $rep;
 
                 }elseif($MsgType == "image"){
