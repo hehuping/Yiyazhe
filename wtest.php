@@ -21,6 +21,6 @@ $content = file_get_contents($url);
 
 $obj = json_decode($content);
 
-echo "<html>用户昵称：{$obj->nickname}<br>性别：{$obj->six}<br>省份：{$obj->province}<br><img src='{$obj->headimgurl}' /></html>";
+echo "<html>用户昵称：{$obj->nickname}<br>性别：{$obj->sex}<br>省份：{$obj->province}<br><img src='{$obj->headimgurl}' /></html>";
 
 //print_r($content);
