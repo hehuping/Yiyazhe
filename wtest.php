@@ -19,4 +19,8 @@ $url = "https://api.weixin.qq.com/sns/userinfo?access_token={$obj->access_token}
 
 $content = file_get_contents($url);
 
-print_r($content);
+$obj = json_decode($content);
+
+echo "<html>用户昵称：{$obj->nickname}<br>性别：{$obj->six}<br>省份：{$obj->province}<br><img src='{$obj->headimgurl}' /></html>";
+
+//print_r($content);
