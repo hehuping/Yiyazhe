@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Administrator
+ * User: hehuping
  * Date: 2016/5/24
  * Time: 15:38
  */
@@ -62,8 +62,8 @@ $mune = '{
            "sub_button":[
            {
                "type":"view",
-               "name":"搜索",
-               "url":"http://www.soso.com/"
+               "name":"最新折扣",
+               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb096e505f9556191&redirect_uri=http://www.yiyazhe.com/wtest.php&response_type=code&scope=snsapi_userinfo&state=hehuping#wechat_redirect"
             },
             {
                "type":"view",
@@ -84,8 +84,6 @@ $url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=$token";
 
 
 print_r(post($url,$mune));
-
-
 
 
 

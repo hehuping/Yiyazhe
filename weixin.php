@@ -102,8 +102,7 @@ class wechatCallbackapiTest
 					echo $this->contentImage($fromUsername, $toUsername, $Url, "http://www.qq.com","点击消息","点击按钮得到的消息");
 
 				}elseif($MsgType == "event" && $Event == "subscribe"){
-					$Url = 'http://s2.juancdn.com/bao/160523/6/f/5742771e151ad1516a8b45c7_400x400.jpg';
-					echo $this->contentImage($fromUsername, $toUsername, $Url, "http://www.qq.com","欢迎你小伙伴","感谢您关注我们，有了我们世界会更有趣");
+					$this->contentText($fromUsername, $toUsername, "欢迎关注！");
 				}
 
         }else {
@@ -114,7 +113,7 @@ class wechatCallbackapiTest
 	
 	private function checkSignature()
 	{
-        // you must define TOKEN by yourself
+        // you must define TOKEN by yourself 
         if (!defined("TOKEN")) {
             throw new Exception('TOKEN is not defined!');
         }
