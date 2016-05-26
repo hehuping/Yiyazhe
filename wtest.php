@@ -15,8 +15,8 @@ $content = file_get_contents($url);
 
 $obj = json_decode($content);
 
-$url = "https://api.weixin.qq.com/sns/userinfo?access_token={$obj->access_token}&openid={$obj->openid}&lang=zh_CN";
+//$url = "https://api.weixin.qq.com/sns/userinfo?access_token={$obj->access_token}&openid={$obj->openid}&lang=zh_CN";
 
-$content = file_get_contents($url);
+//$content = file_get_contents($url);
 
 print_r($content);
