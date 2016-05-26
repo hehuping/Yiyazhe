@@ -63,7 +63,7 @@ $mune = '{
            {
                "type":"view",
                "name":"最新折扣",
-               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb096e505f9556191&redirect_uri=http://www.yiyazhe.com/wtest.php&scope=snsapi_base&response_type=code&state=hehuping#wechat_redirect"
+               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb096e505f9556191&redirect_uri=http://www.yiyazhe.com/wtest.php&scope=snsapi_userinfo&response_type=code&state=hehuping#wechat_redirect"
             },
             {
                "type":"view",
