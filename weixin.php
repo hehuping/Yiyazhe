@@ -102,7 +102,7 @@ class wechatCallbackapiTest
 					echo $this->contentImage($fromUsername, $toUsername, $Url, "http://www.qq.com","点击消息","点击按钮得到的消息");
 
 				}elseif($MsgType == "event" && $Event == "subscribe"){
-					$this->contentText($fromUsername, $toUsername, "欢迎关注！");
+					echo $this->contentText($fromUsername, $toUsername, "欢迎关注！");
 				}
 
         }else {
