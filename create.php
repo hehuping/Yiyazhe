@@ -68,7 +68,7 @@ $mune = '{
             {
                "type":"view",
                "name":"咿呀折",
-               "url":"http://www.juanpi.com/"
+               "url":"http://www.yiyazhe.com/wei/test.html"
             },
             {
                "type":"click",
