@@ -67,8 +67,8 @@ $mune = '{
             },
             {
                "type":"view",
-               "name":"视频",
-               "url":"http://v.qq.com/"
+               "name":"咿呀折",
+               "url":"http://www.juanpi.com/"
             },
             {
                "type":"click",
