@@ -16,9 +16,10 @@ class wechatCallbackapiTest
 
         //valid signature , option
         if($this->checkSignature()){
-        	echo $echoStr;
-        	exit;
-        }
+        	return true;
+        }else{
+			exit;
+		}
     }
 
 	public function contentImage($fromUsername, $toUsername, $picUrl, $link, $title, $content){
