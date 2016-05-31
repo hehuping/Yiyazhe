@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>WeUI</title>
+    <link rel="stylesheet" href="/Public/css/weixin/weui.css"/>
+    <link rel="stylesheet" href="/Public/css/weixin/example.css"/>
+	<script src="/Public/js/login/jquery1.7.2.min.js"></script>
+</head>
+<body ontouchstart>
+    <div class="container" id="container" style="height:auto;">
+		<div class="hd">
+			<h1 class="page_title">人脸识别</h1>
+			<p class="page_desc">微信人脸识别系统</p>
+		</div>
+	</div>
+
+    <div class="msg" style="display:none;">
+        <div class="weui_msg">
+            <div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
+            <div class="weui_text_area">
+                <h2 class="weui_msg_title">识别成功</h2>
+                <p class="weui_msg_desc" id="age"></p>
+                <p class="weui_msg_desc" id="race"></p>
+                <p class="weui_msg_desc" id="smiling"></p>
+                <p class="weui_msg_desc" id="gender"></p>
+            </div>
+
+            <div class="weui_extra_area">
+
+            </div>
+        </div>
+    </div>
+
+
+	
+	<div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <div class="weui_uploader">
+                    <div class="weui_uploader_hd weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">图片上传</div>
+                        <div class="weui_cell_ft"></div>
+                    </div>
+                    <div class="weui_uploader_bd">
+                        <ul class="weui_uploader_files" id="img_content">
+                            <li class="weui_uploader_file" style="background-image:url()"></li>
+                           
+                      
+                        </ul>
+                        <div class="weui_uploader_input_wrp">
+                            <input class="weui_uploader_input" type="file" id="picFile" onchange="readFile(this)" accept="image/jpg,image/jpeg,image/png" multiple="">
+							<input type="hidden" value="" name="image" id="pdata" /> 
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<div class="weui_btn_area">
+        <a href="javascript:;" class="weui_btn weui_btn_primary" id="showLoadingToast">确定</a>
+    </div>
+	
+		<!-- loading toast -->
+<div id="loadingToast" class="weui_loading_toast" style="display:none;">
+    <div class="weui_mask_transparent"></div>
+    <div class="weui_toast">
+        <div class="weui_loading">
+            <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+        </div>
+        <p class="weui_toast_content">数据加载中</p>
+    </div>
+</div>
+	
+	<script>
+
+	$("#showLoadingToast").click(function(){
+        var img = $("#pdata").val();
+		 $('#loadingToast').show();
+            $.ajax({
+                type: "POST",
+                url: "/face/dopost",
+                data: {'img':img},
+                dataType: "json",
+                success: function(data){
+                    if(data.s == 0){
+                        $('#loadingToast').hide();
+                        $('#age').html('年龄：'+data.age);
+                        $('#race').html('肤色：'+data.race);
+                        $('#gender').html('性别：'+data.gender);
+                        $('.msg').show();
+                    }else{
+
+                    }
+                }
+            });
+	});
+	
+	function readFile(obj){   
+        var file = obj.files[0];      
+        //判断类型是不是图片  
+        if(!/image\/\w+/.test(file.type)){     
+                alert("请确保文件为图像类型");   
+                return false;   
+        }   
+        var reader = new FileReader();   
+        reader.readAsDataURL(file);   
+        reader.onload = function(e){   
+		$("#pdata").val(this.result);
+		$("#img_content").html('<li class="weui_uploader_file" style="background-image:url('+this.result+')"></li>');
+               // alert(this.result); //就是base64  
+   
+        }
+
+}   
+	</script>
+	
+</body>
+</html>
