@@ -50,7 +50,7 @@ $data = array(
 
 );
 
-$mune = '{
+/*$mune = '{
      "button":[
      {
           "type":"click",
@@ -75,6 +75,25 @@ $mune = '{
                "name":"赞一下我们",
                "key":"V1001_GOOD"
             }]
+       }]
+ }';*/
+
+$mune = '{
+     "button":[
+     {
+          "type":"click",
+          "name":"今日头条",
+          "key":"V1001_TODAY_MUSIC"
+      },
+      {
+           "name":"tiger",
+           "sub_button":[
+            {
+               "type":"view",
+               "name":"人脸识别",
+               "url":"http://www.yiyazhe.com/face/chose"
+            },
+            ]
        }]
  }';
 
