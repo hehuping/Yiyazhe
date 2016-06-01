@@ -16,7 +16,7 @@
 		</div>
 	</div>
 
-    <div class="msg" style="display:none;">
+    <div class="msg" id="msg1" style="display:none;">
         <div class="weui_msg">
             <div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
             <div class="weui_text_area">
@@ -25,6 +25,19 @@
                 <p class="weui_msg_desc" id="race"></p>
                 <p class="weui_msg_desc" id="smiling"></p>
                 <p class="weui_msg_desc" id="gender"></p>
+            </div>
+
+            <div class="weui_extra_area">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="msg" id="msg2" style="display:none;">
+        <div class="weui_msg">
+            <div class="weui_icon_area"><i class="weui_icon_msg weui_icon_warn"></i></div>
+            <div class="weui_text_area">
+                <h2 class="weui_msg_title" id="error"></h2>
             </div>
 
             <div class="weui_extra_area">
@@ -45,9 +58,7 @@
                     </div>
                     <div class="weui_uploader_bd">
                         <ul class="weui_uploader_files" id="img_content">
-                            <li class="weui_uploader_file" style="background-image:url()"></li>
-                           
-                      
+
                         </ul>
                         <div class="weui_uploader_input_wrp">
                             <input class="weui_uploader_input" type="file" id="picFile" onchange="readFile(this)" accept="image/jpg,image/jpeg,image/png" multiple="">
@@ -81,7 +92,7 @@
             <div class="weui_loading_leaf weui_loading_leaf_10"></div>
             <div class="weui_loading_leaf weui_loading_leaf_11"></div>
         </div>
-        <p class="weui_toast_content">数据加载中</p>
+        <p class="weui_toast_content">加速识别中...</p>
     </div>
 </div>
 	
@@ -101,8 +112,11 @@
                         $('#age').html('年龄：'+data.age);
                         $('#race').html('肤色：'+data.race);
                         $('#gender').html('性别：'+data.gender);
-                        $('.msg').show();
+                        $('#msg1').show();
                     }else{
+                        $('#msg1').hide();
+                        $('#error').html(data.error);
+                        $('#msg2').show();
 
                     }
                 }

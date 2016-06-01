@@ -34,14 +34,35 @@ class FaceController extends Controller
         $data = str_replace($arr,'',$data);
         $img = base64_decode($data);
         $handle = file_put_contents("./wpic/".$file_name.".jpg",$img);
+        $size = filesize("./wpic/".$file_name.".jpg");
+
+        if($size > 1024*1024*5){
+            $respons['s'] = 2;
+            $respons['error'] = "图片太大了，不能超过5M";
+            echo json_encode($respons);
+            die;
+        }
+
+        if($size > 1024*1024){
+            $image = new \Think\Image();
+            $image->open("./wpic/".$file_name.".jpg");
+            $image->thumb(1200, 1200,\Think\Image::IMAGE_THUMB_FILLED)->save("./wpic/".$file_name.".jpg");
+        }
 
         $imageins = M('image');
 
         if($handle){
             $params['img']          = $_SERVER['DOCUMENT_ROOT']."wpic/$file_name.jpg";
             $params['attribute']    = 'gender,age,race,smiling';
-            $response               = $facepp->execute('/detection/detect',$params);
             $rep = $facepp->execute('/detection/detect',$params);
+
+            if(empty($rep['body'])){
+                $respons['s'] = 1;
+                $respons['error'] = "图像无法识别";
+
+                echo json_encode($respons);
+                die;
+            }
 
            $rs = json_decode($rep['body']);
             foreach($rs->face as $k=>$v){
@@ -51,7 +72,9 @@ class FaceController extends Controller
                     //'url' => $rs->url,
                     'pic_name' => $file_name.".jpg",
                 );
+                //写入数据库
                 $imageins->add($data);
+                //加入集合
                 $faceset->addFace($v->face_id);
                 $respons['age'] = $v->attribute->age->value;
                 $respons['race'] = $v->attribute->race->value;
