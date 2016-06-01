@@ -46,7 +46,7 @@ class FaceController extends Controller
         if($size > 1024*1024){
             $image = new \Think\Image();
             $image->open("./wpic/".$file_name.".jpg");
-            $image->thumb(1200, 1200,\Think\Image::IMAGE_THUMB_FILLED)->save("./wpic/".$file_name.".jpg");
+            $image->thumb(800, 800,\Think\Image::IMAGE_THUMB_FILLED)->save("./wpic/".$file_name.".jpg");
         }
 
         $imageins = M('image');
