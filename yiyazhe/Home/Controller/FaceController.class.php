@@ -52,7 +52,7 @@ class FaceController extends Controller
         $imageins = M('image');
 
         if($handle){
-            $params['img']          = $_SERVER['DOCUMENT_ROOT']."wpic/$file_name.jpg";
+            $params['img']          = $_SERVER['DOCUMENT_ROOT']."/wpic/$file_name.jpg";
             $params['attribute']    = 'gender,age,race,smiling';
             $rep = $facepp->execute('/detection/detect',$params);
 
