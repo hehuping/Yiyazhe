@@ -98,7 +98,7 @@
             <div class="weui_loading_leaf weui_loading_leaf_10"></div>
             <div class="weui_loading_leaf weui_loading_leaf_11"></div>
         </div>
-        <p class="weui_toast_content">加速识别中...</p>
+        <p class="weui_toast_content" id="toast">加速识别中...</p>
     </div>
 </div>
 	
@@ -132,7 +132,7 @@
 
 
     $('input:file').localResizeIMG({
-        width: 1000,
+        width: 1200,
         quality: 0.8,
         success: function (result) {
             var img = new Image();
@@ -143,7 +143,8 @@
 
             $("#pdata").val(result.base64);
             $("#img_content").html('<li class="weui_uploader_file" style="background-image:url('+result.base64+')"></li>');
-
+            $('#toast').html("正在识别...");
+            $('#loadingToast').hide();
         }
     });
 

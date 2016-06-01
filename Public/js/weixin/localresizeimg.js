@@ -10,6 +10,12 @@
      */
     $.fn.localResizeIMG = function(obj) {
         this.on('change', function() {
+            $('#toast').html("压缩图片...");
+            $('#loadingToast').show();
+            var size = this.files[0].size;
+            if(size < 1024*1024){
+                obj.quality = 1;
+            }
             var file = this.files[0];
             var URL = window.URL || window.webkitURL;
             var blob = URL.createObjectURL(file);
