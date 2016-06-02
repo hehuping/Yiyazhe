@@ -93,6 +93,12 @@ $mune = '{
                "name":"人脸识别",
                "url":"http://www.yiyazhe.com/face/chose"
             },
+
+            {
+               "type":"view",
+               "name":"人脸识别2",
+               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb096e505f9556191&redirect_uri=http://www.yiyazhe.com/face/getin&scope=snsapi_userinfo&response_type=code&state=hehuping#wechat_redirect"
+            },
             ]
        }]
  }';

@@ -15,6 +15,10 @@ class FaceController extends Controller
 
         import("Org.Net.Faceset");
         import("Org.Net.Facepp");
+
+        //$info = getUserInfo();
+
+
         
         layout(false);
         $this->display();
@@ -97,6 +101,37 @@ class FaceController extends Controller
         $data = $image_ins->order('addtime desc')->select();
         $this->assign('data', $data);
         $this->display();
+    }
+
+    public function getin(){
+
+        layout(false);
+
+        import("Org.Net.Faceset");
+        import("Org.Net.Facepp");
+
+        $wuser = M('wuser');
+
+        $info = getUserInfo();
+        $has = $wuser->where("openid='{$info->openid}'")->find();
+        if(!$has){
+            $data = array(
+                'openid' => $info->openid,
+                'nickname' => $info->nickname,
+                'sex' => $info->sex,
+                'province' => $info->province,
+                'city' => $info->city,
+                'country' => $info->country,
+                'headimgurl' => $info->headimgurl,
+                'reg_time' => date("Y-m-d H:i:s",time()),
+            );
+            $wuser->add($data);
+        }
+
+        print_r($info);
+
+        $this->assign('data',$info);
+        $this->display('chose');
     }
 
 }
