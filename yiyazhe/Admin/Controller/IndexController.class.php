@@ -298,7 +298,7 @@ class IndexController extends Controller {
 
 			$arr=$this->getDetail($pid);
 
-
+			//print_r($v);die;
 			echo $k."<br>";
 			//echo $v->deal_class.":".$v->deal_class_id."<br>";
 			if(strpos($v->deal_taobao_link, 'taobao'))$shop="淘宝";else $shop="天猫";
