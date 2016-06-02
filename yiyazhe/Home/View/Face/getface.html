@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <title>查看图片</title>
 </head>
+<style>
+    img{
+        max-width: 200px;
+        height: auto;
+    }
+</style>
 <body>
 <?php foreach($data as $v){ ?>
-<img src="/wpic/{$v['pic_name']}" />
+<img  src="/wpic/{$v['pic_name']}" />
 <?php } ?>
 </body>
 </html>
