@@ -13,6 +13,9 @@ class FaceController extends Controller
 {
     public function chose(){
 
+        import("Org.Net.Faceset");
+        import("Org.Net.Facepp");
+        
         layout(false);
         $this->display();
     }
@@ -86,6 +89,14 @@ class FaceController extends Controller
        echo json_encode($respons);
        // $facepp->execute('',array());
         //echo json_encode($rep);
+    }
+
+    public function getface(){
+        layout(false);
+        $image_ins = M('image');
+        $data = $image_ins->order('addtime desc')->select();
+        $this->assign('data', $data);
+        $this->display();
     }
 
 }
