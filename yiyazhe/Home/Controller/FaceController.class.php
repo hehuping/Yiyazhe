@@ -128,10 +128,9 @@ class FaceController extends Controller
             $wuser->add($data);
         }
 
-        print_r($info);
 
-        $this->assign('data',$info);
-        $this->display('chose');
+        $this->assign('info',$info);
+        $this->display();
     }
 
 }
