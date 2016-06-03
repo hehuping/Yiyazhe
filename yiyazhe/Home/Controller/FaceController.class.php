@@ -210,7 +210,7 @@ class FaceController extends Controller
             }
 
             $rs = json_decode($rep['body']);
-            foreach($rs->face as $k=>$v){
+            /*foreach($rs->face as $k=>$v){
                 $data = array(
                     'face_id' => $v->face_id,
                     'img_id' => $rs->img_id,
@@ -220,9 +220,9 @@ class FaceController extends Controller
                 //写入数据库
                 $imageins->add($data);
 
-                $fres = $faceset->search($v->face_id,1);
 
-            }
+
+            }*/ $fres = $faceset->search($rs->face[0]->face_id,1);
         }
         $fres = json_decode($fres['body']);
         //print_r($fres->candidate);
