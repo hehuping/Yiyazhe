@@ -128,6 +128,23 @@ class Faceset
         }
     }
 
+    /**
+     * 寻找faceset里面最相似的脸
+     * */
+    public function search($key_face_id, $count=3){
+        if($this->is_exist){
+            return $rep =  $this->facepp->execute('/recognition/search',array('key_face_id' => $key_face_id, 'faceset_name' => $this->facesetName, 'count' => $count));
+        }else{
+            return $this->getMessage();
+        }
+    }
+
+    public function getSession($session_id){
+        return $rep =  $this->facepp->execute('/info/get_session',array('session_id' => $session_id));
+
+    }
+
+
     /*
      * 获取ERROR
      * */
