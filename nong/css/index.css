@@ -1,5 +1,6 @@
 p{
 	font-size: 25px;
+	color: #B2B2B2;
 }
 .top{
 	max-height:100px ;
@@ -29,15 +30,16 @@ p{
 	height: 45px;
 }
 .u_header img{
-	width: 80px;
+	width: 75px;
 	border-radius:50%; overflow:hidden;
-	border:double #F1F1F1 5px;
+	border:double #F1F1F1 6px;
 	float: left;
-	margin-left:-15px ;
+	margin-left:-20px ;
 }
 .u_header p{
 	float: right;
 	padding-right: 10px;
+	line-height: 80px;
 }
 .foot{
 	width: 100%;
