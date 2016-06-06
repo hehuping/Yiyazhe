@@ -108,7 +108,7 @@ p{
 	height: 130px;
 	background-color: #EFEFF4;
 	z-index: 5;
-	border: solid 2px #04BE02;
+	border: solid 1px #04BE02;
 }
 .buttoms .b_left{
 	float: left;
