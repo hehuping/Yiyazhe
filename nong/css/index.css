@@ -117,18 +117,18 @@ p{
 .buttoms .b_right{
 	text-align: center;
 	padding-left: 15px;
-	padding-top: 30px;
+	padding-top: 20px;
 	width: 15%;
 	float: left;
 }
 
 .b_right img{
-	width: 45px;
+	width: 50px;
 }
 
 .b_right p{
-	font-size: 28px;
-    line-height: 15px;
+	font-size: 25px;
+    line-height: 25px;
     color: black
 }
 .weui_search_input {
