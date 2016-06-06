@@ -1,3 +1,6 @@
+p{
+	font-size: 20px;
+}
 .top{
 	max-height:100px ;
 	width: 100%;
@@ -25,10 +28,11 @@
 	height: 45px;
 }
 .u_header img{
-	width: 50px;
+	width: 90px;
 	border-radius:50%; overflow:hidden;
+	border:double #F1F1F1 5px;
 	float: left;
-	margin-left:-8px ;
+	margin-left:-15px ;
 }
 .u_header p{
 	float: right;
