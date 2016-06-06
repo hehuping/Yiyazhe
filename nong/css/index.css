@@ -1,6 +1,7 @@
 p{
-	font-size: 25px;
-	color: #B2B2B2;
+	font-size: 28px;
+	color: #666666;
+	font-family: "微软雅黑";
 }
 .top{
 	max-height:100px ;
@@ -30,7 +31,7 @@ p{
 	height: 45px;
 }
 .u_header img{
-	width: 75px;
+	width: 70px;
 	border-radius:50%; overflow:hidden;
 	border:double #F1F1F1 6px;
 	float: left;
@@ -46,7 +47,7 @@ p{
 	background: #F1F1F1;
 	height: 50px;
 	margin-top: 45px;
-	border-bottom: solid #B2B2B2 2px;
+	border-bottom: solid #E6E6E6 1px;
 	clear: both;
 }
 .foot_con{
@@ -62,4 +63,8 @@ p{
 }
 .weui_cell{
 	margin-top: 20px;
+}
+.weui_navbar_item a{
+	font-family: "微软雅黑";
+	font-size: 35px;
 }
