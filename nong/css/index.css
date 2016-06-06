@@ -105,32 +105,37 @@ p{
 	bottom: 0px;
 	width: 100%;
 	left: 0px;
-	height: 70px;
+	height: 130px;
 	background-color: #EFEFF4;
 	z-index: 5;
 }
 .buttoms .b_left{
 	float: left;
-	width: 80%;
+	width: 83%;
 }
 
 .buttoms .b_right{
 	text-align: center;
 	padding-left: 15px;
-	padding-top: 10px;
+	padding-top: 30px;
 	width: 15%;
 	float: left;
 }
 
 .b_right img{
-	width: 25px;
+	width: 45px;
 }
 
 .b_right p{
-	font-size: 25px;
-    line-height: 10px;
+	font-size: 28px;
+    line-height: 15px;
     color: black
 }
 .weui_search_input {
 	font-size: 25px;
 }
+
+.buttoms .weui_btn{
+	    line-height: 100px;
+}
+
