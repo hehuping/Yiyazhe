@@ -15,6 +15,7 @@ p{
 }
 .weui_cell_primary p{
 	padding-top: 10px;
+	padding-bottom: 10px;
 }
 .img{
 	width: 100%;
@@ -28,7 +29,7 @@ p{
 	height: 45px;
 }
 .u_header img{
-	width: 85px;
+	width: 80px;
 	border-radius:50%; overflow:hidden;
 	border:double #F1F1F1 5px;
 	float: left;
@@ -42,7 +43,8 @@ p{
 	width: 100%;
 	background: #F1F1F1;
 	height: 50px;
-	margin-top: 5px;
+	margin-top: 45px;
+	border-bottom: solid #B2B2B2 2px;
 	clear: both;
 }
 .foot_con{
