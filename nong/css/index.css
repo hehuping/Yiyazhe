@@ -62,13 +62,18 @@ p{
 	display: inline;
 }
 .weui_cell{
+	border-top:double #F1F1F1 2px;
 	margin-top: 35px;
+}
+.weui_cell:before {
+	border-top:double #F1F1F1 0px;
 }
 .weui_navbar_item a{
 	font-family: "微软雅黑";
 	font-size: 35px;
 }
 .send{
+	margin-top: 10px;
 	height: 100px;
 	text-align: center;
 }
@@ -88,5 +93,9 @@ p{
 	float: right;
 	width: 50%;
 	text-align: left;
-	line-height: 65px;
+	
+}
+.send .s_right p{
+	margin-top: 20px;
+	color: #454545;
 }
