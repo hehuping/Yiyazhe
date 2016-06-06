@@ -79,9 +79,9 @@ p{
 }
 .send img{
 	margin-right: 10px;
-	width: 70px;
+	width: 75px;
 	border-radius:50%; overflow:hidden;
-	border:double #F1F1F1 6px;
+	/*border:double #F1F1F1 6px;*/
 }
 .send .s_left{
 	
