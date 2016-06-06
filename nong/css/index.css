@@ -68,3 +68,25 @@ p{
 	font-family: "微软雅黑";
 	font-size: 35px;
 }
+.send{
+	height: 100px;
+	text-align: center;
+}
+.send img{
+	margin-right: 10px;
+	width: 70px;
+	border-radius:50%; overflow:hidden;
+	border:double #F1F1F1 6px;
+}
+.send .s_left{
+	
+	float: left;
+	width: 50%;
+	text-align: right;
+}
+.send .s_right{
+	float: right;
+	width: 50%;
+	text-align: left;
+	line-height: 65px;
+}
