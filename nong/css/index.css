@@ -99,3 +99,38 @@ p{
 	margin-top: 20px;
 	color: #454545;
 }
+
+.buttoms{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	left: 0px;
+	height: 70px;
+	background-color: #EFEFF4;
+	z-index: 5;
+}
+.buttoms .b_left{
+	float: left;
+	width: 80%;
+}
+
+.buttoms .b_right{
+	text-align: center;
+	padding-left: 15px;
+	padding-top: 10px;
+	width: 15%;
+	float: left;
+}
+
+.b_right img{
+	width: 25px;
+}
+
+.b_right p{
+	font-size: 25px;
+    line-height: 10px;
+    color: black
+}
+.weui_search_input {
+	font-size: 25px;
+}
