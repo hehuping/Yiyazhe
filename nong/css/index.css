@@ -108,6 +108,7 @@ p{
 	height: 130px;
 	background-color: #EFEFF4;
 	z-index: 5;
+	border: solid 2px #04BE02;
 }
 .buttoms .b_left{
 	float: left;
@@ -138,5 +139,27 @@ p{
 
 .buttoms .weui_btn{
 	    line-height: 100px;
+}
+
+.weui_search_bar:after{
+	border: solid 0px #04BE02;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #04BE02;  
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #04BE02;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #04BE02;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #04BE02;
 }
 
