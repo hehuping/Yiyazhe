@@ -1,5 +1,5 @@
 p{
-	font-size: 20px;
+	font-size: 25px;
 }
 .top{
 	max-height:100px ;
@@ -28,7 +28,7 @@ p{
 	height: 45px;
 }
 .u_header img{
-	width: 90px;
+	width: 85px;
 	border-radius:50%; overflow:hidden;
 	border:double #F1F1F1 5px;
 	float: left;
