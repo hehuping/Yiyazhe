@@ -47,7 +47,7 @@ p{
 	background: #F1F1F1;
 	height: 50px;
 	margin-top: 45px;
-	border-bottom: solid #E6E6E6 1px;
+	border-bottom: solid #E6E6E6 3px;
 	clear: both;
 }
 .foot_con{
@@ -62,7 +62,7 @@ p{
 	display: inline;
 }
 .weui_cell{
-	margin-top: 20px;
+	margin-top: 35px;
 }
 .weui_navbar_item a{
 	font-family: "微软雅黑";
