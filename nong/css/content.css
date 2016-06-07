@@ -88,5 +88,52 @@ p{
 	border-top: 2px solid #D9D9D9; 
 }
 
+.info1 .weui_cells:after {
+	border-bottom: 0px solid #D9D9D9; 
+}
+
+.info3 .weui_cells {
+	margin-top: 5px;
+}
+
+.info3 .weui_cells{
+	margin-top: 10px;
+	height: 75px;
+}
+
+.info4{
+	margin-top: 20px;
+	border-bottom: 1px solid #D9D9D9;
+}
+.bj{
+	height: 25px;
+	background: #EEEEEE;
+}
+
+.info5 .weui_cells{
+	background: #FBFFFB;
+	margin-top: 0px;
+	line-height: 60px;
+}
+
+.yun{
+	color: #353535;
+}
+
+.c_left p{
+	
+	font-size: 25px;
+	line-height: 45px;
+}
+
+.c_right{
+	margin-left: 30px;
+}
+
+.c_right p{
+	color: #353535;
+	font-size: 25px;
+	line-height: 45px;
+}
 
 
