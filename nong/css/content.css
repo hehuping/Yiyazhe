@@ -148,4 +148,14 @@ p{
 	line-height: 60px;
 }
 
+.info7 .weui_cells{
+	margin-top: 20px;
+	
+}
+
+.info6 .weui_cells p{
+	font-size: 40px;
+	color: #000000;
+	height: 80px;
+}
 
