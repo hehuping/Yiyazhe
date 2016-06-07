@@ -41,7 +41,7 @@ p{
 
 .info1 .weui_cells img{
 	margin-right: 10px;
-	width: 75px;
+	width: 85px;
 	border-radius:50%; overflow:hidden;
 	float: left;
 	/*border:double #F1F1F1 6px;*/
@@ -49,8 +49,8 @@ p{
 .info1 .weui_cells .weui_cell_bd p{
 	display: inline;
 	float: left;
-	line-height: 90px;
-	font-size: 1.5em;
+	line-height: 110px;
+	font-size: 2em;
 }
 
 .info1 .weui_cells .weui_cell small{
@@ -163,7 +163,7 @@ p{
 }
 
 .weui_article p{
-	font-size: 12px;
+	font-size: 16px;
 	color: #000000;
 }
 
@@ -191,6 +191,7 @@ p{
 .r_bottom p{
 	font-size: 23px;
 	padding-bottom: 25px;
+	padding-top: 10px;
 }
 .top_right{
 	float: right;
