@@ -1,6 +1,6 @@
 p{
 	font-size: 28px;
-	color: #BCBAB6;
+	color: #666666;
 	font-family: "微软雅黑";
 }
 .top{
@@ -52,6 +52,10 @@ p{
 	line-height: 90px;
 }
 
+.info1 .weui_cells .weui_cell small{
+	color: #979797;
+}
+
 .info1 .weui_cell_ft{
 	 padding-top: 25px;
 }
@@ -78,6 +82,10 @@ p{
 }
 .money strong{
 	color: coral;
+}
+
+.info2 .weui_cells:after {
+	border-top: 2px solid #D9D9D9; 
 }
 
 
