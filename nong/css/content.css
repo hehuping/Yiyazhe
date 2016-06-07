@@ -117,18 +117,25 @@ p{
 .info5 .weui_cells{
 	background: #FBFFFB;
 	margin-top: 0px;
-	line-height: 60px;
+	line-height: 90px;
+	
 }
 
+#in1{
+	height: 90px;
+}
+#in2{
+	height: 130px;
+}
 .yun{
 	color: #000000;
-	font-size: 35px;
+	font-size: 40px;
 }
 
 .c_left p{
 	
-	font-size: 30px;
-	line-height: 45px;
+	font-size: 35px;
+	line-height: 60px;
 }
 
 .c_right{
@@ -137,8 +144,8 @@ p{
 
 .c_right p{
 	color: #000000;
-	font-size: 30px;
-	line-height: 45px;
+	font-size: 35px;
+	line-height: 60px;
 }
 
 
