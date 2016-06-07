@@ -26,9 +26,14 @@ p{
 	width: 24%;
 }
 .u_header{
-	padding: 10px;
+	padding: 0px;
 	width: 100%;
-	height: 45px;
+	height: auto;
+}
+.u_header .h_left{
+	padding: 10px 10px 10px 15px;
+	width: 80%;
+	height: auto;
 }
 .u_header img{
 	width: 70px;
@@ -39,7 +44,7 @@ p{
 }
 .u_header p{
 	float: right;
-	padding-right: 0px;
+	margin-right: 3px;
 	line-height: 80px;
 }
 .foot{
