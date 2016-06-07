@@ -49,8 +49,9 @@ p{
 .info1 .weui_cells .weui_cell_bd p{
 	display: inline;
 	float: left;
-	line-height: 110px;
-	font-size: 2em;
+	line-height: 64px;
+    font-size: 2em;
+    margin-top: 30px;
 }
 
 .info1 .weui_cells .weui_cell small{
@@ -189,9 +190,10 @@ p{
 	display: inline;
 }
 .r_bottom p{
-	font-size: 23px;
+	font-size: 28px;
 	padding-bottom: 25px;
 	padding-top: 10px;
+	color: #B2B2B2;
 }
 .top_right{
 	float: right;
