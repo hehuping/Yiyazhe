@@ -66,7 +66,7 @@ p{
 
 .info2 .weui_cell{
 	margin-top: 5px;
-	height: 90px;
+	height: 120px;
 }
 
 .weui_cell_bd .money{
@@ -82,6 +82,10 @@ p{
 }
 .money strong{
 	color: coral;
+}
+
+.money p{
+	font-size: 35px;
 }
 
 .info2 .weui_cells:after {
@@ -118,12 +122,12 @@ p{
 
 .yun{
 	color: #000000;
-	font-size: 30px;
+	font-size: 35px;
 }
 
 .c_left p{
 	
-	font-size: 27px;
+	font-size: 30px;
 	line-height: 45px;
 }
 
@@ -133,7 +137,7 @@ p{
 
 .c_right p{
 	color: #000000;
-	font-size: 27px;
+	font-size: 30px;
 	line-height: 45px;
 }
 
