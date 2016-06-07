@@ -98,7 +98,7 @@ p{
 
 .info3 .weui_cells{
 	margin-top: 10px;
-	height: 75px;
+	min-height: 75px;
 }
 
 .info4{
@@ -117,12 +117,13 @@ p{
 }
 
 .yun{
-	color: #353535;
+	color: #000000;
+	font-size: 30px;
 }
 
 .c_left p{
 	
-	font-size: 25px;
+	font-size: 27px;
 	line-height: 45px;
 }
 
@@ -131,8 +132,8 @@ p{
 }
 
 .c_right p{
-	color: #353535;
-	font-size: 25px;
+	color: #000000;
+	font-size: 27px;
 	line-height: 45px;
 }
 
