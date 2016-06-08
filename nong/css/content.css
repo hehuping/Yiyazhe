@@ -187,6 +187,10 @@ p{
 	float: left;
 	width: 87%;
 }
+.info7_right .r_size{
+	font-size: 38px;
+	color: #000000;
+}
 .info7_right .r_top{
 	width: 100%;
 	height: 50px;
@@ -235,11 +239,11 @@ p{
 	margin: 5px;
 	display: inline;
 	color: #000000;
-	font-size: 25px;
+	font-size: 30px;
 }
 .info8_right .p2{
 	display: inline;
-	font-size: 24px;
+	font-size: 28px;
 	color: #888888;
 }
 .info8_right .p2 strong{
