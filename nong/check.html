@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="css/example.css" />
 		<link rel="stylesheet" href="css/weui.css" />
 		<link rel="stylesheet" type="text/css" href="css/check.css"/>
+		<script type="text/javascript" src="js/jquery1.7.2.min.js" ></script>
 	</head>
 	<body>
 		<div class=container>
@@ -68,11 +69,43 @@
 				        </label>
 				    </div>
 				</div>
+				<div class="bj"></div>
+				
+				<div class="info3">
+					<div class="weui_cells">
+				        <div class="weui_cell">
+				            <p>数量</p>
+				            <div class="many">
+				            	<div class="m_left"><a href="javascript:void(0)" onclick="add()"><img src="img/arrows_circle_plus_266px_1182471_easyicon.net.png" /></a></div>
+				            	<div class="m_center"><input type="number" name="count" value="1" id="count"/></div>
+				            	<div class="m_right"><a href="javascript:void(0)" onclick="reduce()"><img src="img/arrows_circle_minus_266px_1182470_easyicon.net.png" /></a></div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
 				
 			</div>
 			
 			
 		</div>
+		
+		<script>
+			function add(){
+				var count = $("#count").val();
+				
+				$("#count").val(parseInt(count)+1);
+			}
+			
+			function reduce(){
+				var count = parseInt($("#count").val());
+				if(count > 1){
+					count-=1;
+				}else{
+					count =1
+				}
+				$("#count").val(count);
+			}
+		</script>
 	
 	</body>
 </html>
