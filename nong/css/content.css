@@ -188,8 +188,14 @@ p{
 	width: 87%;
 }
 .info7_right .r_size{
-	font-size: 38px;
+	font-size: 35px;
+	color: #454545;
+	display: inline;
+}
+.info7_right .r_size2{
+	font-size: 35px;
 	color: #000000;
+	display: inline;
 }
 .info7_right .r_top{
 	width: 100%;
