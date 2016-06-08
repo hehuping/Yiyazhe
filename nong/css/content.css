@@ -1,4 +1,6 @@
-
+body{
+	font-family: "微软雅黑";
+}
 p{
 	font-size: 28px;
 	color: #666666;
@@ -249,3 +251,50 @@ p{
 .info8 .weui_cells:after {
 	border-bottom: 2px solid #D9D9D9;
 }
+
+.info9{
+	width: 100%;
+	height: 135px;
+	position: fixed;
+	bottom: 0px;
+	border-top: solid #B2B2B2 2px;
+	background: white;
+}
+.info9 .info9_left{
+	float: left;
+	width: 25%;
+	text-align: center;
+}
+.info9_left img{
+	width: 95px;
+}
+.info9_left p{
+    line-height: 10px;
+}
+.info9_left small{
+	color: #FF4500;
+}
+.info9 .info9_center{
+	float: left;
+	width: 50%;
+	text-align: center;
+}
+.info9 .info9_right{
+	float: left;
+	width: 25%;
+	text-align: center;
+}
+.info9_right p{
+    line-height: 22px;
+}
+.info9_right small{
+	color: #FF4500;
+}
+.info9_right img{
+	width: 85px;
+}
+.weui_btn {
+	font-size: 40px;
+	margin-top: 22px;
+}
+
