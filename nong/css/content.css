@@ -222,7 +222,7 @@ p{
 	display: inline;
 }
 .info8 .info8_left{
-	min-height: 200px;
+	min-height: 220px;
 	float: left;
 	width: 14%;
 	
@@ -236,7 +236,7 @@ p{
 	border-radius: 50%;
 }
 .info8 .info8_right{
-	min-height: 200px;
+	min-height: 220px;
 	float: left;
 	width: 86%;
 	margin-top: 20px;
