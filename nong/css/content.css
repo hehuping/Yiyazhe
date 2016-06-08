@@ -97,6 +97,9 @@ p{
 .info2 .weui_cells:after {
 	border-top: 2px solid #D9D9D9; 
 }
+.info2 .weui_cells:after {
+	border-bottom: 2px solid #C9C9C9;
+}
 
 .info1 .weui_cells:after {
 	border-bottom: 0px solid #D9D9D9; 
@@ -117,7 +120,7 @@ p{
 }
 .bj{
 	height: 25px;
-	background: #EEEEEE;
+	background: #F5F5F5;
 }
 
 .info5 .weui_cells{
