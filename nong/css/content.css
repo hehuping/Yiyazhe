@@ -129,7 +129,8 @@ p{
 	height: 90px;
 }
 #in2{
-	height: 130px;
+	height: 140px;
+    padding-top: 15px;
 }
 .yun{
 	color: #000000;
@@ -199,7 +200,7 @@ p{
 	display: inline;
 }
 .r_bottom p{
-	font-size: 28px;
+	font-size: 30px;
 	padding-bottom: 25px;
 	padding-top: 10px;
 	color: #B2B2B2;
@@ -207,5 +208,24 @@ p{
 .top_right{
 	float: right;
 	display: inline;
+}
+.info8 .info8_left{
+	min-height: 120px;
+	float: left;
+	width: 13%;
+	
+}
+.info8_left img{
+	position:absolute;
+	width:100px;
+	margin-right:5px;
+	display:block;
+	top:15px;
+	border-radius: 50%;
+}
+.info8 .info8_right{
+	min-height: 120px;
+	float: left;
+	width: 87%;
 }
 
