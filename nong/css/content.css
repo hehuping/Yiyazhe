@@ -35,7 +35,7 @@ p{
 }
 
 .info1 .weui_cells{
-	margin-top: 50px;
+	margin-top: 65px;
 	
 }
 
@@ -163,7 +163,7 @@ p{
 	
 }
 .info5 .weui_cells:after {
-	border-bottom: 2px solid #D9D9D9;
+	/*border-bottom: 2px solid #D9D9D9;*/
 }
 .info6 .weui_cells:after {
 	border-bottom: 2px solid #D9D9D9;
@@ -309,5 +309,9 @@ p{
 .weui_btn {
 	font-size: 40px;
 	margin-top: 22px;
+}
+#bar2{
+	height: 140px;
+	line-height: 115px;
 }
 
