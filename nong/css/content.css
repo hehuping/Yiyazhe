@@ -194,7 +194,7 @@ p{
 }
 .info7_right .r_size2{
 	font-size: 35px;
-	color: #000000;
+	color: #454545;
 	display: inline;
 }
 .info7_right .r_top{
@@ -222,7 +222,7 @@ p{
 	display: inline;
 }
 .info8 .info8_left{
-	min-height: 170px;
+	min-height: 200px;
 	float: left;
 	width: 14%;
 	
@@ -236,7 +236,7 @@ p{
 	border-radius: 50%;
 }
 .info8 .info8_right{
-	min-height: 170px;
+	min-height: 200px;
 	float: left;
 	width: 86%;
 	margin-top: 20px;
@@ -245,11 +245,11 @@ p{
 	margin: 5px;
 	display: inline;
 	color: #000000;
-	font-size: 30px;
+	font-size: 35px;
 }
 .info8_right .p2{
 	display: inline;
-	font-size: 28px;
+	font-size: 32px;
 	color: #888888;
 }
 .info8_right .p2 strong{
