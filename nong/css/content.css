@@ -246,3 +246,6 @@ p{
 .info8_right .p3{
 	margin: 10px;
 }
+.info8 .weui_cells:after {
+	border-bottom: 2px solid #D9D9D9;
+}
