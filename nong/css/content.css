@@ -210,9 +210,9 @@ p{
 	display: inline;
 }
 .info8 .info8_left{
-	min-height: 120px;
+	min-height: 170px;
 	float: left;
-	width: 13%;
+	width: 14%;
 	
 }
 .info8_left img{
@@ -224,8 +224,25 @@ p{
 	border-radius: 50%;
 }
 .info8 .info8_right{
-	min-height: 120px;
+	min-height: 170px;
 	float: left;
-	width: 87%;
+	width: 86%;
+	margin-top: 20px;
 }
-
+.info8_right .p1{
+	margin: 5px;
+	display: inline;
+	color: #000000;
+	font-size: 25px;
+}
+.info8_right .p2{
+	display: inline;
+	font-size: 24px;
+	color: #888888;
+}
+.info8_right .p2 strong{
+	color: #FF4500;
+}
+.info8_right .p3{
+	margin: 10px;
+}
