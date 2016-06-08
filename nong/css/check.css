@@ -41,7 +41,10 @@ p{
 }
 .info2 .content{
 	float: left;
-	width: 80%;
+	width: 75%;
+}
+.info2 .p_right{
+	width: 15%;
 }
 .info2 .p1{
 	display: inline;
@@ -57,4 +60,8 @@ p{
 	display: inline;
 	font-size: 35px;
 }
+.weui_cells_radio .weui_check:checked + .weui_icon_checked:before{
+	font-size: 80px;
+}
+
 
