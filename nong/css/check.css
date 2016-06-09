@@ -113,13 +113,13 @@ p{
 	float: left;
 	
 	border-right: solid 1px #C7C7C7;
-	width: 33%;
+	width: 32%;
 }
 .weui_cell .m_right{
 	height: 120px;
 	float: left;
 	border-right: solid 1px #C7C7C7;
-	width: 33%;
+	width: 32%;
 }
 .weui_cell .m_right img{
 	margin-top: 15px;
@@ -231,7 +231,7 @@ p{
 }
 .info9 .info9_right{
 	float: right;
-	width: 45%;
+	width: 44%;
 	text-align: center;
 	padding-right: 20px;
 }
