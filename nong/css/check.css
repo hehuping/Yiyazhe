@@ -144,13 +144,13 @@ p{
 }
 .info4 p{
 	float: left;
-	margin-top: 45px;
+	margin-top: 40px;
     margin-left: 50px;
-    font-size: 38px;
+    font-size: 40px;
     color: black;
 }
 .weui_cells_radio .weui_cell_ft {
-    margin-right: 100px;
+    margin-right: 55px;
 }
 
 
