@@ -139,12 +139,13 @@ p{
 }
 .info4 img{
 	float:left;
-	width: 140px;
+	width: 120px;
 	display: inline;
+	margin-top: 18px;
 }
 .info4 p{
 	float: left;
-	margin-top: 40px;
+	margin-top: 50px;
     margin-left: 50px;
     font-size: 40px;
     color: black;
@@ -152,6 +153,55 @@ p{
 .weui_cells_radio .weui_cell_ft {
     margin-right: 55px;
 }
+
+.info5 .weui_cells{
+	height: 150px;
+	border: 1px solid #CCCCCC;
+}
+.info5_left{
+	width: 15%;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+.info5_left img{
+	width: 90px;
+}
+.info5_center{
+	width: 90%;
+}
+.info5_center .p1{
+	padding-top: 10px;
+	color: #353535;
+	font-size: 35px;
+}
+.info5_center .p2{
+	font-size: 30px;
+	color: #979797;
+}
+
+.info5_right{
+	padding-top: 30px;
+	float: right;
+	width: auto;
+}
+.info5_right img{
+	width: 30px;
+}
+
+.info6 .weui_cells{
+	height: 200px;
+	border: 1px solid #CCCCCC;
+}
+.info6 .weui_cell{
+	height: 200px;
+}
+
+.info6 .weui_textarea {
+	height: 200px;
+	font-size: 35px;
+	font-family: "微软雅黑";
+}
+
 
 
 
