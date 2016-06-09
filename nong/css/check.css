@@ -133,5 +133,25 @@ p{
 	font-size: 40px;
 }
 
+.info4 .weui_cells{
+	height: 150px;
+	border: 1px solid #CCCCCC;
+}
+.info4 img{
+	float:left;
+	width: 140px;
+	display: inline;
+}
+.info4 p{
+	float: left;
+	margin-top: 45px;
+    margin-left: 50px;
+    font-size: 38px;
+    color: black;
+}
+.weui_cells_radio .weui_cell_ft {
+    margin-right: 100px;
+}
+
 
 
