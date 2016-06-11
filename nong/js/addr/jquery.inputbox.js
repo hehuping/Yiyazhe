@@ -91,10 +91,10 @@
 			selectbox.hide(null, $('.sb').not($o));
 			$o.toggleClass('sb_active');
 			$opts.css({
-				'width': "50%",//Math.max($opts.width(), $o.width()),
+				'width': "70%",//Math.max($opts.width(), $o.width()),
 				'top': "3%",//$o.height(),
-				'left': "25%",//- parseInt($o.css('border-left-width'))
-				'height' : "90%"
+				'left': "15%",//- parseInt($o.css('border-left-width'))
+				'height' : "auto"
 			}).toggle($o.hasClass('sb_active'));
 
 		},
