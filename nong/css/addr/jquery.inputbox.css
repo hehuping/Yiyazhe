@@ -80,6 +80,7 @@
 	padding: 50px;
 	font-family: "微软雅黑";
 	    border-bottom: 1px solid #CECECE;
+	    text-align: center;
 }
 
 .sb .opts a.selected {
