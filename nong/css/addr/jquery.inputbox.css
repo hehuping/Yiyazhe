@@ -1,0 +1,150 @@
+﻿/* icon */
+
+.arrow,
+.cb,
+.rb {
+	background-image: url(../img/icon.png);
+}
+
+
+/* select box */
+
+.sb {
+	/*border:solid 1px #cfcfcf;*/
+	cursor: pointer;
+	background-color: #ffffff;
+	position: relative;
+	float: left;
+	margin: 0 10px 0 0;
+	display: inline-block;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+
+.sb_active {
+	border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+}
+
+.sb * {
+	color: #666666;
+	font: normal 12px Song;
+	cursor: pointer;
+	background-color: #fff;
+}
+
+.sb .opts {
+	border: 1px solid #C7C7C7;
+	cursor: pointer;
+	display: none;
+	height: auto;
+	left: 0;
+	max-height: 90%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: fixed;
+	top: 0;
+	width: auto;
+	z-index: 99;
+}
+
+.sb > .selected {
+	padding: 0 15px 0 5px;
+	overflow: hidden;
+	position: absolute;
+	cursor: pointer;
+	left: 0;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	font-size: 30px;
+	width: 100%;
+	font-family: "微软雅黑";
+	text-align: center;
+}
+
+.sb .opts a {
+	width: auto;
+	height: 24px;
+	line-height: 24px;
+	padding: 0 5px;
+	cursor: default;
+	outline: none;
+	white-space: nowrap;
+	text-decoration: none;
+	display: block;
+	cursor: pointer;
+	font-size: 35px;
+	padding: 20px;
+	font-family: "微软雅黑";
+	    border-bottom: 1px solid #CECECE;
+}
+
+.sb .opts a.selected {
+	background: #ffffe1;
+}
+
+.sb .opts a.none {
+	background: #fff;
+}
+
+.sb .opts a:hover {
+	background: #ffffe1;
+	cursor: pointer;
+}
+
+.sb .sb_icon {
+	width: 7px;
+	height: 4px;
+	overflow: hidden;
+	position: absolute;
+	cursor: pointer;
+	right: 4px;
+}
+
+.sb .arrow {
+	background-position: -27px -18px;
+}
+
+.sb_active .arrow {
+	background-position: -27px -4px;
+}
+
+
+/* checkbox box */
+
+.cb {
+	width: 13px;
+	height: 13px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	background-position: 0 0;
+	cursor: pointer;
+}
+
+.cb_active {
+	background-position: 0 -13px;
+}
+
+
+/* radio box */
+
+.rb {
+	width: 13px;
+	height: 13px;
+	margin: 0 auto;
+	padding: 0;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	vertical-align: middle;
+	background-position: -13px 0;
+	cursor: pointer;
+}
+
+.rb_active {
+	background-position: -13px -13px;
+}

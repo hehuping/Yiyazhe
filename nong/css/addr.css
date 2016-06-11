@@ -1,0 +1,52 @@
+body{
+	font-family: "微软雅黑";
+}
+p{
+	font-size: 28px;
+	color: #666666;
+	font-family: "微软雅黑";
+	font-weight: 100;
+}
+.top{
+	max-height:100px ;
+	width: 100%;
+}
+.top img{
+	width: 100%;
+	height: 100px;
+	display: block;
+}
+
+.weui_cells {
+	padding: 10px;
+	margin-top: 0px;
+}
+.weui_cell:before {
+	border-bottom: 2px solid #D9D9D9;
+}
+.weui_cell p{
+	display: inline;
+}
+
+.bj{
+	height: 25px;
+	background: #F5F5F5;
+}
+
+#test1 .t_left{
+	float: left;
+	padding: 10px;
+	width: 25%;
+}
+#test1 .t_center{
+	float: left;
+	padding: 10px;
+	width: 40%;
+}
+#test1 .t_right{
+	float: left;
+	padding: 10px;
+	width: 25%;
+}
+
+
