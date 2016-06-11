@@ -59,7 +59,7 @@
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
-	font-size: 30px;
+	font-size: 35px;
 	width: 100%;
 	font-family: "微软雅黑";
 	text-align: center;
@@ -77,10 +77,11 @@
 	display: block;
 	cursor: pointer;
 	font-size: 45px;
-	padding: 50px;
+	padding: 68px;
 	font-family: "微软雅黑";
-	    border-bottom: 1px solid #CECECE;
+	    border-bottom: 1px solid #E6E6E6;
 	    text-align: center;
+	    color: black;
 }
 
 .sb .opts a.selected {

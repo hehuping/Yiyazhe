@@ -2,10 +2,11 @@ body{
 	font-family: "微软雅黑";
 }
 p{
-	font-size: 35px;
+	font-size: 40px;
 	color: #666666;
 	font-family: "微软雅黑";
 	font-weight: 100;
+	color: black;
 }
 .top{
 	max-height:100px ;
