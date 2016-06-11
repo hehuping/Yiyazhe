@@ -57,9 +57,18 @@ p{
 }
 .info1 .weui_cell textarea{
 	height: 200px;
-	font-size: 40px;
+	font-size: 16px;
 	font-family: "微软雅黑";
+	
+	
+	
+	
 }
+
+/* 通用 */
+
+textarea::-webkit-input-placeholder{font-size: 35px;}
+
 
 .info2 .weui_cells{
 	border-bottom: 1px solid #D9D9D9;
@@ -76,12 +85,16 @@ p{
 	width: 160px;
 }
 .info2 .weui_cells input{
-	font-size: 35px;
+	font-size: 40px;
 	padding-top: 40px;
 	font-family: "微软雅黑";
 }
 .info3{
 	padding-top: 30px;
+}
+.info3 .weui_btn {
+	font-size: 40px;
+	line-height: ;
 }
 
 
