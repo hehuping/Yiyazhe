@@ -86,7 +86,7 @@ $mune = '{
           "key":"V1001_TODAY_MUSIC"
       },
       {
-           "name":"tiger",
+           "name":"微网页",
            "sub_button":[
             {
                "type":"view",
