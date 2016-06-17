@@ -90,14 +90,20 @@ $mune = '{
            "sub_button":[
             {
                "type":"view",
-               "name":"人脸识别",
+               "name":"人脸检测",
                "url":"http://www.yiyazhe.com/face/chose"
             },
 
             {
                "type":"view",
-               "name":"人脸识别2",
+               "name":"人脸相似度",
                "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb096e505f9556191&redirect_uri=http://www.yiyazhe.com/face/getin&scope=snsapi_userinfo&response_type=code&state=hehuping#wechat_redirect"
+            },
+			
+			{
+               "type":"view",
+               "name":"微信众筹",
+               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb096e505f9556191&redirect_uri=http://www.yiyazhe.com/nong&scope=snsapi_userinfo&response_type=code&state=hehuping#wechat_redirect"
             },
             ]
        }]
