@@ -90,13 +90,13 @@ $mune = '{
            "sub_button":[
             {
                "type":"view",
-               "name":"人脸检测",
-               "url":"http://www.yiyazhe.com/face/chose"
+               "name":"人脸匹配",
+               "url":"http://www.yiyazhe.com/face/async"
             },
 
             {
                "type":"view",
-               "name":"人脸相似度",
+               "name":"人脸分析",
                "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb096e505f9556191&redirect_uri=http://www.yiyazhe.com/face/getin&scope=snsapi_userinfo&response_type=code&state=hehuping#wechat_redirect"
             },
 			
