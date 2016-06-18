@@ -91,7 +91,7 @@ $mune = '{
             {
                "type":"view",
                "name":"人脸匹配",
-               "url":"http://www.yiyazhe.com/face/async"
+               "url":"http://www.yiyazhe.com/face/similler"
             },
 
             {
